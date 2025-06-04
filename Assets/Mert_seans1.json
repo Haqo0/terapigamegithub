@@ -1,0 +1,21 @@
+{
+  "adimlar": [
+    {
+      "id": "1",
+      "konusmaci": "Mert",
+      "anlatim": "Mert sana bakarak başını sallar. 'Başlayalım mı?' der.",
+      "secenekler": [
+        { "metin": "Evet, seni dinliyorum.", "sonrakiID": "2" },
+        { "metin": "Hazır değilsen bekleyebiliriz.", "sonrakiID": "3" },
+        { "metin": "Bugün kendini nasıl hissediyorsun?", "sonrakiID": "4" },
+        { "metin": "İstersen bu seansı es geçebiliriz.", "sonrakiID": "5" }
+      ]
+    },
+    {
+      "id": "2",
+      "konusmaci": "Mert",
+      "anlatim": "Mert biraz kıpırdanır, ama sonra konuşmaya başlar: 'Gece rüyamda annemi gördüm...'",
+      "secenekler": []
+    }
+  ]
+}
