@@ -1,20 +1,74 @@
 {
+  "seans": 1,
   "adimlar": [
     {
       "id": "1",
-      "konusmaci": "Mert",
-      "anlatim": "Mert sana bakarak başını sallar. 'Başlayalım mı?' der.",
+      "anlatim": "Onur kapıdan içeri girdiğinde hafif bir gülümsemeyle başını sallar. \"Bugün değişik bir şey denemek isterim.\"",
       "secenekler": [
-        { "metin": "Evet, seni dinliyorum.", "sonrakiID": "2" },
-        { "metin": "Hazır değilsen bekleyebiliriz.", "sonrakiID": "3" },
-        { "metin": "Bugün kendini nasıl hissediyorsun?", "sonrakiID": "4" },
-        { "metin": "İstersen bu seansı es geçebiliriz.", "sonrakiID": "5" }
+        { "metin": "Ne gibi bir şey düşündün?", "sonrakiID": "2" },
+        { "metin": "Kendini ifade etmeye hazır hissediyor musun?", "sonrakiID": "3" },
+        { "metin": "Bugün farklılık iyi gelebilir.", "sonrakiID": "4" },
+        { "metin": "Senin kontrolünde, nasıl istersen.", "sonrakiID": "5" }
       ]
     },
     {
       "id": "2",
-      "konusmaci": "Mert",
-      "anlatim": "Mert biraz kıpırdanır, ama sonra konuşmaya başlar: 'Gece rüyamda annemi gördüm...'",
+      "anlatim": "Onur: \"Belki rolleri değişebiliriz. Ben sorayım bu sefer… Terapi böyle de işliyor mu?\"",
+      "secenekler": [
+        { "metin": "Bu seni rahatlatacaksa, deneyebiliriz.", "sonrakiID": "6" },
+        { "metin": "Roller değil ama hislerin önemli.", "sonrakiID": "7" },
+        { "metin": "Bu terapi değil, bir oyun olur.", "sonrakiID": "8" },
+        { "metin": "Kimin ne dediği değil, ne hissettiği önemli.", "sonrakiID": "9" }
+      ]
+    },
+    {
+      "id": "3",
+      "anlatim": "Onur gözlerini kaçırır: \"Hazır hissetmiyorum ama susmak da istemiyorum.\"",
+      "secenekler": [
+        { "metin": "İkisini aynı anda barındırabilirsin.", "sonrakiID": "6" },
+        { "metin": "Sadece susman da bir şey anlatır.", "sonrakiID": "7" },
+        { "metin": "İstersen sadece sessizlikte oturalım.", "sonrakiID": "8" },
+        { "metin": "Bu da bir başlangıç.", "sonrakiID": "9" }
+      ]
+    },
+    {
+      "id": "4",
+      "anlatim": "Onur: \"Farklı olmak istiyorum ama bazen sadece aynı yerde dönüyorum gibi.\"",
+      "secenekler": [
+        { "metin": "Yine de döndüğün yerin farkına varman bir adımdır.", "sonrakiID": "6" },
+        { "metin": "Dönmek, kaybolmak anlamına gelmez.", "sonrakiID": "7" },
+        { "metin": "İstersen birlikte bakarız bu döngüye.", "sonrakiID": "8" },
+        { "metin": "Zemin tanıdık olabilir ama yol farklılaşabilir.", "sonrakiID": "9" }
+      ]
+    },
+    {
+      "id": "5",
+      "anlatim": "Onur başını sallar: \"Bu kontrol meselesi… bende hep ya hep ya hiç gibi.\"",
+      "secenekler": [
+        { "metin": "Kontrol bazen sadece nefes almaktır.", "sonrakiID": "6" },
+        { "metin": "Arada olmak da mümkündür.", "sonrakiID": "7" },
+        { "metin": "Bunu keşfetmek terapiye dahildir.", "sonrakiID": "8" },
+        { "metin": "Hiçbir şeyin kontrolü tam değil.", "sonrakiID": "9" }
+      ]
+    },
+    {
+      "id": "6",
+      "anlatim": "Onur hafifçe gülümsedi. \"Bu söylediklerin... bilmediğim bir şefkati çağrıştırıyor.\"",
+      "secenekler": []
+    },
+    {
+      "id": "7",
+      "anlatim": "Onur gözlerini kapadı. \"Galiba ilk defa biri beni duymaya çalışıyor gibi…\"",
+      "secenekler": []
+    },
+    {
+      "id": "8",
+      "anlatim": "Onur hafifçe başını eğer. \"Kendime tahammül etmeyi belki burada öğreniyorumdur.\"",
+      "secenekler": []
+    },
+    {
+      "id": "9",
+      "anlatim": "Onur: \"Bugün biraz hafifim. Sözcükler gibi. Bazen de bu yeterlidir.\"",
       "secenekler": []
     }
   ]
