@@ -39,13 +39,26 @@ public class SeansGecisYoneticisi : MonoBehaviour
 
         if (instance != null && instance.gecisMesaji != null)
         {
-            instance.gecisMesaji.text = mesaj;
+            instance.StartCoroutine(instance.GecikmeliMesajVeDevam(mesaj));
         }
 
         if (instance != null)
         {
             instance.StartCoroutine(instance.BekleVeDevamGelsin());
         }
+    }
+
+    private IEnumerator GecikmeliMesajVeDevam(string mesaj)
+    {
+        if (gecisMesaji != null)
+            gecisMesaji.text = "";
+
+        yield return new WaitForSeconds(2f);
+
+        if (gecisMesaji != null)
+            gecisMesaji.text = mesaj;
+
+        yield return BekleVeDevamGelsin();
     }
 
     private IEnumerator BekleVeDevamGelsin()
@@ -59,7 +72,7 @@ public class SeansGecisYoneticisi : MonoBehaviour
             devamButonu.onClick.RemoveAllListeners(); // Önceki dinleyicileri temizle
             devamButonu.onClick.AddListener(DevamEt); // Devam et butonuna tıklandığında DevamEt metodunu çağır
         }
-    }    
+    }
     public static void DevamEt()
     {
         if (instance != null && instance.diyalogYoneticisi != null && instance.yeniSeansJson != null)

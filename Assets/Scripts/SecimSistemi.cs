@@ -9,6 +9,13 @@ public class SecimSistemi : MonoBehaviour
     public Transform butonParent;
 
     private List<GameObject> aktifButonlar = new List<GameObject>();
+    
+    public static SecimSistemi instance;
+
+    public void Awake()
+    {
+        instance = this;
+    }
 
     // Gelişmiş seçenek gösterme - artık Secenek objesini direkt alıyor
     public void SecenekleriGoster(List<Secenek> secenekler, Action<Secenek> secimYapildiginda)
@@ -18,7 +25,7 @@ public class SecimSistemi : MonoBehaviour
         foreach (Secenek secenek in secenekler)
         {
             GameObject eniButon = Instantiate(butonPrefab, butonParent);
-            
+
             TMP_Text buttonText = eniButon.GetComponentInChildren<TMP_Text>();
             if (buttonText != null)
             {

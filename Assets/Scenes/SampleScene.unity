@@ -995,7 +995,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d72713b191636409286cc50f1cd6d70c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seceneklerGecikmesi: 1
+  seceneklerGecikmesi: 3
   npcText: {fileID: 1158091930}
   secimSistemi: {fileID: 2033656150}
   analizGosterici: {fileID: 0}
