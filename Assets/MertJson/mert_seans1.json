@@ -48,22 +48,26 @@
     {
       "id": "A1",
       "anlatim": "Annem hastanedeydi. O dönem çok yalnız kalmıştım.",
-      "secenekler": []
+      "secenekler": [],
+      "seansSonu": true
     },
     {
       "id": "A2",
       "anlatim": "Hastanenin dar koridorları gibiydi. Soğuk, gri.",
-      "secenekler": []
+      "secenekler": [],
+      "seansSonu": true
     },
     {
       "id": "A3",
       "anlatim": "Arada geliyor… ama son zamanlarda hiç gitmedi.",
-      "secenekler": []
+      "secenekler": [],
+      "seansSonu": true
     },
     {
       "id": "A4",
       "anlatim": "O kapı... evin mutfağındaki kapıya benziyor. Ama sanki daha kalın.",
-      "secenekler": []
+      "secenekler": [],
+      "seansSonu": true
     },
     {
       "id": "B",
@@ -90,22 +94,26 @@
     {
       "id": "B1",
       "anlatim": "Bazen içimi rahatlatıyorlar... bazen de içimi titretiyorlar.",
-      "secenekler": []
+      "secenekler": [],
+      "seansSonu": true
     },
     {
       "id": "B2",
       "anlatim": "İlk başta yardım gibi… sonra tehdit gibi hissettiriyor.",
-      "secenekler": []
+      "secenekler": [],
+      "seansSonu": true
     },
     {
       "id": "B3",
       "anlatim": "Açıldığını hayal ettiğimde hep uyanıyorum.",
-      "secenekler": []
+      "secenekler": [],
+      "seansSonu": true
     },
     {
       "id": "B4",
       "anlatim": "Hazır değilim. Ama siz beni hazırlayabilirsiniz belki.",
-      "secenekler": []
+      "secenekler": [],
+      "seansSonu": true
     },
     {
       "id": "C",
@@ -132,22 +140,26 @@
     {
       "id": "C1",
       "anlatim": "Annemin ameliyat günü. Kapıda bekliyordum.",
-      "secenekler": []
+      "secenekler": [],
+      "seansSonu": true
     },
     {
       "id": "C2",
       "anlatim": "Belki ben kendimi tutuyorum. Korkudan.",
-      "secenekler": []
+      "secenekler": [],
+      "seansSonu": true
     },
     {
       "id": "C3",
       "anlatim": "Ne kaçabiliyorum ne savaşabiliyorum. Donuyorum.",
-      "secenekler": []
+      "secenekler": [],
+      "seansSonu": true
     },
     {
       "id": "C4",
       "anlatim": "Evet. ‘Orada dur’ diyen bir ses. Belki onun sesi.",
-      "secenekler": []
+      "secenekler": [],
+      "seansSonu": true
     },
     {
       "id": "D",
@@ -174,22 +186,26 @@
     {
       "id": "D1",
       "anlatim": "Lütfen biri beni duysun… demek isterdim.",
-      "secenekler": []
+      "secenekler": [],
+      "seansSonu": true
     },
     {
       "id": "D2",
       "anlatim": "Sanki ben yokmuşum gibi hissettirdi.",
-      "secenekler": []
+      "secenekler": [],
+      "seansSonu": true
     },
     {
       "id": "D3",
       "anlatim": "İç sesim korkuyordu. Ama dışarıdan da biri bastırıyordu.",
-      "secenekler": []
+      "secenekler": [],
+      "seansSonu": true
     },
     {
       "id": "D4",
       "anlatim": "Bu sessizlik... farklı. Sanki bir şeyler açılıyor içimde.",
-      "secenekler": []
+      "secenekler": [],
+      "seansSonu": true
     }
   ],
   "sonlar": {

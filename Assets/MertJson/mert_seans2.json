@@ -1,0 +1,201 @@
+{
+  "seans": 2,
+  "adimlar": [
+    {
+      "id": "1",
+      "anlatim": "Mert:\n“Geçen seans... sessizliğinizde bir şey duydum.\nRüyada bu defa... kapının arkasından bir ses geliyordu.\nSanırım... o ses bendim.”",
+      "secenekler": [
+        {
+          "metin": "O ses ne diyordu sana?",
+          "sonrakiID": "2"
+        },
+        {
+          "metin": "Kapı bu kez nasıl görünüyordu?",
+          "sonrakiID": "3"
+        },
+        {
+          "metin": "Sesi duyduğunda ne hissettin?",
+          "sonrakiID": "4"
+        },
+        {
+          "metin": "Sessiz kal",
+          "sonrakiID": "5"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "anlatim": "Mert:\n“Beni buradan çıkar... diyordu.\nAma çok boğuktu. Sanki suyun altından gelen bir fısıltıydı.”",
+      "secenekler": [
+        {
+          "metin": "Sence o sesi neden bu kadar zor duyuyorsun?",
+          "sonrakiID": "2A1"
+        },
+        {
+          "metin": "O sesi daha önce duymuş olabilir misin?",
+          "sonrakiID": "2A2"
+        },
+        {
+          "metin": "O ses sana yardım mı istiyordu, seni suçluyor muydu?",
+          "sonrakiID": "2A3"
+        },
+        {
+          "metin": "O sese cevap verdin mi?",
+          "sonrakiID": "2A4"
+        }
+      ]
+    },
+    {
+      "id": "2A1",
+      "anlatim": "Mert:\n“Belki bastırdım. O yüzden boğuk geliyor.”",
+      "secenekler": []
+    },
+    {
+      "id": "2A2",
+      "anlatim": "Mert:\n“Evet. Çocukken uyanmadan önce duyduğum o cümle.”",
+      "secenekler": []
+    },
+    {
+      "id": "2A3",
+      "anlatim": "Mert:\n“Yardım istiyordu. Ama ben onu susturuyordum.”",
+      "secenekler": []
+    },
+    {
+      "id": "2A4",
+      "anlatim": "Mert:\n“Hayır… sadece dinledim. İlk defa onu dinledim.”",
+      "secenekler": []
+    },
+    {
+      "id": "3",
+      "anlatim": "Mert:\n“Eskisinden farklıydı. Üzerinde çatlaklar vardı.\nVe kapı aralığından ışık sızıyordu.”",
+      "secenekler": [
+        {
+          "metin": "Işık seni rahatlattı mı, yoksa korkuttun mu?",
+          "sonrakiID": "3B1"
+        },
+        {
+          "metin": "Çatlaklar neyi temsil ediyor olabilir sence?",
+          "sonrakiID": "3B2"
+        },
+        {
+          "metin": "Kapının ardında bir şey var mıydı?",
+          "sonrakiID": "3B3"
+        },
+        {
+          "metin": "Sızan ışıkla ilgili bir anı geldi mi aklına?",
+          "sonrakiID": "3B4"
+        }
+      ]
+    },
+    {
+      "id": "3B1",
+      "anlatim": "Mert:\n“İkisi birden. Göz kamaştırıcı ama sıcak.”",
+      "secenekler": []
+    },
+    {
+      "id": "3B2",
+      "anlatim": "Mert:\n“Bastırdıklarımın dışarı sızışı olabilir.”",
+      "secenekler": []
+    },
+    {
+      "id": "3B3",
+      "anlatim": "Mert:\n“Bir silüet vardı. Ama çocuk gibiydi.”",
+      "secenekler": []
+    },
+    {
+      "id": "3B4",
+      "anlatim": "Mert:\n“Annemin odasında gece lambası… çocukken hep izlerdim.”",
+      "secenekler": []
+    },
+    {
+      "id": "4",
+      "anlatim": "Mert:\n“İlk başta ürktüm. Çünkü... o ses tanıdıktı.\nAma sonra... onun yalnız olduğunu fark ettim.”",
+      "secenekler": [
+        {
+          "metin": "Kimin sesi olduğunu anladın mı?",
+          "sonrakiID": "4C1"
+        },
+        {
+          "metin": "O yalnızlığı daha önce nerede hissettin?",
+          "sonrakiID": "4C2"
+        },
+        {
+          "metin": "Onunla konuşmak ister misin tekrar?",
+          "sonrakiID": "4C3"
+        },
+        {
+          "metin": "Yalnız olmak mı zor, yalnız hissetmek mi?",
+          "sonrakiID": "4C4"
+        }
+      ]
+    },
+    {
+      "id": "4C1",
+      "anlatim": "Mert:\n“Benimkiydi. Ama küçük halimin.”",
+      "secenekler": []
+    },
+    {
+      "id": "4C2",
+      "anlatim": "Mert:\n“Annem hastanedeyken. Kapıda tek başımaydım.”",
+      "secenekler": []
+    },
+    {
+      "id": "4C3",
+      "anlatim": "Mert:\n“İstiyorum. Ama sesim ona ulaşır mı bilmiyorum.”",
+      "secenekler": []
+    },
+    {
+      "id": "4C4",
+      "anlatim": "Mert:\n“Yalnız hissetmek... çünkü yanında biri olsa bile işe yaramıyor.”",
+      "secenekler": []
+    },
+    {
+      "id": "5",
+      "anlatim": "Mert:\n“Siz yine sessizsiniz…\nAma bu defa, sessizlik korkutmuyor beni.\nSanki içimdeki çocuk bu sessizlikte konuşuyor.”",
+      "secenekler": [
+        {
+          "metin": "O çocuk sana ne söylüyor?",
+          "sonrakiID": "5D1"
+        },
+        {
+          "metin": "Sessizlik onun için de güvenli mi?",
+          "sonrakiID": "5D2"
+        },
+        {
+          "metin": "O çocuk neden şimdi ortaya çıktı sence?",
+          "sonrakiID": "5D3"
+        },
+        {
+          "metin": "Yine sessiz kal",
+          "sonrakiID": "5D4"
+        }
+      ]
+    },
+    {
+      "id": "5D1",
+      "anlatim": "Mert:\n“Sadece... beni bırakma, diyor.”",
+      "secenekler": []
+    },
+    {
+      "id": "5D2",
+      "anlatim": "Mert:\n“Evet. Gürültüden hep kaçardı.”",
+      "secenekler": []
+    },
+    {
+      "id": "5D3",
+      "anlatim": "Mert:\n“Belki artık beni duyabileceğini düşündü.”",
+      "secenekler": []
+    },
+    {
+      "id": "5D4",
+      "anlatim": "Mert:\n“Belki bu sessizlik, ikimizi iyileştiriyor.”",
+      "secenekler": []
+    }
+  ],
+  "sonlar": [
+    "Katarsis: Ona dokunamasam da göz göze geldik. Ve ilk kez... onunla aynı yerdeydim.",
+    "Tetiklenme: O çocuk benimle konuştu ama... ben sustum. Onu yine yalnız bıraktım!",
+    "Yüzeyde Kalma: Rüya sadece rüya. Boşuna anlam yüklüyorum belki.",
+    "Umutlu Sessizlik: Bugün fazla kelime yoktu ama… hissedildim. Belki ilk kez."
+  ]
+}
