@@ -5,21 +5,20 @@ using TMPro;
 
 public class SecimSistemi : MonoBehaviour
 {
-    public GameObject butonPrefab;             // Buton prefabı (içinde TMP_Text olan)
-    public Transform butonParent;              // Butonların yerleştirileceği panel
+    public GameObject butonPrefab;
+    public Transform butonParent;
 
     private List<GameObject> aktifButonlar = new List<GameObject>();
 
-    // Seçenekleri göster ve her butona tıklanıldığında ilgili ID'yi işle
-    public void SecenekleriGoster(List<Secenek> secenekler, Action<string> secimYapildiginda)
+    // Gelişmiş seçenek gösterme - artık Secenek objesini direkt alıyor
+    public void SecenekleriGoster(List<Secenek> secenekler, Action<Secenek> secimYapildiginda)
     {
-        // Eski butonları temizle
         SecenekleriTemizle();
 
         foreach (Secenek secenek in secenekler)
         {
             GameObject eniButon = Instantiate(butonPrefab, butonParent);
-
+            
             TMP_Text buttonText = eniButon.GetComponentInChildren<TMP_Text>();
             if (buttonText != null)
             {
@@ -30,17 +29,16 @@ public class SecimSistemi : MonoBehaviour
                 Debug.LogError("Buton prefab içinde TMP_Text bileşeni bulunamadı!");
             }
 
-            // Tıklanıldığında ilgili sonraki ID'yi gönder
+            // Tıklanıldığında tüm secenek objesini gönder
             eniButon.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() =>
             {
-                secimYapildiginda.Invoke(secenek.sonrakiID);
+                secimYapildiginda.Invoke(secenek);
             });
 
             aktifButonlar.Add(eniButon);
         }
     }
 
-    // Tüm önceki butonları sil
     public void SecenekleriTemizle()
     {
         foreach (GameObject buton in aktifButonlar)
