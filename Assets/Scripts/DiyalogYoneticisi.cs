@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System.Linq;
+using Unity.VisualScripting;
 
 public class DiyalogYoneticisi : MonoBehaviour
 {
@@ -26,6 +27,13 @@ public class DiyalogYoneticisi : MonoBehaviour
     private List<string> yapilanSecimler = new List<string>();
     private Coroutine secenekGostermeCoroutine;
 
+    //singelton pattern
+    public static DiyalogYoneticisi instance;
+
+    public void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
         diyalogData = JsonUtility.FromJson<DiyalogData>(diyalogJson.text);
@@ -104,6 +112,7 @@ public class DiyalogYoneticisi : MonoBehaviour
         }
         else
         {
+            SeansGecisYoneticisi.SeansiHazirla();
             Debug.LogWarning("Uygun analiz bulunamadı!");
         }
     }
