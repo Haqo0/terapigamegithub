@@ -19,7 +19,7 @@ public class SecimSistemi : MonoBehaviour
         foreach (Secenek secenek in secenekler)
         {
             GameObject eniButon = Instantiate(butonPrefab, butonParent);
-            
+
             TMP_Text buttonText = eniButon.GetComponentInChildren<TMP_Text>();
             if (buttonText != null)
             {
