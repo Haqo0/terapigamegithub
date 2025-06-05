@@ -12,6 +12,8 @@ public class DiyalogYoneticisi : MonoBehaviour
 
     [Header("Zaman Ayarları")]
     public float seceneklerGecikmesi = 2.0f; // Saniye cinsinden gecikme
+    [Tooltip("Seans bitiminde analiz paneli gelmeden önceki bekleme süresi")]
+    public float analizGecikmesi = 3.0f; // Analiz paneli için gecikme
 
     [Header("UI Referansları")]
     public TMP_Text npcText;
@@ -33,6 +35,7 @@ public class DiyalogYoneticisi : MonoBehaviour
     private Dictionary<string, int> secimPuanlari = new Dictionary<string, int>();
     private List<string> yapilanSecimler = new List<string>();
     private Coroutine secenekGostermeCoroutine;
+    private Coroutine analizGostermeCoroutine; // Yeni: analiz gecikmesi için
 
     // Seans takibi - SIFIRDAN BAŞLIYOR (Seans 1 = index 0)
     private int mevcutSeansIndex = 0;
@@ -159,28 +162,51 @@ public class DiyalogYoneticisi : MonoBehaviour
 
         if (analizGosterilecekMi)
         {
-            AnalizSonucu uygunAnaliz = AnaliziBul();
-
-            // Uygun analiz bulunamasa bile varsayılan analizi göster
-            if (uygunAnaliz == null)
-            {
-                Debug.LogWarning("Uygun analiz bulunamadı - Varsayılan analiz gösteriliyor");
-                uygunAnaliz = VarsayilanAnalizOlustur();
-            }
-
-            // Diyalog panelini önce kapat
-            if (diyalogPanel != null)
-                diyalogPanel.SetActive(false);
-
-            // Analiz göster
-            analizGosterici.AnalizeGoster(uygunAnaliz, secimPuanlari, yapilanSecimler);
-            Debug.Log($"Analiz gösteriliyor - Seans {mevcutSeansIndex + 1}");
+            // Analiz gecikmesi ile göster
+            analizGostermeCoroutine = StartCoroutine(AnalizeGecikmeliGoster());
         }
         else
         {
-            Debug.Log($"Seans {mevcutSeansIndex + 1} için analiz atlandı - Paneller kapatılıyor");
-            PanelleriKapat();
+            Debug.Log($"Seans {mevcutSeansIndex + 1} için analiz atlandı - Direkt sonraki seansa geçiliyor");
+            
+            // Diyalog panelini kapat
+            if (diyalogPanel != null)
+                diyalogPanel.SetActive(false);
+            
+            SeansiGecir();
         }
+    }
+
+    // YENI: Analiz panelini gecikme ile göster
+    private IEnumerator AnalizeGecikmeliGoster()
+    {
+        Debug.Log($"Analiz paneli {analizGecikmesi} saniye sonra gösterilecek...");
+        
+        // Belirtilen süre kadar bekle
+        yield return new WaitForSeconds(analizGecikmesi);
+        
+        // Analizi bul
+        AnalizSonucu uygunAnaliz = AnaliziBul();
+
+        // Uygun analiz bulunamasa bile varsayılan analizi göster
+        if (uygunAnaliz == null)
+        {
+            Debug.LogWarning("Uygun analiz bulunamadı - Varsayılan analiz gösteriliyor");
+            uygunAnaliz = VarsayilanAnalizOlustur();
+        }
+
+        // Diyalog panelini önce kapat
+        if (diyalogPanel != null)
+            diyalogPanel.SetActive(false);
+
+        // Analiz göster
+        analizGosterici.AnalizeGoster(uygunAnaliz, secimPuanlari, yapilanSecimler);
+        Debug.Log($"Analiz gösteriliyor - Seans {mevcutSeansIndex + 1}");
+    }
+
+    void SeansiGecir()
+    {
+        SeansGecisYoneticisi.SeansiHazirla();
     }
 
     // Analiz gösterilip gösterilmeyeceğini kontrol eder
@@ -237,6 +263,7 @@ public class DiyalogYoneticisi : MonoBehaviour
         // Uygun analiz bulunamadı
         return null;
     }
+
     public void PanelleriKapat()
     {
         Debug.Log("Paneller kapatılıyor...");
@@ -247,8 +274,8 @@ public class DiyalogYoneticisi : MonoBehaviour
 
         if (analizGosterici != null)
             analizGosterici.PaneliKapat();
-
     }
+
     // Varsayılan analiz oluştur
     private AnalizSonucu VarsayilanAnalizOlustur()
     {
@@ -265,7 +292,7 @@ public class DiyalogYoneticisi : MonoBehaviour
         return varsayilanAnaliz;
     }
 
-    //Panelleri kapat ve seans geçişini başlat
+    // Panelleri kapat ve seans geçişini başlat
     public void PanelleriKapatVeDevamEt()
     {
         Debug.Log("Paneller kapatılıyor ve seans geçişi başlatılıyor...");
@@ -280,6 +307,29 @@ public class DiyalogYoneticisi : MonoBehaviour
 
         // Seans geçişini başlat
         SeansGecisYoneticisi.SeansiHazirla();
+    }
+
+    // Analiz gecikme süresini hızlandır (test için)
+    [ContextMenu("Analizi Hemen Göster")]
+    public void AnalizeHemenGöster()
+    {
+        if (analizGostermeCoroutine != null)
+        {
+            StopCoroutine(analizGostermeCoroutine);
+            
+            // Analizi direkt göster
+            AnalizSonucu uygunAnaliz = AnaliziBul();
+            if (uygunAnaliz == null)
+            {
+                uygunAnaliz = VarsayilanAnalizOlustur();
+            }
+
+            if (diyalogPanel != null)
+                diyalogPanel.SetActive(false);
+
+            analizGosterici.AnalizeGoster(uygunAnaliz, secimPuanlari, yapilanSecimler);
+            Debug.Log("Analiz hızlandırılarak gösterildi");
+        }
     }
 
     // Seçenekleri anında göstermek için (acil durumlar için)
@@ -306,13 +356,23 @@ public class DiyalogYoneticisi : MonoBehaviour
         }
     }
 
-    // 🔄 Yeni JSON yüklendiğinde temiz başlat
+    // Yeni JSON yüklendiğinde temiz başlat
     public void SonrakiSeansiBaslat(TextAsset yeniJson)
     {
         if (yeniJson == null)
         {
             Debug.LogWarning("Yeni JSON dosyası atanmadı.");
             return;
+        }
+
+        // Aktif coroutine'leri durdur
+        if (secenekGostermeCoroutine != null)
+        {
+            StopCoroutine(secenekGostermeCoroutine);
+        }
+        if (analizGostermeCoroutine != null)
+        {
+            StopCoroutine(analizGostermeCoroutine);
         }
 
         // Seans indexini artır

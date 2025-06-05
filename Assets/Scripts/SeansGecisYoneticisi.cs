@@ -56,7 +56,7 @@ public class SeansGecisYoneticisi : MonoBehaviour
         }
     }
 
-    // ❗️ Bu static DEĞİL – doğru şekilde çağrılıyor
+    // Bu static DEĞİL – doğru şekilde çağrılıyor
     private void DevamEtInstance()
     {
         if (guncelSeansIndex >= sonrakiSeanslar.Length)
