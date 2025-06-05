@@ -7,17 +7,18 @@ using System.Linq;
 public class DiyalogYoneticisi : MonoBehaviour
 {
     [Header("Analiz Kontrolü")]
-    public bool[] seansAnalizGoster; 
-    
+    [Tooltip("Her seans için analiz gösterilip gösterilmeyeceğini belirler. Index 0 = Seans 1")]
+    public bool[] seansAnalizGoster;
+
     [Header("Zaman Ayarları")]
     public float seceneklerGecikmesi = 2.0f; // Saniye cinsinden gecikme
-    
+
     [Header("UI Referansları")]
     public TMP_Text npcText;
     public SecimSistemi secimSistemi;
     public AnalizGosterici analizGosterici;
-    public SecenekGecikmesi gecikmeGostergesi; // İsim değişti
-    
+    public SecenekGecikmesi gecikmeGostergesi;
+
     [Header("Veri")]
     public TextAsset diyalogJson;
 
@@ -27,14 +28,14 @@ public class DiyalogYoneticisi : MonoBehaviour
     private List<DiyalogAdimi> adimlar;
     private DiyalogAdimi mevcutAdim;
     private DiyalogData diyalogData;
-    
+
     // Seçim takip sistemi
     private Dictionary<string, int> secimPuanlari = new Dictionary<string, int>();
     private List<string> yapilanSecimler = new List<string>();
-    private Coroutine secenekGostermeCoroutine; // Aktif coroutine referansı
-    
-    // Seans takibi
-    private int mevcutSeansIndex = 0; // Kaçıncı seansta olduğumuzu takip eder
+    private Coroutine secenekGostermeCoroutine;
+
+    // Seans takibi - SIFIRDAN BAŞLIYOR (Seans 1 = index 0)
+    private int mevcutSeansIndex = 0;
 
     public static DiyalogYoneticisi instance;
 
@@ -46,7 +47,7 @@ public class DiyalogYoneticisi : MonoBehaviour
     void Start()
     {
         if (diyalogPanel != null)
-            diyalogPanel.SetActive(true); // Panel oyun başında açık olmalı
+            diyalogPanel.SetActive(true);
 
         // JSON'dan verileri al
         diyalogData = JsonUtility.FromJson<DiyalogData>(diyalogJson.text);
@@ -54,6 +55,9 @@ public class DiyalogYoneticisi : MonoBehaviour
 
         // İlk adımı yükle
         AdimiYukle("1");
+
+        // Debug için seans bilgilerini göster
+        DebugSeansAnalizDurumu();
     }
 
     public void AdimiYukle(string id)
@@ -102,16 +106,16 @@ public class DiyalogYoneticisi : MonoBehaviour
 
         // Belirlenen süre kadar bekle
         yield return new WaitForSeconds(seceneklerGecikmesi);
-        
+
         // Gecikme göstergesini durdur
         if (gecikmeGostergesi != null)
         {
             gecikmeGostergesi.GecikmeGosteriminiDurdur();
         }
-        
+
         // DİYALOGU GİZLE - Metni temizle
         npcText.text = "";
-        
+
         // Seçenekleri göster (artık diyalog alanında)
         secimSistemi.SecenekleriGoster(mevcutAdim.secenekler, SecimYapildi);
     }
@@ -120,7 +124,7 @@ public class DiyalogYoneticisi : MonoBehaviour
     {
         // Seçimi kaydet
         yapilanSecimler.Add(secilenSecenek.metin);
-        
+
         // Etiket puanını güncelle
         if (!string.IsNullOrEmpty(secilenSecenek.etiket))
         {
@@ -139,62 +143,67 @@ public class DiyalogYoneticisi : MonoBehaviour
 
         // Debug için
         Debug.Log($"Seçim yapıldı: {secilenSecenek.metin} (Etiket: {secilenSecenek.etiket}, Puan: {secilenSecenek.puan})");
-        
+
         // Sonraki adıma geç
         AdimiYukle(secilenSecenek.sonrakiID);
     }
 
     private void SeansiSonlandir()
     {
-        Debug.Log($"Seans sonlandırılıyor... Mevcut seans: {mevcutSeansIndex}");
-        
+        Debug.Log($"=== SEANS SONLANIYOR ===");
+        Debug.Log($"Mevcut Seans Index: {mevcutSeansIndex}");
+
         // Bu seansta analiz gösterilecek mi kontrol et
         bool analizGosterilecekMi = ShouldShowAnalysis();
-        
+        Debug.Log($"Analiz gösterilecek mi: {analizGosterilecekMi}");
+
         if (analizGosterilecekMi)
         {
             AnalizSonucu uygunAnaliz = AnaliziBul();
-            
-            if (uygunAnaliz != null)
+
+            // Uygun analiz bulunamasa bile varsayılan analizi göster
+            if (uygunAnaliz == null)
             {
-                analizGosterici.AnalizeGoster(uygunAnaliz, secimPuanlari, yapilanSecimler);
-                Debug.Log($"Analiz gösteriliyor - Seans {mevcutSeansIndex}");
+                Debug.LogWarning("Uygun analiz bulunamadı - Varsayılan analiz gösteriliyor");
+                uygunAnaliz = VarsayilanAnalizOlustur();
             }
-            else
-            {
-                Debug.LogWarning("Uygun analiz bulunamadı.");
-            }
+
+            // Diyalog panelini önce kapat
+            if (diyalogPanel != null)
+                diyalogPanel.SetActive(false);
+
+            // Analiz göster
+            analizGosterici.AnalizeGoster(uygunAnaliz, secimPuanlari, yapilanSecimler);
+            Debug.Log($"Analiz gösteriliyor - Seans {mevcutSeansIndex + 1}");
         }
         else
         {
-            Debug.Log($"Seans {mevcutSeansIndex} için analiz atlandı");
+            Debug.Log($"Seans {mevcutSeansIndex + 1} için analiz atlandı - Paneller kapatılıyor");
+            PanelleriKapat();
         }
-
-        if (diyalogPanel != null)
-            diyalogPanel.SetActive(false);
-
-        SeansGecisYoneticisi.SeansiHazirla();
     }
-    
+
     // Analiz gösterilip gösterilmeyeceğini kontrol eder
     private bool ShouldShowAnalysis()
     {
-        // Array'in boyutunu kontrol et
+        // Array'in varlığını kontrol et
         if (seansAnalizGoster == null || seansAnalizGoster.Length == 0)
         {
-            Debug.LogWarning("seansAnalizGoster dizisi boş! Varsayılan olarak analiz gösteriliyor.");
-            return true; // Varsayılan davranış
+            Debug.LogWarning("seansAnalizGoster dizisi boş! Inspector'da ayarlayın.");
+            return false; // Varsayılan olarak analiz gösterme
         }
-        
-        // Index sınırları içinde mi?
+
+        // Index sınırları içinde mi kontrol et
         if (mevcutSeansIndex >= 0 && mevcutSeansIndex < seansAnalizGoster.Length)
         {
-            return seansAnalizGoster[mevcutSeansIndex];
+            bool sonuc = seansAnalizGoster[mevcutSeansIndex];
+            Debug.Log($"Seans {mevcutSeansIndex + 1} (Index: {mevcutSeansIndex}) - Analiz: {(sonuc ? "GÖSTER" : "ATLA")}");
+            return sonuc;
         }
-        
-        // Index sınırların dışındaysa varsayılan davranış
-        Debug.LogWarning($"Seans index ({mevcutSeansIndex}) dizi boyutunun ({seansAnalizGoster.Length}) dışında! Varsayılan olarak analiz gösteriliyor.");
-        return true;
+
+        // Index sınırların dışındaysa
+        Debug.LogWarning($"Seans index ({mevcutSeansIndex}) dizi boyutunun ({seansAnalizGoster.Length}) dışında!");
+        return false;
     }
 
     private AnalizSonucu AnaliziBul()
@@ -225,8 +234,52 @@ public class DiyalogYoneticisi : MonoBehaviour
             }
         }
 
-        // Varsayılan analiz döndür
-        return diyalogData.analizSonuclari.FirstOrDefault();
+        // Uygun analiz bulunamadı
+        return null;
+    }
+    public void PanelleriKapat()
+    {
+        Debug.Log("Paneller kapatılıyor...");
+
+        // Tüm panelleri kapat
+        if (diyalogPanel != null)
+            diyalogPanel.SetActive(false);
+
+        if (analizGosterici != null)
+            analizGosterici.PaneliKapat();
+
+    }
+    // Varsayılan analiz oluştur
+    private AnalizSonucu VarsayilanAnalizOlustur()
+    {
+        AnalizSonucu varsayilanAnaliz = new AnalizSonucu
+        {
+            baslik = "Genel Değerlendirme",
+            aciklama = "Bu seans için özel bir analiz bulunamadı.",
+            detay = "Seçimleriniz kaydedildi ve genel değerlendirme yapıldı.",
+            ozet = "Seansınız tamamlandı. Yaptığınız seçimler genel değerlendirme kapsamında analiz edilmiştir.",
+            gerekenEtiketler = new List<string>(),
+            minPuan = 0
+        };
+
+        return varsayilanAnaliz;
+    }
+
+    //Panelleri kapat ve seans geçişini başlat
+    public void PanelleriKapatVeDevamEt()
+    {
+        Debug.Log("Paneller kapatılıyor ve seans geçişi başlatılıyor...");
+
+        // Tüm panelleri kapat
+        if (diyalogPanel != null)
+            diyalogPanel.SetActive(false);
+
+        // Analiz panelini de kapat (eğer açıksa)
+        if (analizGosterici != null)
+            analizGosterici.PaneliKapat();
+
+        // Seans geçişini başlat
+        SeansGecisYoneticisi.SeansiHazirla();
     }
 
     // Seçenekleri anında göstermek için (acil durumlar için)
@@ -243,10 +296,10 @@ public class DiyalogYoneticisi : MonoBehaviour
         {
             gecikmeGostergesi.GecikmeGosteriminiDurdur();
         }
-        
+
         // Diyalogu gizle
         npcText.text = "";
-        
+
         if (mevcutAdim?.secenekler != null && mevcutAdim.secenekler.Count > 0)
         {
             secimSistemi.SecenekleriGoster(mevcutAdim.secenekler, SecimYapildi);
@@ -264,7 +317,7 @@ public class DiyalogYoneticisi : MonoBehaviour
 
         // Seans indexini artır
         mevcutSeansIndex++;
-        
+
         diyalogJson = yeniJson;
         diyalogData = JsonUtility.FromJson<DiyalogData>(diyalogJson.text);
         adimlar = diyalogData.adimlar;
@@ -273,36 +326,45 @@ public class DiyalogYoneticisi : MonoBehaviour
 
         if (diyalogPanel != null)
             diyalogPanel.SetActive(true);
-
-        Debug.Log($"Yeni seans başlatıldı - Seans Index: {mevcutSeansIndex}");
+        Debug.Log($" Yeni seans başlatıldı - Seans {mevcutSeansIndex + 1} (Index: {mevcutSeansIndex})");
+        DebugSeansAnalizDurumu();
         AdimiYukle("1");
     }
-    
-    // 🔧 Manuel seans index ayarlama (test için)
+
+    // Debug için seans analiz durumunu göster
+    private void DebugSeansAnalizDurumu()
+    {
+        Debug.Log($"=== SEANS ANALİZ DURUMU ===");
+        Debug.Log($"Mevcut Seans: {mevcutSeansIndex + 1} (Index: {mevcutSeansIndex})");
+
+        if (seansAnalizGoster != null && seansAnalizGoster.Length > 0)
+        {
+            for (int i = 0; i < seansAnalizGoster.Length; i++)
+            {
+                string durum = seansAnalizGoster[i] ? "ANALİZ GÖSTER" : " ANALİZ ATLA";
+                string aktif = (i == mevcutSeansIndex) ? " ← MEVCUT" : "";
+                Debug.Log($"Seans {i + 1}: {durum}{aktif}");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("seansAnalizGoster dizisi ayarlanmamış!");
+        }
+    }
+
+    // Manuel kontroller (test için)
     [ContextMenu("Seans Index'i Sıfırla")]
     public void SeansIndexSifirla()
     {
         mevcutSeansIndex = 0;
         Debug.Log("Seans index sıfırlandı");
+        DebugSeansAnalizDurumu();
     }
-    
-    // 🔧 Mevcut seans bilgisini göster (debug için)
+
     [ContextMenu("Mevcut Seans Bilgisini Göster")]
     public void MevcutSeansBilgisiGoster()
     {
-        Debug.Log($"=== SEANS BİLGİSİ ===");
-        Debug.Log($"Mevcut Seans Index: {mevcutSeansIndex}");
-        Debug.Log($"Analiz Array Boyutu: {(seansAnalizGoster?.Length ?? 0)}");
-        
-        if (seansAnalizGoster != null)
-        {
-            for (int i = 0; i < seansAnalizGoster.Length; i++)
-            {
-                Debug.Log($"Seans {i}: {(seansAnalizGoster[i] ? "Analiz Göster" : "Analiz Atla")}");
-            }
-        }
-        
-        Debug.Log($"Bu seansta analiz gösterilecek mi: {ShouldShowAnalysis()}");
+        DebugSeansAnalizDurumu();
     }
 
     [ContextMenu("Mevcut Puanları Göster")]

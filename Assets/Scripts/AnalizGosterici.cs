@@ -27,10 +27,32 @@ public class AnalizGosterici : MonoBehaviour
             Debug.Log("Analiz paneli başta gizli başlatıldı.");
         }
 
+        // KAPAT BUTONU DÜZELTMESİ
         if (kapatButonu != null)
         {
-            kapatButonu.onClick.AddListener(() => PaneliKapat());
+            kapatButonu.onClick.RemoveAllListeners(); // Önceki listener'ları temizle
+            kapatButonu.onClick.AddListener(() => {
+                Debug.Log("Kapat butonu tıklandı - Paneller kapatılıyor ve seans geçişi başlatılıyor");
+                KapatVeDevamEt();
+            });
         }
+    }
+
+    // Hem analiz panelini kapat hem de seans geçişini başlat
+    private void KapatVeDevamEt()
+    {
+        // Önce analiz panelini kapat
+        PaneliKapat();
+        
+        // // Sonra DiyalogYoneticisi'ne panelleri kapatması ve devam etmesi için sinyal gönder
+        // if (DiyalogYoneticisi.instance != null)
+        // {
+        //     DiyalogYoneticisi.instance.PanelleriKapatVeDevamEt();
+        // }
+        // else
+        // {
+        //     Debug.LogWarning("DiyalogYoneticisi instance bulunamadı!");
+        // }
     }
 
     public void PaneliKapat()
@@ -43,6 +65,7 @@ public class AnalizGosterici : MonoBehaviour
                     panel.SetActive(false);
             }
         }
+        Debug.Log("Analiz paneli kapatıldı.");
     }
 
     // 🔧 3 parametreli analiz gösterme fonksiyonu
@@ -60,6 +83,5 @@ public class AnalizGosterici : MonoBehaviour
         if (analizMetni != null)
             analizMetni.text = analiz.ozet;
 
-        Debug.Log("Analiz gösteriliyor...");
     }
 }

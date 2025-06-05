@@ -153,8 +153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paneller:
-  - {fileID: 1882965873}
   - {fileID: 1257172178}
+  - {fileID: 1882965873}
   analizMetni: {fileID: 876453889}
   yeniseansButonu: {fileID: 0}
   kapatButonu: {fileID: 428431659}
@@ -762,9 +762,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 15884472}
-        m_TargetAssemblyTypeName: AnalizGosterici, Assembly-CSharp
-        m_MethodName: PaneliKapat
+      - m_Target: {fileID: 1416057005}
+        m_TargetAssemblyTypeName: DiyalogYoneticisi, Assembly-CSharp
+        m_MethodName: PanelleriKapat
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1389,6 +1389,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d72713b191636409286cc50f1cd6d70c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  seansAnalizGoster: 0100010000
   seceneklerGecikmesi: 0.5
   npcText: {fileID: 1158091930}
   secimSistemi: {fileID: 2033656150}
