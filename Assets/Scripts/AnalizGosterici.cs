@@ -6,7 +6,7 @@ using TMPro;
 public class AnalizGosterici : MonoBehaviour
 {
     [Header("UI Paneli")]
-    public GameObject analizPanel;
+    public GameObject[] paneller;
 
     [Header("Metin Alanları")]
     public TMP_Text analizMetni;
@@ -17,9 +17,13 @@ public class AnalizGosterici : MonoBehaviour
 
     private void Start()
     {
-        if (analizPanel != null)
+        if (paneller != null)
         {
-            analizPanel.SetActive(false); // Başlangıçta gizli
+            foreach (var panel in paneller)
+            {
+                if (panel != null)
+                    panel.SetActive(false);
+            }
             Debug.Log("Analiz paneli başta gizli başlatıldı.");
         }
 
@@ -31,18 +35,30 @@ public class AnalizGosterici : MonoBehaviour
 
     public void PaneliKapat()
     {
-        if (analizPanel != null)
-            analizPanel.SetActive(false);
+        if (paneller != null)
+        {
+            foreach (var panel in paneller)
+            {
+                if (panel != null)
+                    panel.SetActive(false);
+            }
+        }
     }
 
     // 🔧 3 parametreli analiz gösterme fonksiyonu
     public void AnalizeGoster(AnalizSonucu analiz, Dictionary<string, int> puanlar, List<string> secimler)
     {
-        if (analizPanel != null)
-            analizPanel.SetActive(true);
+        if (paneller != null)
+        {
+            foreach (var panel in paneller)
+            {
+                if (panel != null)
+                    panel.SetActive(true);
+            }
+        }
 
         if (analizMetni != null)
-            analizMetni.text = analiz.ozet; // veya analiz.detay, analiz.baslik gibi değiştirebilirsin
+            analizMetni.text = analiz.ozet;
 
         Debug.Log("Analiz gösteriliyor...");
     }
