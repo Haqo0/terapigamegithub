@@ -2,7 +2,6 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using Unity.VisualScripting;
 
 public class SeansGecisYoneticisi : MonoBehaviour
 {
@@ -14,80 +13,64 @@ public class SeansGecisYoneticisi : MonoBehaviour
     [Header("Diyalog Yöneticisi")]
     public DiyalogYoneticisi diyalogYoneticisi;
 
-    [Header("Yüklenecek Yeni Seans")]
-    public TextAsset[] yeniSeansJson; // Yeni seans JSON dosyası (örneğin Mert_seans2.json)
-    //singelton pattern
+    [Header("Yüklenecek Yeni Seanslar (Seans 2-3-4-5)")]
+    public TextAsset[] sonrakiSeanslar;
+
+    private int guncelSeansIndex = 0;
+
     public static SeansGecisYoneticisi instance;
+
     private void Awake()
     {
         instance = this;
     }
+
     private void Start()
     {
-        // Panel ve buton başlangıçta kapalı olmalı
         if (gecisPaneli != null) gecisPaneli.SetActive(false);
         if (devamButonu != null) devamButonu.gameObject.SetActive(false);
     }
 
     public static void SeansiHazirla(string mesaj = "Bir sonraki seansa geçiliyor...")
     {
-        Debug.Log("Seans geçişi hazırlanıyor: " + mesaj);
-        if (instance != null && instance.gecisPaneli != null)
-        {
-            instance.gecisPaneli.SetActive(true);
-        }
-
-        if (instance != null && instance.gecisMesaji != null)
-        {
-            instance.StartCoroutine(instance.GecikmeliMesajVeDevam(mesaj));
-        }
-
         if (instance != null)
         {
-            instance.StartCoroutine(instance.BekleVeDevamGelsin());
+            instance.gecisPaneli.SetActive(true);
+            instance.StartCoroutine(instance.GecikmeliMesajVeDevam(mesaj));
         }
     }
 
     private IEnumerator GecikmeliMesajVeDevam(string mesaj)
     {
-        if (gecisMesaji != null)
-            gecisMesaji.text = "";
-
+        if (gecisMesaji != null) gecisMesaji.text = "";
         yield return new WaitForSeconds(2f);
 
-        if (gecisMesaji != null)
-            gecisMesaji.text = mesaj;
-
-        yield return BekleVeDevamGelsin();
-    }
-
-    private IEnumerator BekleVeDevamGelsin()
-    {
-        Debug.Log("Seans geçişi bekleniyor...");
-        yield return new WaitForSeconds(3f); // Geçiş mesajı 3 saniye kalır
+        if (gecisMesaji != null) gecisMesaji.text = mesaj;
+        yield return new WaitForSeconds(3f);
 
         if (devamButonu != null)
         {
             devamButonu.gameObject.SetActive(true);
-            devamButonu.onClick.RemoveAllListeners(); // Önceki dinleyicileri temizle
-            devamButonu.onClick.AddListener(DevamEt); // Devam et butonuna tıklandığında DevamEt metodunu çağır
+            devamButonu.onClick.RemoveAllListeners();
+            devamButonu.onClick.AddListener(DevamEtInstance); // ✔ doğru yöntem
         }
     }
-    public static void DevamEt()
+
+    // ❗️ Bu static DEĞİL – doğru şekilde çağrılıyor
+    private void DevamEtInstance()
     {
-        if (instance != null && instance.diyalogYoneticisi != null && instance.yeniSeansJson != null)
+        if (guncelSeansIndex >= sonrakiSeanslar.Length)
         {
-            if (instance.yeniSeansJson.Length > 0)
-            {
-                instance.diyalogYoneticisi.SonrakiSeansiBaslat(instance.yeniSeansJson[0]);
-            }
+            Debug.Log("Tüm seanslar tamamlandı!");
+            return;
         }
 
-        if (instance != null)
-        {
-            if (instance.gecisPaneli != null) instance.gecisPaneli.SetActive(false);
-            if (instance.devamButonu != null) instance.devamButonu.gameObject.SetActive(false);
-        }
+        TextAsset sonrakiJson = sonrakiSeanslar[guncelSeansIndex];
+        guncelSeansIndex++; // ✔ ARTIK ARTACAK
+
+        diyalogYoneticisi.SonrakiSeansiBaslat(sonrakiJson);
+
+        if (gecisPaneli != null) gecisPaneli.SetActive(false);
+        if (devamButonu != null) devamButonu.gameObject.SetActive(false);
     }
-
 }

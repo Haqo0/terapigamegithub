@@ -1,0 +1,217 @@
+{
+  "seans": 5,
+  "adimlar": [
+    {
+      "id": "1",
+      "anlatim": "Mert:\n“Bugün farklı.\nBu seansın son seans olduğunu biliyorum ama... sebebini bilmiyorum.\nBelki bittiği için değil...\nbelki artık devam etmeye gerek kalmadığı için.”",
+      "secenekler": [
+        {
+          "metin": "Bu ‘son’ sana ne ifade ediyor?",
+          "sonrakiID": "A"
+        },
+        {
+          "metin": "Rüyalar devam ediyor mu?",
+          "sonrakiID": "B"
+        },
+        {
+          "metin": "Sence bu süreç seni değiştirdi mi?",
+          "sonrakiID": "C"
+        },
+        {
+          "metin": "Sessiz kal",
+          "sonrakiID": "D"
+        }
+      ]
+    },
+    {
+      "id": "A",
+      "anlatim": "Mert:\n“Vedalaşmak değil… bir kabul.\nİçimdeki çocuk artık odanın dışında değil.\nBelki de… ilk kez aynı kişiyiz.”",
+      "secenekler": [
+        {
+          "metin": "O çocuğa ne söyledin bu sabah?",
+          "sonrakiID": "A1"
+        },
+        {
+          "metin": "Kabul sana nasıl hissettirdi?",
+          "sonrakiID": "A2"
+        },
+        {
+          "metin": "Peki ya vedalaşmak istemeseydi?",
+          "sonrakiID": "A3"
+        },
+        {
+          "metin": "Bu değişimi gerçek dünyada sürdürebilecek misin?",
+          "sonrakiID": "A4"
+        }
+      ]
+    },
+    {
+      "id": "A1",
+      "anlatim": "Mert:\n‘Sen artık yalnız değilsin’ dedim.",
+      "secenekler": [],
+      "seansSonu": true
+    },
+    {
+      "id": "A2",
+      "anlatim": "Mert:\n“Sıcak. Ama ağır. Taşıması zaman alacak bir huzur.”",
+      "secenekler": [],
+      "seansSonu": true
+    },
+    {
+      "id": "A3",
+      "anlatim": "Mert:\n“O istemedi. Ben de istemedim. Ama aynı kişiydik zaten.”",
+      "secenekler": [],
+      "seansSonu": true
+    },
+    {
+      "id": "A4",
+      "anlatim": "Mert:\n“Kolay değil. Ama şimdi bir parçam daha eksik değil.”",
+      "secenekler": [],
+      "seansSonu": true
+    },
+    {
+      "id": "B",
+      "anlatim": "Mert:\n“Evet. Ama artık kapı yok.\nYerine bir ayna var.\nVe aynada ben... sizinle konuşuyorum.”",
+      "secenekler": [
+        {
+          "metin": "O aynadaki ben sana ne diyor?",
+          "sonrakiID": "B1"
+        },
+        {
+          "metin": "Bu seni korkutuyor mu?",
+          "sonrakiID": "B2"
+        },
+        {
+          "metin": "Kapıların yerini aynalar alması ne anlama geliyor sence?",
+          "sonrakiID": "B3"
+        },
+        {
+          "metin": "Senin kim olduğunu sorguluyor musun hâlâ?",
+          "sonrakiID": "B4"
+        }
+      ]
+    },
+    {
+      "id": "B1",
+      "anlatim": "Mert:\n“Sen bana bakıyorsun… ama sesin yok.”",
+      "secenekler": [],
+      "seansSonu": true
+    },
+    {
+      "id": "B2",
+      "anlatim": "Mert:\n“Eskiden korkardım. Şimdi... merak ediyorum.”",
+      "secenekler": [],
+      "seansSonu": true
+    },
+    {
+      "id": "B3",
+      "anlatim": "Mert:\n“Artık gizlemek yerine yüzleşmek var.”",
+      "secenekler": [],
+      "seansSonu": true
+    },
+    {
+      "id": "B4",
+      "anlatim": "Mert:\n“Kendimi sabitlemiyorum. Ama tanıyorum artık.”",
+      "secenekler": [],
+      "seansSonu": true
+    },
+    {
+      "id": "C",
+      "anlatim": "Mert:\n“Hayır.\nDeğişmedim.\nSadece hatırladım… kim olduğumu.”",
+      "secenekler": [
+        {
+          "metin": "O kişi seni mutlu ediyor mu?",
+          "sonrakiID": "C1"
+        },
+        {
+          "metin": "Geçmiş seni şekillendirdi mi yoksa durdurdu mu?",
+          "sonrakiID": "C2"
+        },
+        {
+          "metin": "Kendinle barışabildin mi?",
+          "sonrakiID": "C3"
+        },
+        {
+          "metin": "Bu seni özgür kıldı mı?",
+          "sonrakiID": "C4"
+        }
+      ]
+    },
+    {
+      "id": "C1",
+      "anlatim": "Mert:\n“Henüz bilmiyorum. Ama yabancı değil artık.”",
+      "secenekler": [],
+      "seansSonu": true
+    },
+    {
+      "id": "C2",
+      "anlatim": "Mert:\n“İkisi de. Ama artık şekillendirici olanı seçebilirim.”",
+      "secenekler": [],
+      "seansSonu": true
+    },
+    {
+      "id": "C3",
+      "anlatim": "Mert:\n“En azından kavga etmiyorum artık.”",
+      "secenekler": [],
+      "seansSonu": true
+    },
+    {
+      "id": "C4",
+      "anlatim": "Mert:\n“Kilit açık. Kapı yok. Belki şimdi yol var.”",
+      "secenekler": [],
+      "seansSonu": true
+    },
+    {
+      "id": "D",
+      "anlatim": "Mert:\n“Bu sessizlikte bir şey var.\nSanki bana ‘konuşma, kal’ diyorsunuz.\nİlk kez... konuşmadan da anlaşılıyorum.”",
+      "secenekler": [
+        {
+          "metin": "Sözsüz iletişim sana ne hissettiriyor?",
+          "sonrakiID": "D1"
+        },
+        {
+          "metin": "Bu odadaki sessizliğe alıştın mı?",
+          "sonrakiID": "D2"
+        },
+        {
+          "metin": "Bu sessizlikle dışarıda baş edebilecek misin?",
+          "sonrakiID": "D3"
+        },
+        {
+          "metin": "Sessizliğe devam et",
+          "sonrakiID": "D4"
+        }
+      ]
+    },
+    {
+      "id": "D1",
+      "anlatim": "Mert:\n“Kelimelerden daha fazla şey anlatıyor bazen.”",
+      "secenekler": [],
+      "seansSonu": true
+    },
+    {
+      "id": "D2",
+      "anlatim": "Mert:\n“Evet. Çünkü bu sessizlik içinde yer var.”",
+      "secenekler": [],
+      "seansSonu": true
+    },
+    {
+      "id": "D3",
+      "anlatim": "Mert:\n“Zor. Ama bu sessizliğe geri dönebileceğimi bilmek iyi.”",
+      "secenekler": [],
+      "seansSonu": true
+    },
+    {
+      "id": "D4",
+      "anlatim": "Mert:\n“Bu susuş… bir cümle gibi. Noktayla biten bir cümle.”",
+      "secenekler": [],
+      "seansSonu": true
+    }
+  ],
+  "sonlar": {
+    "butunlesme_sessiz_baris": "Ben artık bir değilim.\nAma tekim.",
+    "red_tetiklenme": "Bu bir oyun. Gerçek değil.\nSiz bir yansımasınız. Beni unutturun.",
+    "acik_birakma_belirsizlik": "Bilmiyorum.\nAma bu da bir cevap olabilir.",
+    "meta_final": "Anlatıcı:\n“O bitti.\nPeki ya sen?\nSen hâlâ buradasın.\nVe kapı... senin arkanda kapanmadı.”"
+  }
+}

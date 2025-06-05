@@ -1,9 +1,8 @@
- using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System.Linq;
-using Unity.VisualScripting;
 
 public class DiyalogYoneticisi : MonoBehaviour
 {
@@ -19,6 +18,9 @@ public class DiyalogYoneticisi : MonoBehaviour
     [Header("Veri")]
     public TextAsset diyalogJson;
 
+    [Header("Paneller")]
+    public GameObject diyalogPanel;
+
     private List<DiyalogAdimi> adimlar;
     private DiyalogAdimi mevcutAdim;
     private DiyalogData diyalogData;
@@ -27,15 +29,18 @@ public class DiyalogYoneticisi : MonoBehaviour
     private List<string> yapilanSecimler = new List<string>();
     private Coroutine secenekGostermeCoroutine;
 
-    //singelton pattern
     public static DiyalogYoneticisi instance;
 
-    public void Awake()
+    private void Awake()
     {
         instance = this;
     }
+
     void Start()
     {
+        if (diyalogPanel != null)
+            diyalogPanel.SetActive(true); // Panel oyun başında açık olmalı
+
         diyalogData = JsonUtility.FromJson<DiyalogData>(diyalogJson.text);
         adimlar = diyalogData.adimlar;
         AdimiYukle("1");
@@ -96,7 +101,6 @@ public class DiyalogYoneticisi : MonoBehaviour
         }
 
         secimSistemi.SecenekleriTemizle();
-
         Debug.Log($"Seçim yapıldı: {secilenSecenek.metin} (Etiket: {secilenSecenek.etiket}, Puan: {secilenSecenek.puan})");
 
         AdimiYukle(secilenSecenek.sonrakiID);
@@ -104,6 +108,7 @@ public class DiyalogYoneticisi : MonoBehaviour
 
     private void SeansiSonlandir()
     {
+        Debug.Log("Seans sonlandırılıyor...");
         AnalizSonucu uygunAnaliz = AnaliziBul();
 
         if (uygunAnaliz != null)
@@ -112,9 +117,13 @@ public class DiyalogYoneticisi : MonoBehaviour
         }
         else
         {
-            StartCoroutine(SeçenekleriGecikmeligöster());
-            SeansGecisYoneticisi.SeansiHazirla();
+            Debug.LogWarning("Uygun analiz bulunamadı.");
         }
+
+        if (diyalogPanel != null)
+            diyalogPanel.SetActive(false);
+
+        SeansGecisYoneticisi.SeansiHazirla();
     }
 
     private AnalizSonucu AnaliziBul()
@@ -142,7 +151,7 @@ public class DiyalogYoneticisi : MonoBehaviour
         return diyalogData.analizSonuclari.FirstOrDefault();
     }
 
-    [ContextMenu("Seçenekleri Hemen Göster")]
+    // 🔄 Seçenekleri hemen gösteren metod
     public void SeçenekleriHemenGöster()
     {
         if (secenekGostermeCoroutine != null)
@@ -157,17 +166,7 @@ public class DiyalogYoneticisi : MonoBehaviour
             secimSistemi.SecenekleriGoster(mevcutAdim.secenekler, SecimYapildi);
     }
 
-    [ContextMenu("Mevcut Puanları Göster")]
-    private void MevcutPuanlariGoster()
-    {
-        Debug.Log("=== Mevcut Seçim Puanları ===");
-        foreach (var kvp in secimPuanlari)
-        {
-            Debug.Log($"{kvp.Key}: {kvp.Value}");
-        }
-    }
-
-    // 🔄 SEANS GEÇİŞİ METODU
+    // 🔄 Yeni JSON yüklendiğinde temiz başlat
     public void SonrakiSeansiBaslat(TextAsset yeniJson)
     {
         if (yeniJson == null)
@@ -181,6 +180,9 @@ public class DiyalogYoneticisi : MonoBehaviour
         adimlar = diyalogData.adimlar;
         yapilanSecimler.Clear();
         secimPuanlari.Clear();
+
+        if (diyalogPanel != null)
+            diyalogPanel.SetActive(true);
 
         AdimiYukle("1");
     }

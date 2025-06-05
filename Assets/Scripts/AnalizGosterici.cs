@@ -1,102 +1,49 @@
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 using UnityEngine.UI;
+using TMPro;
 
 public class AnalizGosterici : MonoBehaviour
 {
     [Header("UI Paneli")]
-    public GameObject analizPaneli;
-    
+    public GameObject analizPanel;
+
     [Header("Metin Alanları")]
-    public TMP_Text analizBasligi;
-    public TMP_Text analizAciklamasi;
-    public TMP_Text detayliAnaliz;
-    public TMP_Text secimOzeti;
-    public TMP_Text puanTablosu;
-    
+    public TMP_Text analizMetni;
+
     [Header("Butonlar")]
     public Button yeniseansButonu;
     public Button kapatButonu;
 
     private void Start()
     {
-        // Panel başlangıçta kapalı
-        analizPaneli.SetActive(false);
-        
-        // Buton eventleri
-        if (yeniseansButonu != null)
-            yeniseansButonu.onClick.AddListener(YeniSeansBaslat);
-            
+        if (analizPanel != null)
+        {
+            analizPanel.SetActive(false); // Başlangıçta gizli
+            Debug.Log("Analiz paneli başta gizli başlatıldı.");
+        }
+
         if (kapatButonu != null)
-            kapatButonu.onClick.AddListener(PaneliKapat);
-    }
-
-    public void AnalizeGoster(AnalizSonucu analiz, Dictionary<string, int> secimPuanlari, List<string> yapilanSecimler)
-    {
-        // Panel aktif et
-        analizPaneli.SetActive(true);
-        
-        // Analiz bilgilerini göster
-        analizBasligi.text = analiz.baslik;
-        analizAciklamasi.text = analiz.aciklama;
-        detayliAnaliz.text = analiz.detayliAnaliz;
-        
-        // Yapılan seçimleri listele
-        string secimMetni = "Yaptığınız Seçimler:\n";
-        for (int i = 0; i < yapilanSecimler.Count; i++)
         {
-            secimMetni += $"{i + 1}. {yapilanSecimler[i]}\n";
-        }
-        secimOzeti.text = secimMetni;
-        
-        // Puan tablosunu oluştur
-        string puanMetni = "Psikolojik Profil Puanları:\n";
-        foreach (var kvp in secimPuanlari)
-        {
-            string kategoriAdi = KategoriAdiniCevir(kvp.Key);
-            puanMetni += $"• {kategoriAdi}: {kvp.Value} puan\n";
-        }
-        puanTablosu.text = puanMetni;
-    }
-
-    private string KategoriAdiniCevir(string etiket)
-    {
-        switch (etiket.ToLower())
-        {
-            case "empati":
-                return "Empatik Yaklaşım";
-            case "analitik":
-                return "Analitik Düşünce";
-            case "destekleyici":
-                return "Destekleyici Tavır";
-            case "sabırlı":
-                return "Sabırlı Dinleme";
-            case "merakli":
-                return "Meraklı Sorgulama";
-            case "pratik":
-                return "Pratik Çözümler";
-            default:
-                return etiket;
+            kapatButonu.onClick.AddListener(() => PaneliKapat());
         }
     }
 
-    private void YeniSeansBaslat()
+    public void PaneliKapat()
     {
-        // Yeni seans başlatma mantığı
-        PaneliKapat();
-        
-        // Diyalog yöneticisini yeniden başlat
-        DiyalogYoneticisi diyalogYoneticisi = FindObjectOfType<DiyalogYoneticisi>();
-        if (diyalogYoneticisi != null)
-        {
-            // Yeni seansa başla
-            diyalogYoneticisi.SendMessage("Start");
-        }
+        if (analizPanel != null)
+            analizPanel.SetActive(false);
     }
 
-    private void PaneliKapat()
+    // 🔧 3 parametreli analiz gösterme fonksiyonu
+    public void AnalizeGoster(AnalizSonucu analiz, Dictionary<string, int> puanlar, List<string> secimler)
     {
-        analizPaneli.SetActive(false);
+        if (analizPanel != null)
+            analizPanel.SetActive(true);
+
+        if (analizMetni != null)
+            analizMetni.text = analiz.ozet; // veya analiz.detay, analiz.baslik gibi değiştirebilirsin
+
+        Debug.Log("Analiz gösteriliyor...");
     }
 }

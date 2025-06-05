@@ -48,22 +48,26 @@
     {
       "id": "2A1",
       "anlatim": "Mert:\n“Belki bastırdım. O yüzden boğuk geliyor.”",
-      "secenekler": []
+      "secenekler": [],
+      "seansSonu": true
     },
     {
       "id": "2A2",
       "anlatim": "Mert:\n“Evet. Çocukken uyanmadan önce duyduğum o cümle.”",
-      "secenekler": []
+      "secenekler": [],
+      "seansSonu": true
     },
     {
       "id": "2A3",
       "anlatim": "Mert:\n“Yardım istiyordu. Ama ben onu susturuyordum.”",
-      "secenekler": []
+      "secenekler": [],
+      "seansSonu": true
     },
     {
       "id": "2A4",
       "anlatim": "Mert:\n“Hayır… sadece dinledim. İlk defa onu dinledim.”",
-      "secenekler": []
+      "secenekler": [],
+      "seansSonu": true
     },
     {
       "id": "3",
@@ -90,22 +94,26 @@
     {
       "id": "3B1",
       "anlatim": "Mert:\n“İkisi birden. Göz kamaştırıcı ama sıcak.”",
-      "secenekler": []
+      "secenekler": [],
+      "seansSonu": true
     },
     {
       "id": "3B2",
       "anlatim": "Mert:\n“Bastırdıklarımın dışarı sızışı olabilir.”",
-      "secenekler": []
+      "secenekler": [],
+      "seansSonu": true
     },
     {
       "id": "3B3",
       "anlatim": "Mert:\n“Bir silüet vardı. Ama çocuk gibiydi.”",
-      "secenekler": []
+      "secenekler": [],
+      "seansSonu": true
     },
     {
       "id": "3B4",
       "anlatim": "Mert:\n“Annemin odasında gece lambası… çocukken hep izlerdim.”",
-      "secenekler": []
+      "secenekler": [],
+      "seansSonu": true
     },
     {
       "id": "4",
@@ -132,22 +140,26 @@
     {
       "id": "4C1",
       "anlatim": "Mert:\n“Benimkiydi. Ama küçük halimin.”",
-      "secenekler": []
+      "secenekler": [],
+      "seansSonu": true
     },
     {
       "id": "4C2",
       "anlatim": "Mert:\n“Annem hastanedeyken. Kapıda tek başımaydım.”",
-      "secenekler": []
+      "secenekler": [],
+      "seansSonu": true
     },
     {
       "id": "4C3",
       "anlatim": "Mert:\n“İstiyorum. Ama sesim ona ulaşır mı bilmiyorum.”",
-      "secenekler": []
+      "secenekler": [],
+      "seansSonu": true
     },
     {
       "id": "4C4",
       "anlatim": "Mert:\n“Yalnız hissetmek... çünkü yanında biri olsa bile işe yaramıyor.”",
-      "secenekler": []
+      "secenekler": [],
+      "seansSonu": true
     },
     {
       "id": "5",
@@ -174,28 +186,32 @@
     {
       "id": "5D1",
       "anlatim": "Mert:\n“Sadece... beni bırakma, diyor.”",
-      "secenekler": []
+      "secenekler": [],
+      "seansSonu": true
     },
     {
       "id": "5D2",
       "anlatim": "Mert:\n“Evet. Gürültüden hep kaçardı.”",
-      "secenekler": []
+      "secenekler": [],
+      "seansSonu": true
     },
     {
       "id": "5D3",
       "anlatim": "Mert:\n“Belki artık beni duyabileceğini düşündü.”",
-      "secenekler": []
+      "secenekler": [],
+      "seansSonu": true
     },
     {
       "id": "5D4",
       "anlatim": "Mert:\n“Belki bu sessizlik, ikimizi iyileştiriyor.”",
-      "secenekler": []
+      "secenekler": [],
+      "seansSonu": true
     }
   ],
-  "sonlar": [
-    "Katarsis: Ona dokunamasam da göz göze geldik. Ve ilk kez... onunla aynı yerdeydim.",
-    "Tetiklenme: O çocuk benimle konuştu ama... ben sustum. Onu yine yalnız bıraktım!",
-    "Yüzeyde Kalma: Rüya sadece rüya. Boşuna anlam yüklüyorum belki.",
-    "Umutlu Sessizlik: Bugün fazla kelime yoktu ama… hissedildim. Belki ilk kez."
-  ]
+  "sonlar": {
+    "katarsis": "Ona dokunamasam da göz göze geldik. Ve ilk kez... onunla aynı yerdeydim.",
+    "tetiklenme": "O çocuk benimle konuştu ama... ben sustum. Onu yine yalnız bıraktım!",
+    "yuzeyde_kalma": "Rüya sadece rüya. Boşuna anlam yüklüyorum belki.",
+    "umutlu_sessizlik": "Bugün fazla kelime yoktu ama… hissedildim. Belki ilk kez."
+  }
 }

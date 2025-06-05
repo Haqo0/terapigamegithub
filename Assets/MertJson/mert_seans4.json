@@ -1,0 +1,216 @@
+{
+  "seans": 4,
+  "adimlar": [
+    {
+      "id": "1",
+      "anlatim": "Mert:\n“Sanırım... artık rüyada olmadığımı anlayamıyorum.\nDün gece buradaydım.\nAynı koltuk, aynı tablo... ama siz tavandaydınız.”",
+      "secenekler": [
+        {
+          "metin": "Beni orada nasıl gördün?",
+          "sonrakiID": "A"
+        },
+        {
+          "metin": "Bu rüyayla gerçekliği ne zaman karıştırmaya başladın?",
+          "sonrakiID": "B"
+        },
+        {
+          "metin": "Sana göre şu an rüyada mıyız?",
+          "sonrakiID": "C"
+        },
+        {
+          "metin": "Sessiz kal",
+          "sonrakiID": "D"
+        }
+      ]
+    },
+    {
+      "id": "A",
+      "anlatim": "Mert:\n“Siz... duvarda yürüyordunuz.\nAma yüzünüz bendim.\nKonuşmadınız ama... iç sesim gibiydiniz.”",
+      "secenekler": [
+        {
+          "metin": "O an kontrol sende miydi?",
+          "sonrakiID": "A1"
+        },
+        {
+          "metin": "Benim yüzümde ne vardı?",
+          "sonrakiID": "A2"
+        },
+        {
+          "metin": "O his gerçek seninle nasıl örtüşüyor?",
+          "sonrakiID": "A3"
+        },
+        {
+          "metin": "Ben senin zihninde neyi temsil ediyorum sence?",
+          "sonrakiID": "A4"
+        }
+      ]
+    },
+    {
+      "id": "A1",
+      "anlatim": "Mert:\n“Kontrol... sanki iki yerdeydim. Ama ikisini de yönetemiyordum.”",
+      "secenekler": [],
+      "seansSonu": true
+    },
+    {
+      "id": "A2",
+      "anlatim": "Mert:\n“Yüzünüzde gözler vardı ama bakmıyordunuz.”",
+      "secenekler": [],
+      "seansSonu": true
+    },
+    {
+      "id": "A3",
+      "anlatim": "Mert:\n“Gerçekte sakinsiniz. Rüyada... yargılayıcıydınız.”",
+      "secenekler": [],
+      "seansSonu": true
+    },
+    {
+      "id": "A4",
+      "anlatim": "Mert:\n“Belki vicdan. Belki bastırılmış otorite.”",
+      "secenekler": [],
+      "seansSonu": true
+    },
+    {
+      "id": "B",
+      "anlatim": "Mert:\n“İlk defa değil bu. Ama bu kez daha uzun sürdü.\nÇalışırken bile... koltuğunuzun gıcırdama sesi geliyor.”",
+      "secenekler": [
+        {
+          "metin": "Bunun seni korkutmasının nedeni ne?",
+          "sonrakiID": "B1"
+        },
+        {
+          "metin": "Çalışırken o ses sana ne yaptırıyor?",
+          "sonrakiID": "B2"
+        },
+        {
+          "metin": "Gerçeklikten uzaklaşmanın bir anlamı olabilir mi?",
+          "sonrakiID": "B3"
+        },
+        {
+          "metin": "Sana kimse inanmıyor mu?",
+          "sonrakiID": "B4"
+        }
+      ]
+    },
+    {
+      "id": "B1",
+      "anlatim": "Mert:\n“Gerçekliğe güvenemezsem... kime güveneceğim?”",
+      "secenekler": [],
+      "seansSonu": true
+    },
+    {
+      "id": "B2",
+      "anlatim": "Mert:\n“Durup bekliyorum. Konuşacak mısınız diye.”",
+      "secenekler": [],
+      "seansSonu": true
+    },
+    {
+      "id": "B3",
+      "anlatim": "Mert:\n“Belki bu kaçış değil, savunma.”",
+      "secenekler": [],
+      "seansSonu": true
+    },
+    {
+      "id": "B4",
+      "anlatim": "Mert:\n“Kimse bilmiyor. Söylemedim. Siz ilk kişisiniz.”",
+      "secenekler": [],
+      "seansSonu": true
+    },
+    {
+      "id": "C",
+      "anlatim": "Mert:\n“Belki. Çünkü siz benim kelimelerimi tekrar ediyorsunuz.\nVe ben hiçbir şey söylememiştim.”",
+      "secenekler": [
+        {
+          "metin": "Peki ben şu an sen miyim?",
+          "sonrakiID": "C1"
+        },
+        {
+          "metin": "Bu deneyim seni özgürleştiriyor mu yoksa korkutuyor mu?",
+          "sonrakiID": "C2"
+        },
+        {
+          "metin": "İçerideki sen dışarıdaki senden farklı mı konuşuyor?",
+          "sonrakiID": "C3"
+        },
+        {
+          "metin": "Bu seansı sen mi çağırdın?",
+          "sonrakiID": "C4"
+        }
+      ]
+    },
+    {
+      "id": "C1",
+      "anlatim": "Mert:\n“Eğer siz benseydiniz… neden size güveniyorum?”",
+      "secenekler": [],
+      "seansSonu": true
+    },
+    {
+      "id": "C2",
+      "anlatim": "Mert:\n“İkisi birden. Kafes gibi. Ama açık kapılı.”",
+      "secenekler": [],
+      "seansSonu": true
+    },
+    {
+      "id": "C3",
+      "anlatim": "Mert:\n“İçerideki ben daha net konuşuyor. Daha dürüst.”",
+      "secenekler": [],
+      "seansSonu": true
+    },
+    {
+      "id": "C4",
+      "anlatim": "Mert:\n“Rüya başladığında... siz çoktan koltuktaydınız.”",
+      "secenekler": [],
+      "seansSonu": true
+    },
+    {
+      "id": "D",
+      "anlatim": "Mert:\n“Siz sustuğunuzda... anlatıcı konuşuyor.\nKulağıma fısıldıyor:\n‘Sen onun zihnindesin.’\n... Siz öyle misiniz?”",
+      "secenekler": [
+        {
+          "metin": "Bu soruyu cevaplarsam seni yönlendiririm.",
+          "sonrakiID": "D1"
+        },
+        {
+          "metin": "Anlatıcı ne zaman başladı?",
+          "sonrakiID": "D2"
+        },
+        {
+          "metin": "Benimle değil... kendinle konuştuğunu düşündün mü?",
+          "sonrakiID": "D3"
+        },
+        {
+          "metin": "Sessizliğe devam et (anlatıcı konuşur)",
+          "sonrakiID": "D4"
+        }
+      ]
+    },
+    {
+      "id": "D1",
+      "anlatim": "Mert:\n“Zaten yönlendiriliyordum. Belki hep öyleydim.”",
+      "secenekler": [],
+      "seansSonu": true
+    },
+    {
+      "id": "D2",
+      "anlatim": "Mert:\n“İlk seansın sonunda. Ama sadece siz sustuğunuzda.”",
+      "secenekler": [],
+      "seansSonu": true
+    },
+    {
+      "id": "D3",
+      "anlatim": "Mert:\n“Belki siz sadece... bir yansımasınız.”",
+      "secenekler": [],
+      "seansSonu": true
+    },
+    {
+      "id": "D4",
+      "anlatim": "Anlatıcı:\n“Terapist susunca... zihin konuşur.”",
+      "secenekler": [],
+      "seansSonu": true
+    }
+  ],
+  "sonlar": {
+    "gerceklige_donus": "Bu sefer... buradayım. Gerçekten.\nSiz varsınız. Ben varım. O yeter.",
+    "zihin_kirilmasi": "Siz sadece rüyamdınız.\nŞimdi uyandım. Ve kimse yok.",
+    "inkarci_geri_cekilme": "Fazla derine indik. Burada duralım.\nHer şey sadece sembol."
+  }
+}
