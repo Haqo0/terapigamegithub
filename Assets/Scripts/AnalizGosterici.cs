@@ -19,7 +19,7 @@ public class AnalizGosterici : MonoBehaviour
     [Header("Gecikme")]
     public float analizGecikmesi = 2.0f;
 
-    // ✅ Yeni: geçmiş analizleri saklamak için liste
+    // geçmiş analizleri saklamak için liste
     private List<string> analizKayitlari = new List<string>();
 
     private void Awake()
@@ -27,7 +27,7 @@ public class AnalizGosterici : MonoBehaviour
         instance = this;
     }
 
-    // 🎯 Seans sonunda çağrılır
+    //Seans sonunda çağrılır
     public void AnalizeGoster(AnalizSonucu analiz, Dictionary<string, int> puanlar, List<string> secimler)
     {
         foreach (GameObject panel in paneller)
@@ -48,11 +48,11 @@ public class AnalizGosterici : MonoBehaviour
             paneller[0].SetActive(true); // örneğin AnalizPaneli
         }
 
-        // ✅ Yeni: analiz ozetini geçmişe ekle
+        // analiz ozetini geçmişe ekle
         analizKayitlari.Add(analiz.ozet);
     }
 
-    // 🎯 Not defterine tıklanınca çağrılır
+    // Not defterine tıklanınca çağrılır
     public void GecmisAnalizleriGoster()
     {
         foreach (GameObject panel in paneller)

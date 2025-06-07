@@ -13,9 +13,8 @@ public class SeansGecisYoneticisi : MonoBehaviour
     [Header("Diyalog Yöneticisi")]
     public DiyalogYoneticisi diyalogYoneticisi;
 
-    [HideInInspector]
+    [Header("Yüklenecek Yeni Seanslar")]
     public TextAsset[] sonrakiSeanslar;
-
     private int guncelSeansIndex = 0;
 
     public static SeansGecisYoneticisi instance;
@@ -34,6 +33,13 @@ public class SeansGecisYoneticisi : MonoBehaviour
             devamButonu.gameObject.SetActive(false);
     }
 
+    public void JsonDosyalariniAyarla(TextAsset[] yeniJsonlar)
+    {
+        sonrakiSeanslar = yeniJsonlar;
+        guncelSeansIndex = 0; 
+        Debug.Log($"SeansGecisYoneticisi: {yeniJsonlar.Length} JSON dosyası ayarlandı");
+    }
+
     public static void SeansiHazirla(string mesaj = "Bir sonraki seansa geçiliyor...")
     {
         if (instance != null)
@@ -45,20 +51,24 @@ public class SeansGecisYoneticisi : MonoBehaviour
 
     private IEnumerator GecikmeliMesajVeDevam(string mesaj)
     {
+        // Önlem: buton sıfırlansın
         if (devamButonu != null)
         {
             devamButonu.onClick.RemoveAllListeners();
             devamButonu.gameObject.SetActive(false);
         }
 
+        // İlk boş bekleme
         if (gecisMesaji != null)
             gecisMesaji.text = "";
 
         yield return new WaitForSeconds(2f);
 
+        // Mesaj göster
         if (gecisMesaji != null)
             gecisMesaji.text = mesaj;
 
+        // Mesaj görünsün → sonra buton gelsin
         yield return new WaitForSeconds(2.5f);
 
         if (devamButonu != null)
@@ -70,10 +80,16 @@ public class SeansGecisYoneticisi : MonoBehaviour
 
     private void DevamEtInstance()
     {
+        // JSON dosyaları var mı?
+        if (sonrakiSeanslar == null || sonrakiSeanslar.Length == 0)
+        {
+            Debug.LogWarning("Sonraki seanslar dizisi boş! CrosshairEtkilesim'den JSON'lar atanmamış olabilir.");
+            return;
+        }
+
         if (guncelSeansIndex >= sonrakiSeanslar.Length)
         {
-            Debug.Log("✅ Tüm seanslar tamamlandı!");
-
+            Debug.Log("Tüm seanslar tamamlandı!");
             if (gecisMesaji != null)
                 gecisMesaji.text = "Terapinin tüm seansları tamamlandı. Teşekkür ederiz.";
 
@@ -84,19 +100,11 @@ public class SeansGecisYoneticisi : MonoBehaviour
         }
 
         TextAsset sonrakiJson = sonrakiSeanslar[guncelSeansIndex];
-
-        if (sonrakiJson == null)
-        {
-            Debug.LogWarning($"❌ Seans {guncelSeansIndex + 2} JSON dosyası atanmadı!");
-            return;
-        }
-
         guncelSeansIndex++;
 
-        if (diyalogYoneticisi != null)
-            diyalogYoneticisi.SonrakiSeansiBaslat(sonrakiJson);
-        else
-            Debug.LogWarning("❌ DiyalogYoneticisi referansı atanmadı!");
+        Debug.Log($"Yükleniyor: {sonrakiJson.name} (Seans {guncelSeansIndex}/{sonrakiSeanslar.Length})");
+
+        diyalogYoneticisi.SonrakiSeansiBaslat(sonrakiJson);
 
         if (gecisPaneli != null)
             gecisPaneli.SetActive(false);
@@ -105,20 +113,22 @@ public class SeansGecisYoneticisi : MonoBehaviour
             devamButonu.gameObject.SetActive(false);
     }
 
-    /// <summary>
-    /// 🔄 Dışarıdan karaktere özel seans dizisi atanır.
-    /// </summary>
-    public void SetSeansListesi(TextAsset[] yeniSeanslar)
+    [ContextMenu("Debug - Mevcut JSON'ları Listele")]
+    private void DebugMevcutJsonlar()
     {
-        if (yeniSeanslar == null || yeniSeanslar.Length == 0)
+        Debug.Log("=== MEVCUT JSON DOSYALARI ===");
+        if (sonrakiSeanslar != null && sonrakiSeanslar.Length > 0)
         {
-            Debug.LogWarning("❌ SetSeansListesi: yeniSeanslar boş!");
-            return;
+            for (int i = 0; i < sonrakiSeanslar.Length; i++)
+            {
+                string durum = (i < guncelSeansIndex) ? "TAMAMLANDI" : 
+                              (i == guncelSeansIndex) ? "SONRAKİ" : "BEKLİYOR";
+                Debug.Log($"Seans {i + 1}: {sonrakiSeanslar[i].name} - {durum}");
+            }
         }
-
-        sonrakiSeanslar = yeniSeanslar;
-        guncelSeansIndex = 0;
-
-        Debug.Log($"📌 Yeni seans listesi ayarlandı. Toplam: {sonrakiSeanslar.Length}");
+        else
+        {
+            Debug.Log("Hiç JSON dosyası atanmamış!");
+        }
     }
 }

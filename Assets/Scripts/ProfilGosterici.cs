@@ -32,8 +32,8 @@ public class ProfilGosterici : MonoBehaviour
         if (profilPanel != null)
             profilPanel.SetActive(true);
 
-        if (crosshairObjesi != null)
-            crosshairObjesi.SetActive(false);
+        // if (crosshairObjesi != null)
+        //     crosshairObjesi.SetActive(false);
 
         if (kameraKontrolScripti != null)
             kameraKontrolScripti.enabled = false;
