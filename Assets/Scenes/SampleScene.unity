@@ -458,6 +458,7 @@ MonoBehaviour:
   secimSistemi: {fileID: 2033656150}
   analizGosterici: {fileID: 15884472}
   gecikmeGostergesi: {fileID: 0}
+  diyalogJson: {fileID: 0}
   diyalogPanel: {fileID: 1882965873}
 --- !u!1 &106516509
 GameObject:
@@ -835,6 +836,8 @@ GameObject:
   - component: {fileID: 367216633}
   - component: {fileID: 367216632}
   - component: {fileID: 367216636}
+  - component: {fileID: 367216638}
+  - component: {fileID: 367216637}
   m_Layer: 0
   m_Name: "ecedosyas\u0131"
   m_TagString: SeansObjesi
@@ -948,6 +951,44 @@ MonoBehaviour:
   - {fileID: 4900000, guid: a1ddf422749d3484bb6fcaf1573f9a70, type: 3}
   - {fileID: 4900000, guid: ce7155f810e334bbfbbb782348fb2260, type: 3}
   karakterAdi: Ece
+--- !u!114 &367216637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367216630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13c96eef58f434549a7a014745130ebf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gecisPaneli: {fileID: 1993992026}
+  gecisMesaji: {fileID: 301615634}
+  devamButonu: {fileID: 2034720328}
+  diyalogYoneticisi: {fileID: 367216638}
+  sonrakiSeanslar: []
+--- !u!114 &367216638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367216630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d72713b191636409286cc50f1cd6d70c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seansAnalizGoster: 0000000001
+  seceneklerGecikmesi: 5
+  analizGecikmesi: 5
+  npcText: {fileID: 1158091930}
+  secimSistemi: {fileID: 2033656150}
+  analizGosterici: {fileID: 15884472}
+  gecikmeGostergesi: {fileID: 0}
+  diyalogJson: {fileID: 0}
+  diyalogPanel: {fileID: 1882965873}
 --- !u!1 &372582144
 GameObject:
   m_ObjectHideFlags: 0
@@ -2817,6 +2858,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   diyalogPaneli: {fileID: 1882965873}
+  crosshairObjesi: {fileID: 1699473839}
   profilGosterici: {fileID: 967514837}
 --- !u!4 &1990396848
 Transform:
