@@ -13,7 +13,7 @@ public class SeansGecisYoneticisi : MonoBehaviour
     [Header("Diyalog Yöneticisi")]
     public DiyalogYoneticisi diyalogYoneticisi;
 
-    [Header("Yüklenecek Yeni Seanslar (Seans 2-3-4-5)")]
+    [HideInInspector]
     public TextAsset[] sonrakiSeanslar;
 
     private int guncelSeansIndex = 0;
@@ -45,24 +45,20 @@ public class SeansGecisYoneticisi : MonoBehaviour
 
     private IEnumerator GecikmeliMesajVeDevam(string mesaj)
     {
-        // Önlem: buton sıfırlansın
         if (devamButonu != null)
         {
             devamButonu.onClick.RemoveAllListeners();
             devamButonu.gameObject.SetActive(false);
         }
 
-        // İlk boş bekleme
         if (gecisMesaji != null)
             gecisMesaji.text = "";
 
         yield return new WaitForSeconds(2f);
 
-        // Mesaj göster
         if (gecisMesaji != null)
             gecisMesaji.text = mesaj;
 
-        // Mesaj görünsün → sonra buton gelsin
         yield return new WaitForSeconds(2.5f);
 
         if (devamButonu != null)
@@ -76,7 +72,8 @@ public class SeansGecisYoneticisi : MonoBehaviour
     {
         if (guncelSeansIndex >= sonrakiSeanslar.Length)
         {
-            Debug.Log("Tüm seanslar tamamlandı!");
+            Debug.Log("✅ Tüm seanslar tamamlandı!");
+
             if (gecisMesaji != null)
                 gecisMesaji.text = "Terapinin tüm seansları tamamlandı. Teşekkür ederiz.";
 
@@ -87,14 +84,41 @@ public class SeansGecisYoneticisi : MonoBehaviour
         }
 
         TextAsset sonrakiJson = sonrakiSeanslar[guncelSeansIndex];
+
+        if (sonrakiJson == null)
+        {
+            Debug.LogWarning($"❌ Seans {guncelSeansIndex + 2} JSON dosyası atanmadı!");
+            return;
+        }
+
         guncelSeansIndex++;
 
-        diyalogYoneticisi.SonrakiSeansiBaslat(sonrakiJson);
+        if (diyalogYoneticisi != null)
+            diyalogYoneticisi.SonrakiSeansiBaslat(sonrakiJson);
+        else
+            Debug.LogWarning("❌ DiyalogYoneticisi referansı atanmadı!");
 
         if (gecisPaneli != null)
             gecisPaneli.SetActive(false);
 
         if (devamButonu != null)
             devamButonu.gameObject.SetActive(false);
+    }
+
+    /// <summary>
+    /// 🔄 Dışarıdan karaktere özel seans dizisi atanır.
+    /// </summary>
+    public void SetSeansListesi(TextAsset[] yeniSeanslar)
+    {
+        if (yeniSeanslar == null || yeniSeanslar.Length == 0)
+        {
+            Debug.LogWarning("❌ SetSeansListesi: yeniSeanslar boş!");
+            return;
+        }
+
+        sonrakiSeanslar = yeniSeanslar;
+        guncelSeansIndex = 0;
+
+        Debug.Log($"📌 Yeni seans listesi ayarlandı. Toplam: {sonrakiSeanslar.Length}");
     }
 }

@@ -1,16 +1,20 @@
 using UnityEngine;
+using System.IO;
 
 public class CrosshairEtkilesim : MonoBehaviour
 {
     public GameObject seansSistemi;
     public GameObject diyalogPaneli;
     public GameObject crosshairObjesi;
-    public GameObject seansObjesi;
+
+    [Header("Tüm Seans Objeleri (Mert, Ece vb.)")]
+    public GameObject[] seansObjeleri;
+
     private MonoBehaviour kameraKontrolScripti;
     private Camera kamera;
     private bool seansBasladi = false;
 
-    public ProfilGosterici profilGosterici; // 👈 karakter profili
+    public ProfilGosterici profilGosterici;
 
     void Start()
     {
@@ -22,7 +26,7 @@ public class CrosshairEtkilesim : MonoBehaviour
         Cursor.visible = false;
         crosshairObjesi.SetActive(true);
 
-        kameraKontrolScripti = Camera.main.GetComponent<MouseCameraKontrol>();
+        kameraKontrolScripti = kamera.GetComponent<MouseCameraKontrol>();
         if (kameraKontrolScripti != null)
             kameraKontrolScripti.enabled = true;
         else
@@ -42,9 +46,34 @@ public class CrosshairEtkilesim : MonoBehaviour
             {
                 if (Input.GetMouseButtonDown(0))
                 {
+                    KarakterEtiketi etiket = hit.collider.GetComponent<KarakterEtiketi>();
+                    if (etiket == null)
+                    {
+                        Debug.LogWarning("KarakterEtiketi scripti bulunamadı!");
+                        return;
+                    }
+
+                    string karakterAdi = etiket.karakterAdi;
+                    string dosyaYolu = Path.Combine(Application.streamingAssetsPath, karakterAdi + "_seans1.json");
+
+                    Debug.Log("📁 Aranan dosya tam yolu: " + dosyaYolu);
+
+                    if (!File.Exists(dosyaYolu))
+                    {
+                        Debug.LogWarning("JSON dosyası bulunamadı: " + dosyaYolu);
+                        return;
+                    }
+
+                    string jsonIcerik = File.ReadAllText(dosyaYolu);
+                    TextAsset jsonAsset = new TextAsset(jsonIcerik);
+
+                    DiyalogYoneticisi.instance.SonrakiSeansiBaslat(jsonAsset);
+                    SeansGecisYoneticisi.instance.SetSeansListesi(etiket.digerSeanslar);
+
                     seansSistemi.SetActive(true);
                     diyalogPaneli.SetActive(true);
                     hit.collider.gameObject.SetActive(false);
+
                     seansBasladi = true;
 
                     Cursor.lockState = CursorLockMode.None;
@@ -55,11 +84,11 @@ public class CrosshairEtkilesim : MonoBehaviour
                         kameraKontrolScripti.enabled = false;
                 }
             }
-            else if (hit.collider.CompareTag("ProfilObjesi")) // 👈 karakter profiline tıklama
+            else if (hit.collider.CompareTag("ProfilObjesi"))
             {
                 if (Input.GetMouseButtonDown(0))
                 {
-                    profilGosterici.ProfilPanelAc(); // ✅ doğru metot adı
+                    profilGosterici.ProfilPanelAc();
                 }
             }
         }
@@ -75,7 +104,10 @@ public class CrosshairEtkilesim : MonoBehaviour
         if (kameraKontrolScripti != null)
             kameraKontrolScripti.enabled = true;
 
-        if (seansObjesi != null)
-            seansObjesi.SetActive(true);
+        foreach (GameObject obj in seansObjeleri)
+        {
+            if (obj != null)
+                obj.SetActive(true);
+        }
     }
 }
