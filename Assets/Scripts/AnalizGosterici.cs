@@ -1,87 +1,95 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class AnalizGosterici : MonoBehaviour
 {
-    [Header("UI Paneli")]
-    public GameObject[] paneller;
+    public static AnalizGosterici instance;
+
+    [Header("UI Panelleri")]
+    public List<GameObject> paneller;
 
     [Header("Metin Alanları")]
     public TMP_Text analizMetni;
 
     [Header("Butonlar")]
-    public Button yeniseansButonu;
-    public Button kapatButonu;
+    public GameObject yeniseansButonu;
+    public GameObject kapatButonu;
 
-    private void Start()
+    [Header("Gecikme")]
+    public float analizGecikmesi = 2.0f;
+
+    // ✅ Yeni: geçmiş analizleri saklamak için liste
+    private List<string> analizKayitlari = new List<string>();
+
+    private void Awake()
     {
-        if (paneller != null)
-        {
-            foreach (var panel in paneller)
-            {
-                if (panel != null)
-                    panel.SetActive(false);
-            }
-            Debug.Log("Analiz paneli başta gizli başlatıldı.");
-        }
-
-        // KAPAT BUTONU DÜZELTMESİ
-        if (kapatButonu != null)
-        {
-            kapatButonu.onClick.RemoveAllListeners(); // Önceki listener'ları temizle
-            kapatButonu.onClick.AddListener(() => {
-                Debug.Log("Kapat butonu tıklandı - Paneller kapatılıyor ve seans geçişi başlatılıyor");
-                KapatVeDevamEt();
-            });
-        }
+        instance = this;
     }
 
-    // Hem analiz panelini kapat hem de seans geçişini başlat
-    private void KapatVeDevamEt()
+    // 🎯 Seans sonunda çağrılır
+    public void AnalizeGoster(AnalizSonucu analiz, Dictionary<string, int> puanlar, List<string> secimler)
     {
-        // Önce analiz panelini kapat
-        PaneliKapat();
-        
-        // // Sonra DiyalogYoneticisi'ne panelleri kapatması ve devam etmesi için sinyal gönder
-        // if (DiyalogYoneticisi.instance != null)
-        // {
-        //     DiyalogYoneticisi.instance.PanelleriKapatVeDevamEt();
-        // }
-        // else
-        // {
-        //     Debug.LogWarning("DiyalogYoneticisi instance bulunamadı!");
-        // }
+        foreach (GameObject panel in paneller)
+        {
+            panel.SetActive(false);
+        }
+
+        if (analizMetni != null)
+        {
+            analizMetni.text = $"<b>{analiz.baslik}</b>\n\n{analiz.ozet}\n\n{analiz.detay}";
+        }
+
+        if (kapatButonu != null) kapatButonu.SetActive(true);
+        if (yeniseansButonu != null) yeniseansButonu.SetActive(true);
+
+        if (paneller.Count > 0)
+        {
+            paneller[0].SetActive(true); // örneğin AnalizPaneli
+        }
+
+        // ✅ Yeni: analiz ozetini geçmişe ekle
+        analizKayitlari.Add(analiz.ozet);
+    }
+
+    // 🎯 Not defterine tıklanınca çağrılır
+    public void GecmisAnalizleriGoster()
+    {
+        foreach (GameObject panel in paneller)
+        {
+            panel.SetActive(false);
+        }
+
+        if (paneller.Count > 0)
+        {
+            paneller[0].SetActive(true);
+        }
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        if (analizMetni != null)
+        {
+            analizMetni.text = "<b>Geçmiş Seans Analizleri</b>\n\n";
+
+            foreach (string kayit in analizKayitlari)
+            {
+                analizMetni.text += "• " + kayit + "\n\n";
+            }
+        }
+
+        if (kapatButonu != null) kapatButonu.SetActive(true);
+        if (yeniseansButonu != null) yeniseansButonu.SetActive(false); // yeni seans butonu gerekmez
     }
 
     public void PaneliKapat()
     {
-        if (paneller != null)
+        foreach (GameObject panel in paneller)
         {
-            foreach (var panel in paneller)
-            {
-                if (panel != null)
-                    panel.SetActive(false);
-            }
-        }
-        Debug.Log("Analiz paneli kapatıldı.");
-    }
-
-    // 🔧 3 parametreli analiz gösterme fonksiyonu
-    public void AnalizeGoster(AnalizSonucu analiz, Dictionary<string, int> puanlar, List<string> secimler)
-    {
-        if (paneller != null)
-        {
-            foreach (var panel in paneller)
-            {
-                if (panel != null)
-                    panel.SetActive(true);
-            }
+            panel.SetActive(false);
         }
 
-        if (analizMetni != null)
-            analizMetni.text = analiz.ozet;
-
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 }

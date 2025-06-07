@@ -1,0 +1,120 @@
+{
+  "adimlar": [
+    {
+      "id": "giris",
+      "anlatim": "Ece: “Dün gece rüya görmedim.\nAma uyandığımda… sanki biri bana içten gülümsedi.\nBelki bendim.\nBelki senin sesindi.\nAma içimdeydi.\nVe içimde... bir kelime vardı. ‘Yumuşak’.”",
+      "secenekler": [
+        {
+          "metin": "Bu ‘yumuşak’ kelimesi sende neyi çağrıştırdı?",
+          "sonrakiID": "A1",
+          "etiket": "yumusak_hissetme",
+          "puan": 1
+        },
+        {
+          "metin": "İlk defa kendine mi içten gülümsedin?",
+          "sonrakiID": "B1",
+          "etiket": "icten_gulumseme",
+          "puan": 1
+        },
+        {
+          "metin": "O kelimeyi duyunca ne oldu?",
+          "sonrakiID": "C1",
+          "etiket": "kelime_duygusu",
+          "puan": 1
+        },
+        {
+          "metin": "(Sessiz kal)",
+          "sonrakiID": "D1",
+          "etiket": "sessizlik_kabul",
+          "puan": 1
+        }
+      ],
+      "seansSonu": false
+    },
+
+    
+    {
+      "id": "A1",
+      "anlatim": "Ece: “Kumaş gibi.\nSıcak değil ama sert de değil.\nKırılganlık değil.\nAma incelik.”",
+      "secenekler": [
+        { "metin": "Bu his seni ürküttü mü?", "sonrakiID": "A1_1", "etiket": "duygudan_korku", "puan": 1 },
+        { "metin": "Kime karşı böyle hissettin sence?", "sonrakiID": "A1_2", "etiket": "duygunun_yonu", "puan": 1 },
+        { "metin": "Bu duyguyu taşıyabilir misin?", "sonrakiID": "A1_3", "etiket": "duyguyu_tasima", "puan": 1 },
+        { "metin": "Yumuşak olan sadece içindeki his miydi?", "sonrakiID": "A1_4", "etiket": "cevrede_yumusaklik", "puan": 1 }
+      ],
+      "seansSonu": false
+    },
+    { "id": "A1_1", "anlatim": "Ece: “Biraz. Çünkü alışkın değilim. Ama kaçmak istemedim.”", "secenekler": [], "seansSonu": false },
+    { "id": "A1_2", "anlatim": "Ece: “Kendime. Ve buraya.”", "secenekler": [], "seansSonu": false },
+    { "id": "A1_3", "anlatim": "Ece: “Taşımaya başladım. Küçük bir parça gibi.”", "secenekler": [], "seansSonu": false },
+    { "id": "A1_4", "anlatim": "Ece: “Sizinkiler de yumuşaktı bugün. Sesiniz bile.”", "secenekler": [], "seansSonu": false },
+
+    
+    {
+      "id": "B1",
+      "anlatim": "Ece: “Evet.\nAyna değil. İçimde bir şey bakıyordu bana.\nYargılamadan.\nGülümseyerek.”",
+      "secenekler": [
+        { "metin": "O bakışla göz göze gelmek nasıldı?", "sonrakiID": "B1_1", "etiket": "goz_goze_ic", "puan": 1 },
+        { "metin": "O halini tarif edebilir misin?", "sonrakiID": "B1_2", "etiket": "ic_bakis_tarifi", "puan": 1 },
+        { "metin": "Kendine böyle yaklaşmak zor muydu?", "sonrakiID": "B1_3", "etiket": "zor_kabul", "puan": 1 },
+        { "metin": "O ‘şey’ sence sen miydin?", "sonrakiID": "B1_4", "etiket": "kendiyle_karsilasma", "puan": 1 }
+      ],
+      "seansSonu": false
+    },
+    { "id": "B1_1", "anlatim": "Ece: “İlginçti. Aynı değil. Ama daha gerçek.”", "secenekler": [], "seansSonu": false },
+    { "id": "B1_2", "anlatim": "Ece: “Gölgeli. Ama netleşen.”", "secenekler": [], "seansSonu": false },
+    { "id": "B1_3", "anlatim": "Ece: “Zordu. Ama bu sefer geri çekilmedim.”", "secenekler": [], "seansSonu": false },
+    { "id": "B1_4", "anlatim": "Ece: “Evet. Ama alışkın olduğum halim değil.”", "secenekler": [], "seansSonu": false },
+
+    
+    {
+      "id": "C1",
+      "anlatim": "Ece: “Ruhsal bir gevşeme.\nSanki bütün cümleler değil… tek bir kelime yeterli oldu.\nGözüm doldu.\nAma hala ağlamadım.\nBelki bu da bir ağlama biçimi.”",
+      "secenekler": [
+        { "metin": "Gözünün dolması sana ne hissettirdi?", "sonrakiID": "C1_1", "etiket": "goz_dolmasi", "puan": 1 },
+        { "metin": "Bu gevşemeyi daha önce hissetmiş miydin?", "sonrakiID": "C1_2", "etiket": "ilk_gevseme", "puan": 1 },
+        { "metin": "Ağlamanın senin için tanımı nedir?", "sonrakiID": "C1_3", "etiket": "aglama_tanimi", "puan": 1 },
+        { "metin": "O kelimeyi biri sana söyleseydi ne değişirdi?", "sonrakiID": "C1_4", "etiket": "yumusak_disardan", "puan": 1 }
+      ],
+      "seansSonu": false
+    },
+    { "id": "C1_1", "anlatim": "Ece: “Beklenmedik. Ama tehdit edici değildi.”", "secenekler": [], "seansSonu": false },
+    { "id": "C1_2", "anlatim": "Ece: “Hayır. İlk kez bu kadar hafif hissettim.”", "secenekler": [], "seansSonu": false },
+    { "id": "C1_3", "anlatim": "Ece: “Kelimeler akmadan yaşanabilir belki. Sessizlikle.”", "secenekler": [], "seansSonu": false },
+    { "id": "C1_4", "anlatim": "Ece: “Daha erken bulabilirdim bunu. Belki daha önce konuşabilirdim.”", "secenekler": [], "seansSonu": false },
+
+    
+    {
+      "id": "D1",
+      "anlatim": "Ece: “Artık sessizlik beni rahatsız etmiyor.\nÇünkü artık sadece boş değil.\nİçinde bir şey var.\nBelki yumuşak bir şey.\nBelki... ben.”",
+      "secenekler": [
+        { "metin": "Bu sessizlikle ilk defa barıştın mı?", "sonrakiID": "D1_1", "etiket": "sessizlik_barisi", "puan": 1 },
+        { "metin": "İçindeki o şey sana neler söylüyor?", "sonrakiID": "D1_2", "etiket": "ic_ses", "puan": 1 },
+        { "metin": "Senin dilin belki sessizliktir, sence?", "sonrakiID": "D1_3", "etiket": "sessizlik_dil", "puan": 1 },
+        { "metin": "(Sessiz kalmaya devam et)", "sonrakiID": "D1_4", "etiket": "sessiz_kapanis", "puan": 1 }
+      ],
+      "seansSonu": false
+    },
+    { "id": "D1_1", "anlatim": "Ece: “Evet. Direnmiyorum artık.”", "secenekler": [], "seansSonu": false },
+    { "id": "D1_2", "anlatim": "Ece: “‘Dur. Olduğun yerde güzel bir şey var.’ diyor.”", "secenekler": [], "seansSonu": false },
+    { "id": "D1_3", "anlatim": "Ece: “Olabilir. Ama bazen içinden sözcükler de geçiyor.”", "secenekler": [], "seansSonu": false },
+    { "id": "D1_4", "anlatim": "Anlatıcı: “Ece konuşmadı.\nAma ilk defa sustuğu yerden büyüdü.\nTerapist, sessizlik artık seni de rahatlatıyor mu?”", "secenekler": [], "seansSonu": false }
+  ],
+  "analizSonuclari": [
+    {
+      "metin": "Ece, ilk kez duygularını bir kelimeyle tarif etti ve onunla bağ kurdu.",
+      "gerekenEtiketler": ["yumusak_hissetme", "duyguyu_tasima", "goz_dolmasi"],
+      "minPuan": 2
+    },
+    {
+      "metin": "Ece, içindeki benlikle ilk kez karşılaştı ve yargısız bir kabul yaşadı.",
+      "gerekenEtiketler": ["icten_gulumseme", "kendiyle_karsilasma", "zor_kabul"],
+      "minPuan": 2
+    },
+    {
+      "metin": "Sessizlik artık Ece için tehdit değil, barınak. Duygularla ilk sessiz iletişim kuruldu.",
+      "gerekenEtiketler": ["sessizlik_barisi", "sessizlik_dil", "ic_ses"],
+      "minPuan": 2
+    }
+  ]
+}

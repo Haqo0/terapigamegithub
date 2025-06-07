@@ -27,8 +27,11 @@ public class SeansGecisYoneticisi : MonoBehaviour
 
     private void Start()
     {
-        if (gecisPaneli != null) gecisPaneli.SetActive(false);
-        if (devamButonu != null) devamButonu.gameObject.SetActive(false);
+        if (gecisPaneli != null)
+            gecisPaneli.SetActive(false);
+
+        if (devamButonu != null)
+            devamButonu.gameObject.SetActive(false);
     }
 
     public static void SeansiHazirla(string mesaj = "Bir sonraki seansa geçiliyor...")
@@ -42,35 +45,56 @@ public class SeansGecisYoneticisi : MonoBehaviour
 
     private IEnumerator GecikmeliMesajVeDevam(string mesaj)
     {
-        if (gecisMesaji != null) gecisMesaji.text = "";
+        // Önlem: buton sıfırlansın
+        if (devamButonu != null)
+        {
+            devamButonu.onClick.RemoveAllListeners();
+            devamButonu.gameObject.SetActive(false);
+        }
+
+        // İlk boş bekleme
+        if (gecisMesaji != null)
+            gecisMesaji.text = "";
+
         yield return new WaitForSeconds(2f);
 
-        if (gecisMesaji != null) gecisMesaji.text = mesaj;
-        yield return new WaitForSeconds(3f);
+        // Mesaj göster
+        if (gecisMesaji != null)
+            gecisMesaji.text = mesaj;
+
+        // Mesaj görünsün → sonra buton gelsin
+        yield return new WaitForSeconds(2.5f);
 
         if (devamButonu != null)
         {
             devamButonu.gameObject.SetActive(true);
-            devamButonu.onClick.RemoveAllListeners();
-            devamButonu.onClick.AddListener(DevamEtInstance); // ✔ doğru yöntem
+            devamButonu.onClick.AddListener(DevamEtInstance);
         }
     }
 
-    // Bu static DEĞİL – doğru şekilde çağrılıyor
     private void DevamEtInstance()
     {
         if (guncelSeansIndex >= sonrakiSeanslar.Length)
         {
             Debug.Log("Tüm seanslar tamamlandı!");
+            if (gecisMesaji != null)
+                gecisMesaji.text = "Terapinin tüm seansları tamamlandı. Teşekkür ederiz.";
+
+            if (devamButonu != null)
+                devamButonu.gameObject.SetActive(false);
+
             return;
         }
 
         TextAsset sonrakiJson = sonrakiSeanslar[guncelSeansIndex];
-        guncelSeansIndex++; // ✔ ARTIK ARTACAK
+        guncelSeansIndex++;
 
         diyalogYoneticisi.SonrakiSeansiBaslat(sonrakiJson);
 
-        if (gecisPaneli != null) gecisPaneli.SetActive(false);
-        if (devamButonu != null) devamButonu.gameObject.SetActive(false);
+        if (gecisPaneli != null)
+            gecisPaneli.SetActive(false);
+
+        if (devamButonu != null)
+            devamButonu.gameObject.SetActive(false);
     }
 }
