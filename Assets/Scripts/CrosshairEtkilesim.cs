@@ -2,27 +2,35 @@ using UnityEngine;
 
 public class CrosshairEtkilesim : MonoBehaviour
 {
-    public GameObject seansSistemi;
+    public GameObject[] seansSistemleri;        // 🔄 Tüm karakterlerin SeansSistemi objeleri (Mert, Ece vb.)
     public GameObject diyalogPaneli;
     public GameObject crosshairObjesi;
-    public GameObject seansObjesi;
+
     private MonoBehaviour kameraKontrolScripti;
     private Camera kamera;
     private bool seansBasladi = false;
 
-    public ProfilGosterici profilGosterici; // 👈 karakter profili
+    public ProfilGosterici profilGosterici;     // 👈 karakter profili
 
     void Start()
     {
         kamera = Camera.main;
-        seansSistemi.SetActive(false);
-        diyalogPaneli.SetActive(false);
+
+        // Hepsini pasif başlat
+        foreach (var sistem in seansSistemleri)
+        {
+            if (sistem != null)
+                sistem.SetActive(false);
+        }
+
+        if (diyalogPaneli != null)
+            diyalogPaneli.SetActive(false);
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         crosshairObjesi.SetActive(true);
 
-        kameraKontrolScripti = Camera.main.GetComponent<MouseCameraKontrol>();
+        kameraKontrolScripti = kamera.GetComponent<MouseCameraKontrol>();
         if (kameraKontrolScripti != null)
             kameraKontrolScripti.enabled = true;
         else
@@ -42,8 +50,32 @@ public class CrosshairEtkilesim : MonoBehaviour
             {
                 if (Input.GetMouseButtonDown(0))
                 {
-                    seansSistemi.SetActive(true);
-                    diyalogPaneli.SetActive(true);
+                    string karakterAdi = hit.collider.gameObject.name.ToLower();
+
+                    bool sistemBulundu = false;
+
+                    foreach (var sistem in seansSistemleri)
+                    {
+                        if (sistem.name.ToLower().Contains(karakterAdi.Replace("dosyasi", "")))
+                        {
+                            sistem.SetActive(true);
+                            sistemBulundu = true;
+                        }
+                        else
+                        {
+                            sistem.SetActive(false);
+                        }
+                    }
+
+                    if (!sistemBulundu)
+                    {
+                        Debug.LogWarning($"Tıklanan karaktere uygun seans sistemi bulunamadı: {karakterAdi}");
+                        return;
+                    }
+
+                    if (diyalogPaneli != null)
+                        diyalogPaneli.SetActive(true);
+
                     hit.collider.gameObject.SetActive(false);
                     seansBasladi = true;
 
@@ -55,11 +87,11 @@ public class CrosshairEtkilesim : MonoBehaviour
                         kameraKontrolScripti.enabled = false;
                 }
             }
-            else if (hit.collider.CompareTag("ProfilObjesi")) // 👈 karakter profiline tıklama
+            else if (hit.collider.CompareTag("ProfilObjesi"))
             {
                 if (Input.GetMouseButtonDown(0))
                 {
-                    profilGosterici.ProfilPanelAc(); // ✅ doğru metot adı
+                    profilGosterici.ProfilPanelAc();
                 }
             }
         }
@@ -75,7 +107,11 @@ public class CrosshairEtkilesim : MonoBehaviour
         if (kameraKontrolScripti != null)
             kameraKontrolScripti.enabled = true;
 
-        if (seansObjesi != null)
-            seansObjesi.SetActive(true);
+        // Seans objesini yeniden görünür yap
+        foreach (var sistem in seansSistemleri)
+        {
+            if (sistem != null)
+                sistem.SetActive(false);
+        }
     }
 }

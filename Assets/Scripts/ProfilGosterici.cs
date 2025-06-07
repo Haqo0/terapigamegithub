@@ -14,15 +14,14 @@ public class ProfilGosterici : MonoBehaviour
     public Text meslekText;
     public Text ozetText;
 
-    [Header("JSON Dosya Adı")]
-    public string karakterDosyaAdi = "mert"; // örnek: "mert", "seda"
+    [Header("Karakter Ayarı")]
+    [Tooltip("Sadece karakterin adı: mert, ece, seda vs. JSON dosyasında '_profil.json' uzantısı otomatik eklenir.")]
+    public string karakterDosyaAdi = "mert";  // Örn: "ece" -> ece_profil.json
 
     void Start()
     {
-        // Kamera kontrol scriptini al
         kameraKontrolScripti = Camera.main.GetComponent<MouseCameraKontrol>();
 
-        // Başlangıçta panel kapalı
         if (profilPanel != null)
             profilPanel.SetActive(false);
     }
@@ -61,17 +60,18 @@ public class ProfilGosterici : MonoBehaviour
 
     void KarakterBilgisiYukle()
     {
-        string dosyaYolu = Path.Combine(Application.streamingAssetsPath, karakterDosyaAdi + "_profil.json");
+        string dosyaAdi = karakterDosyaAdi.ToLower() + "_profil.json";
+        string dosyaYolu = Path.Combine(Application.streamingAssetsPath, dosyaAdi);
 
         if (File.Exists(dosyaYolu))
         {
             string json = File.ReadAllText(dosyaYolu);
             KarakterProfil veri = JsonUtility.FromJson<KarakterProfil>(json);
 
-            isimText.text = veri.isim;
-            yasText.text = "Yaş: " + veri.yas.ToString();
-            meslekText.text = "Meslek: " + veri.meslek;
-            ozetText.text = veri.ozet;
+            if (isimText != null) isimText.text = veri.isim;
+            if (yasText != null) yasText.text = "Yaş: " + veri.yas.ToString();
+            if (meslekText != null) meslekText.text = "Meslek: " + veri.meslek;
+            if (ozetText != null) ozetText.text = veri.ozet;
         }
         else
         {

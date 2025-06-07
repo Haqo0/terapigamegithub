@@ -762,6 +762,111 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseSensitivity: 100
   oyuncuGovdesi: {fileID: 1031299678}
+--- !u!1 &343375266
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 343375270}
+  - component: {fileID: 343375269}
+  - component: {fileID: 343375268}
+  - component: {fileID: 343375267}
+  m_Layer: 0
+  m_Name: "EceDosyas\u0131"
+  m_TagString: SeansObjesi
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &343375267
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343375266}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &343375268
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343375266}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &343375269
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343375266}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &343375270
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343375266}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -31.7, y: -5.2, z: -68}
+  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &372582144
 GameObject:
   m_ObjectHideFlags: 0
@@ -1219,6 +1324,59 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 100}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &445837022
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 445837024}
+  - component: {fileID: 445837023}
+  m_Layer: 0
+  m_Name: EceSeansGecisKontrol (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &445837023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445837022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13c96eef58f434549a7a014745130ebf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gecisPaneli: {fileID: 1993992026}
+  gecisMesaji: {fileID: 301615634}
+  devamButonu: {fileID: 2034720328}
+  diyalogYoneticisi: {fileID: 1944472399}
+  sonrakiSeanslar:
+  - {fileID: 4900000, guid: 8aaf2ee5e5f4e4966ad3718ca802239b, type: 3}
+  - {fileID: 4900000, guid: bc88a87554ea64c599b6618f67ca70a4, type: 3}
+  - {fileID: 4900000, guid: 7e3827d583740449c8b5db9555d25262, type: 3}
+  - {fileID: 4900000, guid: 7aeed09ec3d39429faef669cc2cd8401, type: 3}
+--- !u!4 &445837024
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445837022}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 731.20905, y: 303.69595, z: -79.17888}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &793780387
 GameObject:
   m_ObjectHideFlags: 0
@@ -1927,7 +2085,7 @@ MonoBehaviour:
   yasText: {fileID: 0}
   meslekText: {fileID: 0}
   ozetText: {fileID: 0}
-  karakterDosyaAdi: mert
+  karakterDosyaAdi: 
 --- !u!1 &1031299677
 GameObject:
   m_ObjectHideFlags: 0
@@ -2182,6 +2340,7 @@ GameObject:
   - component: {fileID: 1313618661}
   - component: {fileID: 1313618664}
   - component: {fileID: 1313618663}
+  - component: {fileID: 1313618665}
   m_Layer: 5
   m_Name: KarakterProfilPaneli
   m_TagString: Untagged
@@ -2203,6 +2362,7 @@ RectTransform:
   m_Children:
   - {fileID: 793780388}
   - {fileID: 871678562}
+  - {fileID: 1480327822}
   m_Father: {fileID: 2128978066}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2248,6 +2408,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1313618660}
   m_CullTransparentMesh: 1
+--- !u!114 &1313618665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1313618660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 822ce4dd69ac94fe7bd52a9e93b4c798, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  karakterler:
+  - karakterAdi: ece
+    gorunenIsim: ece
+  - karakterAdi: mert
+    gorunenIsim: mert
+  butonPrefab: {fileID: 650138890155779239, guid: 0c8264714bb504121a41400a664dfc8d,
+    type: 3}
+  butonParent: {fileID: 1480327822}
+  profilGosterici: {fileID: 967514837}
 --- !u!1 &1416057004
 GameObject:
   m_ObjectHideFlags: 0
@@ -2259,7 +2440,7 @@ GameObject:
   - component: {fileID: 1416057006}
   - component: {fileID: 1416057005}
   m_Layer: 0
-  m_Name: DiyalogYoneticisiObjesi
+  m_Name: "MertDosyas\u0131DiyalogYoneticisi"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2301,6 +2482,41 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1480327821
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1480327822}
+  m_Layer: 5
+  m_Name: KarakterButonParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1480327822
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1480327821}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1313618661}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1502271628
 GameObject:
   m_ObjectHideFlags: 0
@@ -2521,7 +2737,7 @@ GameObject:
   - component: {fileID: 1726824341}
   - component: {fileID: 1726824340}
   m_Layer: 0
-  m_Name: SeansGecisKontrol
+  m_Name: MertSeansGecisKontrol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2707,6 +2923,59 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1944472398
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1944472400}
+  - component: {fileID: 1944472399}
+  m_Layer: 0
+  m_Name: EceDiyalogYoneticisiObjesi (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1944472399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1944472398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d72713b191636409286cc50f1cd6d70c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seansAnalizGoster: 0000000001
+  seceneklerGecikmesi: 5
+  analizGecikmesi: 5
+  npcText: {fileID: 1158091930}
+  secimSistemi: {fileID: 2033656150}
+  analizGosterici: {fileID: 15884472}
+  gecikmeGostergesi: {fileID: 0}
+  diyalogJson: {fileID: 4900000, guid: a01ae30a412f343b09d3cee426149d15, type: 3}
+  diyalogPanel: {fileID: 1882965873}
+--- !u!4 &1944472400
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1944472398}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 701.3726, y: 293.81268, z: 75.35657}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1990396846
 GameObject:
   m_ObjectHideFlags: 0
@@ -2736,10 +3005,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da0f4af3ee48844f2a677dbb3eca4d1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seansSistemi: {fileID: 2033656149}
+  seansSistemleri:
+  - {fileID: 1416057004}
+  - {fileID: 1944472398}
   diyalogPaneli: {fileID: 1882965873}
   crosshairObjesi: {fileID: 1699473839}
-  seansObjesi: {fileID: 73803330}
   profilGosterici: {fileID: 967514837}
 --- !u!4 &1990396848
 Transform:
@@ -3128,11 +3398,14 @@ SceneRoots:
   - {fileID: 1904164356}
   - {fileID: 2033656151}
   - {fileID: 1416057006}
+  - {fileID: 1944472400}
   - {fileID: 1031299678}
   - {fileID: 2128978066}
   - {fileID: 1726824341}
+  - {fileID: 445837024}
   - {fileID: 15884473}
   - {fileID: 1990396848}
   - {fileID: 54080770}
-  - {fileID: 73803334}
   - {fileID: 967514836}
+  - {fileID: 73803334}
+  - {fileID: 343375270}
