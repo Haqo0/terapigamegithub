@@ -15,11 +15,15 @@ public class AnalizGosterici : MonoBehaviour
     [Header("Butonlar")]
     public GameObject yeniseansButonu;
     public GameObject kapatButonu;
+    public GameObject devamEtButonu;
 
     [Header("Gecikme")]
     public float analizGecikmesi = 2.0f;
 
-    // geçmiş analizleri saklamak için liste
+    [Header("Bağlantılar")]
+    public CrosshairEtkilesim crosshairRef;
+
+    // Geçmiş analizleri saklamak için liste
     private List<string> analizKayitlari = new List<string>();
 
     private void Awake()
@@ -27,7 +31,7 @@ public class AnalizGosterici : MonoBehaviour
         instance = this;
     }
 
-    //Seans sonunda çağrılır
+    // Seans sonunda çağrılır
     public void AnalizeGoster(AnalizSonucu analiz, Dictionary<string, int> puanlar, List<string> secimler)
     {
         foreach (GameObject panel in paneller)
@@ -42,13 +46,13 @@ public class AnalizGosterici : MonoBehaviour
 
         if (kapatButonu != null) kapatButonu.SetActive(true);
         if (yeniseansButonu != null) yeniseansButonu.SetActive(true);
+        if (devamEtButonu != null) devamEtButonu.SetActive(true);
 
         if (paneller.Count > 0)
         {
             paneller[0].SetActive(true); // örneğin AnalizPaneli
         }
 
-        // analiz ozetini geçmişe ekle
         analizKayitlari.Add(analiz.ozet);
     }
 
@@ -71,7 +75,6 @@ public class AnalizGosterici : MonoBehaviour
         if (analizMetni != null)
         {
             analizMetni.text = "<b>Geçmiş Seans Analizleri</b>\n\n";
-
             foreach (string kayit in analizKayitlari)
             {
                 analizMetni.text += "• " + kayit + "\n\n";
@@ -79,7 +82,25 @@ public class AnalizGosterici : MonoBehaviour
         }
 
         if (kapatButonu != null) kapatButonu.SetActive(true);
-        if (yeniseansButonu != null) yeniseansButonu.SetActive(false); // yeni seans butonu gerekmez
+        if (yeniseansButonu != null) yeniseansButonu.SetActive(false);
+        if (devamEtButonu != null) devamEtButonu.SetActive(false);
+    }
+
+    // Sadece analiz panelini kapatır ve crosshair'i geri getirir
+    public void SeansaDevamEt()
+    {
+        PaneliKapat();
+
+        if (crosshairRef != null)
+        {
+            crosshairRef.CrosshairVeKontrolGeriGetir();
+        }
+        else
+        {
+            Debug.LogWarning("CrosshairEtkilesim referansı atanmadı!");
+        }
+
+        Debug.Log("Seansa devam edildi, analiz paneli kapatıldı.");
     }
 
     public void PaneliKapat()
@@ -91,5 +112,9 @@ public class AnalizGosterici : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        if (devamEtButonu != null) devamEtButonu.SetActive(false);
+        if (kapatButonu != null) kapatButonu.SetActive(false);
+        if (yeniseansButonu != null) yeniseansButonu.SetActive(false);
     }
 }
