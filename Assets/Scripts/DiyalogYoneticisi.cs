@@ -52,7 +52,7 @@ public class DiyalogYoneticisi : MonoBehaviour
 
         if (diyalogPanel != null)
         {
-            diyalogPanel.SetActive(true);
+            diyalogPanel.SetActive(false);
         }
         else
         {
