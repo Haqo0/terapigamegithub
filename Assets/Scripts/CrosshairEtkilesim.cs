@@ -14,7 +14,7 @@ public class CrosshairEtkilesim : MonoBehaviour
 
     public ProfilGosterici profilGosterici;
 
-    private GameObject sonTiklananObj; // ✅ Eklenen satır
+    private GameObject sonTiklananObj;
 
     void Awake()
     {
@@ -89,27 +89,17 @@ public class CrosshairEtkilesim : MonoBehaviour
             return;
         }
 
-        // ❌ Artık hiçbir seans objesi kapatılmıyor
+        // ❌ Direkt olarak diyalog başlatmıyoruz
+        // ✅ Cutscene üzerinden başlatılacak
+        KarakterYonetici.instance.KarakterSeansiBaslat(seansVerileri.karakterAdi);
 
-        seansVerileri.seansSistemi.SetActive(true);
-        StartCoroutine(DiyalogYoneticisiKontrolEt(seansVerileri));
+        // UI ve kontrol kısıtlamaları
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        crosshairObjesi.SetActive(false);
 
-        SeansGecisYoneticisi gecisYoneticisi = seansVerileri.seansSistemi.GetComponent<SeansGecisYoneticisi>();
-        if (gecisYoneticisi == null)
-            gecisYoneticisi = seansVerileri.seansSistemi.GetComponentInChildren<SeansGecisYoneticisi>();
-
-        if (gecisYoneticisi != null)
-        {
-            gecisYoneticisi.JsonDosyalariniAyarla(seansVerileri.jsonDosyalari);
-            Debug.Log($"{seansVerileri.karakterAdi} için {seansVerileri.jsonDosyalari.Length} JSON dosyası yüklendi");
-        }
-        else
-        {
-            Debug.LogWarning($"SeansGecisYoneticisi bulunamadı: {seansVerileri.seansSistemi.name}");
-        }
-
-        if (diyalogPaneli != null)
-            diyalogPaneli.SetActive(true);
+        if (kameraKontrolScripti != null)
+            kameraKontrolScripti.enabled = false;
 
         Collider objCollider = tiklananObj.GetComponent<Collider>();
         if (objCollider != null)
@@ -118,40 +108,10 @@ public class CrosshairEtkilesim : MonoBehaviour
             Debug.Log($"{tiklananObj.name} objesi tıklanamaz yapıldı");
         }
 
-        // ✅ Tıklanan objeyi hatırla
         sonTiklananObj = tiklananObj;
-
         seansBasladi = true;
 
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        crosshairObjesi.SetActive(false);
-
-        if (kameraKontrolScripti != null)
-            kameraKontrolScripti.enabled = false;
-
-        Debug.Log($"Seans başlatıldı: {seansVerileri.karakterAdi} ({tiklananObj.name})");
-    }
-
-    private System.Collections.IEnumerator DiyalogYoneticisiKontrolEt(SeansVerileri seansVerileri)
-    {
-        yield return new WaitForSeconds(0.1f);
-
-        GameObject seansSistemi = seansVerileri.seansSistemi;
-        DiyalogYoneticisi diyalogYoneticisi = seansSistemi.GetComponent<DiyalogYoneticisi>();
-
-        if (diyalogYoneticisi == null)
-            diyalogYoneticisi = seansSistemi.GetComponentInChildren<DiyalogYoneticisi>();
-
-        if (diyalogYoneticisi != null && seansVerileri.jsonDosyalari.Length > 0)
-        {
-            diyalogYoneticisi.diyalogJson = seansVerileri.jsonDosyalari[0];
-            diyalogYoneticisi.SeansiYenidenBaslat();
-        }
-        else
-        {
-            Debug.LogError("DiyalogYoneticisi bulunamadı veya JSON yok.");
-        }
+        Debug.Log($"Seans başlatıldı (cutscene ile): {seansVerileri.karakterAdi} ({tiklananObj.name})");
     }
 
     public void SeansiBitir()
@@ -164,7 +124,6 @@ public class CrosshairEtkilesim : MonoBehaviour
         if (kameraKontrolScripti != null)
             kameraKontrolScripti.enabled = true;
 
-        // ✅ Sadece son tıklanan objeyi tekrar aktif hale getir
         if (sonTiklananObj != null)
         {
             Collider objCollider = sonTiklananObj.GetComponent<Collider>();
