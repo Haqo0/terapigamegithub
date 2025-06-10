@@ -40,13 +40,17 @@ public class DiyalogYoneticisi : MonoBehaviour
     private Coroutine analizGostermeCoroutine;
 
     // Her karakter kendi seans sayacını tutsun
-    private int mevcutSeansIndex = 0;
+    public int mevcutSeansIndex = 0;
+
+    public static DiyalogYoneticisi instance;
 
     // Static değil - her karakterin kendi instance'ı
     public static Dictionary<string, DiyalogYoneticisi> karakterInstances = new Dictionary<string, DiyalogYoneticisi>();
 
     private void Awake()
     {
+
+        instance = this;
         // Her karakterin kendi instance'ını kaydet
         if (!karakterInstances.ContainsKey(karakterAdi))
         {
@@ -181,7 +185,7 @@ public class DiyalogYoneticisi : MonoBehaviour
             if (diyalogPanel != null)
                 diyalogPanel.SetActive(false);
 
-            SeansiGecir();
+            SeansiGecirPrivate();
         }
     }
 
@@ -204,9 +208,10 @@ public class DiyalogYoneticisi : MonoBehaviour
         Debug.Log($"{karakterAdi} - Analiz gösteriliyor - Seans {mevcutSeansIndex + 1}");
     }
 
-    void SeansiGecir()
+    // Public metod - AnalizGosterici'den çağrılabilir
+    public void SeansiGecir()
     {
-        // Karakter-spesifik geçiş sistemi kullan
+        // Normal seans geçiş akışı - SeansGecisYoneticisi'ni kullan
         SeansGecisYoneticisi gecisYoneticisi = GetComponent<SeansGecisYoneticisi>();
         if (gecisYoneticisi != null)
         {
@@ -216,6 +221,12 @@ public class DiyalogYoneticisi : MonoBehaviour
         {
             Debug.LogError($"{karakterAdi} için SeansGecisYoneticisi bulunamadı!");
         }
+    }
+
+    void SeansiGecirPrivate()
+    {
+        // Internal kullanım için
+        SeansiGecir();
     }
 
     private bool ShouldShowAnalysis()

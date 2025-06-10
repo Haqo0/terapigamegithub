@@ -156,7 +156,7 @@ MonoBehaviour:
   - {fileID: 1257172178}
   - {fileID: 1882965873}
   analizMetni: {fileID: 876453889}
-  yeniseansButonu: {fileID: 0}
+  yeniseansButonu: {fileID: 2084194345}
   kapatButonu: {fileID: 428431658}
   analizGecikmesi: 2
 --- !u!4 &15884473
@@ -543,6 +543,7 @@ MonoBehaviour:
   gecikmeGostergesi: {fileID: 0}
   ilkSeansJson: {fileID: 4900000, guid: ae04098e94477425aab758d15dbfbfaa, type: 3}
   diyalogPanel: {fileID: 1882965873}
+  mevcutSeansIndex: 0
 --- !u!114 &214440757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1182,21 +1183,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1990396847}
-        m_TargetAssemblyTypeName: CrosshairEtkilesim, Assembly-CSharp
-        m_MethodName: CrosshairVeKontrolGeriGetir
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: DiyalogYoneticisi, Assembly-CSharp
-        m_MethodName: PanelleriKapat
+      - m_Target: {fileID: 15884472}
+        m_TargetAssemblyTypeName: AnalizGosterici, Assembly-CSharp
+        m_MethodName: PaneliKapat
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4881,7 +4870,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   karakterAdi: mert
-  seansAnalizGoster: 0000000001
+  seansAnalizGoster: 0001000001
   seceneklerGecikmesi: 5
   analizGecikmesi: 5
   npcText: {fileID: 1158091930}
@@ -4890,6 +4879,7 @@ MonoBehaviour:
   gecikmeGostergesi: {fileID: 0}
   ilkSeansJson: {fileID: 4900000, guid: 576204cf5df82444bb4da93d9b25a3d4, type: 3}
   diyalogPanel: {fileID: 1882965873}
+  mevcutSeansIndex: 0
 --- !u!114 &1865659060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5552,7 +5542,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 15884472}
         m_TargetAssemblyTypeName: AnalizGosterici, Assembly-CSharp
-        m_MethodName: SeansaDevamEt
+        m_MethodName: DevamEt
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

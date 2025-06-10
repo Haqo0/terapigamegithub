@@ -92,7 +92,7 @@ public class SeansGecisYoneticisi : MonoBehaviour
         }
     }
 
-    private void DevamEt()
+    public void DevamEt()
     {
         Debug.Log($"{karakterAdi} - DevamEt() çağrıldı. Güncel seans index: {guncelSeansIndex}");
 
@@ -104,6 +104,12 @@ public class SeansGecisYoneticisi : MonoBehaviour
 
             if (devamButonu != null)
                 devamButonu.gameObject.SetActive(false);
+
+            // Çıkış cutscene'ini başlat
+            if (KarakterYonetici.instance != null)
+            {
+                KarakterYonetici.instance.SeansSonuCutsceneBaslat();
+            }
 
             return;
         }

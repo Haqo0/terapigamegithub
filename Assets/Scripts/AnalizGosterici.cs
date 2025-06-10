@@ -54,6 +54,45 @@ public class AnalizGosterici : MonoBehaviour
         // Cursor ayarları
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        if (DiyalogYoneticisi.instance != null)
+        {
+            if (DiyalogYoneticisi.instance.mevcutSeansIndex >= 4)
+            {
+                yeniseansButonu.SetActive(false);
+            }
+        }
+    }
+
+    // DevamEt butonu - Normal analiz akışını sürdürür
+    public void DevamEt()
+    {
+        foreach (GameObject panel in paneller)
+        {
+            panel.SetActive(false);
+        }
+
+        // Normal akışı sürdür - SeansiGecir metodunu çağır
+        if (KarakterYonetici.instance != null)
+        {
+            KarakterVerisi aktifKarakter = KarakterYonetici.instance.GetAktifKarakter();
+            if (aktifKarakter != null)
+            {
+                DiyalogYoneticisi diyalogYoneticisi = aktifKarakter.karakterPrefab.GetComponentInChildren<DiyalogYoneticisi>();
+                if (diyalogYoneticisi != null)
+                {
+                    Debug.Log("Normal akış sürdürülüyor - Seans geçiş paneli gösterilecek");
+                    diyalogYoneticisi.SeansiGecir(); // Normal geçiş (seans geçiş paneli ile)
+                }
+                else
+                {
+                    Debug.LogError("DiyalogYoneticisi bulunamadı!");
+                }
+            }
+        }
+
+        // Cursor ayarlarını normale döndür
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     // 🎯 Not defterine tıklanınca çağrılır
@@ -111,20 +150,30 @@ public class AnalizGosterici : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
+
+        if (DiyalogYoneticisi.instance != null)
+        {
+            if (DiyalogYoneticisi.instance.mevcutSeansIndex >= 4)
+            {
+               KarakterYonetici.instance.SeansSonuCutsceneBaslat();  
+            }
+        }
     }
 
-    // Yeni seans butonu için
     public void YeniSeansaBasla()
     {
-        PaneliKapat();
-        
-        // Tüm karakterlerin seanslarını sıfırla
-        foreach (var kvp in DiyalogYoneticisi.karakterInstances)
+        foreach (GameObject panel in paneller)
         {
-            kvp.Value.SeansIndexSifirla();
+            panel.SetActive(false);
         }
 
-        Debug.Log("Yeni seans başlatıldı - Tüm karakterler sıfırlandı");
+        // Karakteri sıfırla ve idle moda dön
+        if (KarakterYonetici.instance != null)
+        {
+            KarakterYonetici.instance.IdleModaDon();
+        }
+
+        Debug.Log("Yeni seans için idle moda döndü");
     }
 
     // Analiz kayıtlarını temizleme (debug için)
