@@ -15,15 +15,11 @@ public class AnalizGosterici : MonoBehaviour
     [Header("Butonlar")]
     public GameObject yeniseansButonu;
     public GameObject kapatButonu;
-    public GameObject devamEtButonu;
 
     [Header("Gecikme")]
     public float analizGecikmesi = 2.0f;
 
-    [Header("Bağlantılar")]
-    public CrosshairEtkilesim crosshairRef;
-
-    // Geçmiş analizleri saklamak için liste
+    // ✅ Yeni: geçmiş analizleri saklamak için liste
     private List<string> analizKayitlari = new List<string>();
 
     private void Awake()
@@ -31,7 +27,7 @@ public class AnalizGosterici : MonoBehaviour
         instance = this;
     }
 
-    // Seans sonunda çağrılır
+    // 🎯 Seans sonunda çağrılır
     public void AnalizeGoster(AnalizSonucu analiz, Dictionary<string, int> puanlar, List<string> secimler)
     {
         foreach (GameObject panel in paneller)
@@ -46,17 +42,21 @@ public class AnalizGosterici : MonoBehaviour
 
         if (kapatButonu != null) kapatButonu.SetActive(true);
         if (yeniseansButonu != null) yeniseansButonu.SetActive(true);
-        if (devamEtButonu != null) devamEtButonu.SetActive(true);
 
         if (paneller.Count > 0)
         {
             paneller[0].SetActive(true); // örneğin AnalizPaneli
         }
 
+        // ✅ Yeni: analiz ozetini geçmişe ekle
         analizKayitlari.Add(analiz.ozet);
+
+        // Cursor ayarları
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
-    // Not defterine tıklanınca çağrılır
+    // 🎯 Not defterine tıklanınca çağrılır
     public void GecmisAnalizleriGoster()
     {
         foreach (GameObject panel in paneller)
@@ -75,32 +75,22 @@ public class AnalizGosterici : MonoBehaviour
         if (analizMetni != null)
         {
             analizMetni.text = "<b>Geçmiş Seans Analizleri</b>\n\n";
-            foreach (string kayit in analizKayitlari)
+
+            if (analizKayitlari.Count == 0)
             {
-                analizMetni.text += "• " + kayit + "\n\n";
+                analizMetni.text += "Henüz analiz kaydı bulunmuyor.";
+            }
+            else
+            {
+                foreach (string kayit in analizKayitlari)
+                {
+                    analizMetni.text += "• " + kayit + "\n\n";
+                }
             }
         }
 
         if (kapatButonu != null) kapatButonu.SetActive(true);
-        if (yeniseansButonu != null) yeniseansButonu.SetActive(false);
-        if (devamEtButonu != null) devamEtButonu.SetActive(false);
-    }
-
-    // Sadece analiz panelini kapatır ve crosshair'i geri getirir
-    public void SeansaDevamEt()
-    {
-        PaneliKapat();
-
-        if (crosshairRef != null)
-        {
-            crosshairRef.CrosshairVeKontrolGeriGetir();
-        }
-        else
-        {
-            Debug.LogWarning("CrosshairEtkilesim referansı atanmadı!");
-        }
-
-        Debug.Log("Seansa devam edildi, analiz paneli kapatıldı.");
+        if (yeniseansButonu != null) yeniseansButonu.SetActive(false); // yeni seans butonu gerekmez
     }
 
     public void PaneliKapat()
@@ -110,11 +100,44 @@ public class AnalizGosterici : MonoBehaviour
             panel.SetActive(false);
         }
 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        // CrosshairEtkilesim varsa cursor ayarlarını ona bırak
+        if (CrosshairEtkilesim.instance != null)
+        {
+            CrosshairEtkilesim.instance.CrosshairVeKontrolGeriGetir();
+        }
+        else
+        {
+            // Fallback cursor ayarları
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+    }
 
-        if (devamEtButonu != null) devamEtButonu.SetActive(false);
-        if (kapatButonu != null) kapatButonu.SetActive(false);
-        if (yeniseansButonu != null) yeniseansButonu.SetActive(false);
+    // Yeni seans butonu için
+    public void YeniSeansaBasla()
+    {
+        PaneliKapat();
+        
+        // Tüm karakterlerin seanslarını sıfırla
+        foreach (var kvp in DiyalogYoneticisi.karakterInstances)
+        {
+            kvp.Value.SeansIndexSifirla();
+        }
+
+        Debug.Log("Yeni seans başlatıldı - Tüm karakterler sıfırlandı");
+    }
+
+    // Analiz kayıtlarını temizleme (debug için)
+    [ContextMenu("Analiz Kayıtlarını Temizle")]
+    public void AnalizKayitlariniTemizle()
+    {
+        analizKayitlari.Clear();
+        Debug.Log("Analiz kayıtları temizlendi");
+    }
+
+    [ContextMenu("Kayıtlı Analiz Sayısını Göster")]
+    public void KayitliAnalizSayisiniGoster()
+    {
+        Debug.Log($"Toplam kayıtlı analiz sayısı: {analizKayitlari.Count}");
     }
 }

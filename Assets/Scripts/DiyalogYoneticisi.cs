@@ -6,8 +6,12 @@ using System.Linq;
 
 public class DiyalogYoneticisi : MonoBehaviour
 {
+    [Header("Karakter Bilgisi")]
+    [Tooltip("Bu diyalog yöneticisinin hangi karaktere ait olduğunu belirler")]
+    public string karakterAdi = "mert"; // "mert" veya "ece"
+    
     [Header("Analiz Kontrolü")]
-    [Tooltip("Her seans için analiz gösterilip gösterilmeyeceğini belirler. Index 0 = Seans 1")]
+    [Tooltip("Her seans için analiz gösterilip gösterilmeyeceğini belirler")]
     public bool[] seansAnalizGoster;
 
     [Header("Zaman Ayarları")]
@@ -20,8 +24,8 @@ public class DiyalogYoneticisi : MonoBehaviour
     public AnalizGosterici analizGosterici;
     public SecenekGecikmesi gecikmeGostergesi;
 
-    [Header("Veri")]
-    public TextAsset diyalogJson;
+    [Header("İlk Seans Verisi")]
+    public TextAsset ilkSeansJson;
 
     [Header("Paneller")]
     public GameObject diyalogPanel;
@@ -35,34 +39,59 @@ public class DiyalogYoneticisi : MonoBehaviour
     private Coroutine secenekGostermeCoroutine;
     private Coroutine analizGostermeCoroutine;
 
+    // Her karakter kendi seans sayacını tutsun
     private int mevcutSeansIndex = 0;
 
-    public static DiyalogYoneticisi instance;
+    // Static değil - her karakterin kendi instance'ı
+    public static Dictionary<string, DiyalogYoneticisi> karakterInstances = new Dictionary<string, DiyalogYoneticisi>();
 
     private void Awake()
     {
-        instance = this;
+        // Her karakterin kendi instance'ını kaydet
+        if (!karakterInstances.ContainsKey(karakterAdi))
+        {
+            karakterInstances[karakterAdi] = this;
+        }
+        else
+        {
+            Debug.LogWarning($"Aynı karakter ({karakterAdi}) için birden fazla DiyalogYoneticisi bulundu!");
+        }
     }
 
-    private void Start()
+    void Start()
     {
-        // Otomatik başlatmayı engellemek için güvenlik
-        if (diyalogJson == null)
+        // SADECE VERİLERİ HAZIRLA, SEANSI BAŞLATMA!
+        if (ilkSeansJson != null)
         {
-            Debug.LogWarning($"{gameObject.name}: JSON atanmadığı için Start() iptal edildi.");
+            diyalogData = JsonUtility.FromJson<DiyalogData>(ilkSeansJson.text);
+            adimlar = diyalogData.adimlar;
+            
+            Debug.Log($"{karakterAdi} - Veriler hazırlandı: {ilkSeansJson.name} (Henüz başlatılmadı)");
+        }
+        else
+        {
+            Debug.LogError($"{karakterAdi} için ilk seans JSON'u atanmamış!");
+        }
+
+        // Panel'i kapat - sadece seçildiğinde açılacak
+        if (diyalogPanel != null)
+            diyalogPanel.SetActive(false);
+    }
+
+    // Seansı manuel başlatma metodu
+    public void SeansiBaslat()
+    {
+        if (diyalogData == null || adimlar == null)
+        {
+            Debug.LogError($"{karakterAdi} - Veri yüklenmemiş, seans başlatılamıyor!");
             return;
         }
 
-        if (diyalogPanel == null || !diyalogPanel.activeInHierarchy)
-        {
-            Debug.LogWarning($"{gameObject.name}: Panel aktif değil → Start() iptal.");
-            return;
-        }
+        if (diyalogPanel != null)
+            diyalogPanel.SetActive(true);
 
-        Debug.Log($"{gameObject.name}: Start() → JSON verisi yükleniyor.");
-        diyalogData = JsonUtility.FromJson<DiyalogData>(diyalogJson.text);
-        adimlar = diyalogData.adimlar;
-
+        Debug.Log($"{karakterAdi} - Seans başlatılıyor: Seans {mevcutSeansIndex + 1}");
+        DebugSeansAnalizDurumu();
         AdimiYukle("1");
     }
 
@@ -75,14 +104,12 @@ public class DiyalogYoneticisi : MonoBehaviour
 
         if (mevcutAdim == null)
         {
-            Debug.LogWarning($"ID bulunamadı: {id}");
+            Debug.LogWarning($"{karakterAdi} - ID bulunamadı: {id}");
             return;
         }
 
         secimSistemi.SecenekleriTemizle();
-
-        if (npcText != null)
-            npcText.text = mevcutAdim.anlatim;
+        npcText.text = mevcutAdim.anlatim;
 
         if (mevcutAdim.seansSonu)
         {
@@ -91,7 +118,9 @@ public class DiyalogYoneticisi : MonoBehaviour
         }
 
         if (mevcutAdim.secenekler != null && mevcutAdim.secenekler.Count > 0)
+        {
             secenekGostermeCoroutine = StartCoroutine(SeçenekleriGecikmeligöster());
+        }
     }
 
     private IEnumerator SeçenekleriGecikmeligöster()
@@ -121,6 +150,9 @@ public class DiyalogYoneticisi : MonoBehaviour
         }
 
         secimSistemi.SecenekleriTemizle();
+
+        Debug.Log($"{karakterAdi} - Seçim yapıldı: {secilenSecenek.metin}");
+
         AdimiYukle(secilenSecenek.sonrakiID);
     }
 
@@ -132,12 +164,20 @@ public class DiyalogYoneticisi : MonoBehaviour
 
     private void SeansiSonlandir()
     {
+        Debug.Log($"=== {karakterAdi.ToUpper()} SEANS SONLANIYOR ===");
+        Debug.Log($"Mevcut Seans Index: {mevcutSeansIndex}");
+
         bool analizGosterilecekMi = ShouldShowAnalysis();
+        Debug.Log($"Analiz gösterilecek mi: {analizGosterilecekMi}");
 
         if (analizGosterilecekMi)
+        {
             analizGostermeCoroutine = StartCoroutine(AnalizeGecikmeliGoster());
+        }
         else
         {
+            Debug.Log($"{karakterAdi} Seans {mevcutSeansIndex + 1} için analiz atlandı");
+
             if (diyalogPanel != null)
                 diyalogPanel.SetActive(false);
 
@@ -147,36 +187,60 @@ public class DiyalogYoneticisi : MonoBehaviour
 
     private IEnumerator AnalizeGecikmeliGoster()
     {
+        Debug.Log($"{karakterAdi} - Analiz paneli {analizGecikmesi} saniye sonra gösterilecek...");
         yield return new WaitForSeconds(analizGecikmesi);
 
         AnalizSonucu uygunAnaliz = AnaliziBul();
         if (uygunAnaliz == null)
+        {
+            Debug.LogWarning($"{karakterAdi} - Uygun analiz bulunamadı");
             uygunAnaliz = VarsayilanAnalizOlustur();
+        }
 
         if (diyalogPanel != null)
             diyalogPanel.SetActive(false);
 
         analizGosterici.AnalizeGoster(uygunAnaliz, secimPuanlari, yapilanSecimler);
+        Debug.Log($"{karakterAdi} - Analiz gösteriliyor - Seans {mevcutSeansIndex + 1}");
     }
 
     void SeansiGecir()
     {
-        SeansGecisYoneticisi.SeansiHazirla();
+        // Karakter-spesifik geçiş sistemi kullan
+        SeansGecisYoneticisi gecisYoneticisi = GetComponent<SeansGecisYoneticisi>();
+        if (gecisYoneticisi != null)
+        {
+            gecisYoneticisi.SeansiHazirlaKarakterSpesifik(karakterAdi);
+        }
+        else
+        {
+            Debug.LogError($"{karakterAdi} için SeansGecisYoneticisi bulunamadı!");
+        }
     }
 
     private bool ShouldShowAnalysis()
     {
         if (seansAnalizGoster == null || seansAnalizGoster.Length == 0)
+        {
+            Debug.LogWarning($"{karakterAdi} - seansAnalizGoster dizisi boş!");
             return false;
+        }
 
         if (mevcutSeansIndex >= 0 && mevcutSeansIndex < seansAnalizGoster.Length)
-            return seansAnalizGoster[mevcutSeansIndex];
+        {
+            bool sonuc = seansAnalizGoster[mevcutSeansIndex];
+            Debug.Log($"{karakterAdi} Seans {mevcutSeansIndex + 1} - Analiz: {(sonuc ? "GÖSTER" : "ATLA")}");
+            return sonuc;
+        }
 
+        Debug.LogWarning($"{karakterAdi} - Seans index ({mevcutSeansIndex}) dizi boyutunun ({seansAnalizGoster.Length}) dışında!");
         return false;
     }
 
     private AnalizSonucu AnaliziBul()
     {
+        if (diyalogData?.analizSonuclari == null) return null;
+
         foreach (AnalizSonucu analiz in diyalogData.analizSonuclari)
         {
             bool uygun = true;
@@ -200,44 +264,11 @@ public class DiyalogYoneticisi : MonoBehaviour
         return null;
     }
 
-    public void PanelleriKapat()
-    {
-        if (diyalogPanel != null)
-            diyalogPanel.SetActive(false);
-
-        if (analizGosterici != null)
-            analizGosterici.PaneliKapat();
-    }
-
-    private AnalizSonucu VarsayilanAnalizOlustur()
-    {
-        return new AnalizSonucu
-        {
-            baslik = "Genel Değerlendirme",
-            aciklama = "Bu seans için özel bir analiz bulunamadı.",
-            detay = "Seçimleriniz kaydedildi ve genel değerlendirme yapıldı.",
-            ozet = "Seansınız tamamlandı.",
-            gerekenEtiketler = new List<string>(),
-            minPuan = 0
-        };
-    }
-
-    public void PanelleriKapatVeDevamEt()
-    {
-        if (diyalogPanel != null)
-            diyalogPanel.SetActive(false);
-
-        if (analizGosterici != null)
-            analizGosterici.PaneliKapat();
-
-        SeansGecisYoneticisi.SeansiHazirla();
-    }
-
     public void SonrakiSeansiBaslat(TextAsset yeniJson)
     {
         if (yeniJson == null)
         {
-            Debug.LogWarning("Yeni JSON dosyası atanmadı.");
+            Debug.LogWarning($"{karakterAdi} - Yeni JSON dosyası atanmadı.");
             return;
         }
 
@@ -249,8 +280,7 @@ public class DiyalogYoneticisi : MonoBehaviour
 
         mevcutSeansIndex++;
 
-        diyalogJson = yeniJson;
-        diyalogData = JsonUtility.FromJson<DiyalogData>(diyalogJson.text);
+        diyalogData = JsonUtility.FromJson<DiyalogData>(yeniJson.text);
         adimlar = diyalogData.adimlar;
         yapilanSecimler.Clear();
         secimPuanlari.Clear();
@@ -258,7 +288,128 @@ public class DiyalogYoneticisi : MonoBehaviour
         if (diyalogPanel != null)
             diyalogPanel.SetActive(true);
 
+        Debug.Log($"{karakterAdi} - Yeni seans başlatıldı: {yeniJson.name} - Seans {mevcutSeansIndex + 1}");
+        DebugSeansAnalizDurumu();
         AdimiYukle("1");
+    }
+
+    // GameObject aktifleştirildiğinde çağrılacak
+    private void OnEnable()
+    {
+        Debug.Log($"{karakterAdi} objesi aktifleştirildi");
+        
+        // Eğer veriler hazırsa ve henüz seans başlamamışsa başlat
+        if (diyalogData != null && adimlar != null)
+        {
+            SeansiBaslat();
+        }
+    }
+
+    // GameObject deaktifleştirildiğinde çağrılacak
+    private void OnDisable()
+    {
+        Debug.Log($"{karakterAdi} objesi deaktifleştirildi");
+        
+        // Çalışan coroutine'leri durdur
+        if (secenekGostermeCoroutine != null)
+            StopCoroutine(secenekGostermeCoroutine);
+
+        if (analizGostermeCoroutine != null)
+            StopCoroutine(analizGostermeCoroutine);
+    }
+
+    private AnalizSonucu VarsayilanAnalizOlustur()
+    {
+        return new AnalizSonucu
+        {
+            baslik = "Genel Değerlendirme",
+            aciklama = "Bu seans için özel bir analiz bulunamadı.",
+            detay = "Seçimleriniz kaydedildi ve genel değerlendirme yapıldı.",
+            ozet = $"{karakterAdi} seansınız tamamlandı.",
+            gerekenEtiketler = new List<string>(),
+            minPuan = 0
+        };
+    }
+
+    private void DebugSeansAnalizDurumu()
+    {
+        Debug.Log($"=== {karakterAdi.ToUpper()} SEANS ANALİZ DURUMU ===");
+        Debug.Log($"Mevcut Seans: {mevcutSeansIndex + 1} (Index: {mevcutSeansIndex})");
+
+        if (seansAnalizGoster != null && seansAnalizGoster.Length > 0)
+        {
+            for (int i = 0; i < seansAnalizGoster.Length; i++)
+            {
+                string durum = seansAnalizGoster[i] ? "ANALİZ GÖSTER" : "ANALİZ ATLA";
+                string aktif = (i == mevcutSeansIndex) ? " ← MEVCUT" : "";
+                Debug.Log($"{karakterAdi} Seans {i + 1}: {durum}{aktif}");
+            }
+        }
+        else
+        {
+            Debug.LogWarning($"{karakterAdi} - seansAnalizGoster dizisi ayarlanmamış!");
+        }
+    }
+
+    // Karakter-spesifik seans sıfırlama
+    [ContextMenu("Seans Index'i Sıfırla")]
+    public void SeansIndexSifirla()
+    {
+        mevcutSeansIndex = 0;
+        Debug.Log($"{karakterAdi} - Seans index sıfırlandı");
+        DebugSeansAnalizDurumu();
+    }
+
+    // Diğer metodlar aynı kalabilir...
+    public void PanelleriKapat()
+    {
+        Debug.Log($"{karakterAdi} - Paneller kapatılıyor...");
+
+        if (diyalogPanel != null)
+            diyalogPanel.SetActive(false);
+
+        if (analizGosterici != null)
+            analizGosterici.PaneliKapat();
+    }
+
+    public void PanelleriKapatVeDevamEt()
+    {
+        Debug.Log($"{karakterAdi} - Paneller kapatılıyor ve seans geçişi başlatılıyor...");
+
+        if (diyalogPanel != null)
+            diyalogPanel.SetActive(false);
+
+        if (analizGosterici != null)
+            analizGosterici.PaneliKapat();
+
+        SeansiGecir();
+    }
+
+    // Geriye uyumluluk için eski özellikler
+    public TextAsset diyalogJson
+    {
+        get { return ilkSeansJson; }
+        set { ilkSeansJson = value; }
+    }
+
+    // Hızlandırma metodları
+    [ContextMenu("Analizi Hemen Göster")]
+    public void AnalizeHemenGöster()
+    {
+        if (analizGostermeCoroutine != null)
+        {
+            StopCoroutine(analizGostermeCoroutine);
+
+            AnalizSonucu uygunAnaliz = AnaliziBul();
+            if (uygunAnaliz == null)
+                uygunAnaliz = VarsayilanAnalizOlustur();
+
+            if (diyalogPanel != null)
+                diyalogPanel.SetActive(false);
+
+            analizGosterici.AnalizeGoster(uygunAnaliz, secimPuanlari, yapilanSecimler);
+            Debug.Log($"{karakterAdi} - Analiz hızlandırılarak gösterildi");
+        }
     }
 
     [ContextMenu("Seçenekleri Hemen Göster")]
@@ -278,9 +429,11 @@ public class DiyalogYoneticisi : MonoBehaviour
         }
     }
 
-    [ContextMenu("Seansı Yeniden Başlat")]
+    // Geriye uyumluluk için eski metodlar
     public void SeansiYenidenBaslat()
     {
+        Debug.Log($"=== {karakterAdi} - Seans sıfırdan başlatılıyor ===");
+
         if (secenekGostermeCoroutine != null)
             StopCoroutine(secenekGostermeCoroutine);
 
@@ -290,48 +443,18 @@ public class DiyalogYoneticisi : MonoBehaviour
         yapilanSecimler.Clear();
         secimPuanlari.Clear();
 
-        if (diyalogJson == null)
+        mevcutSeansIndex = 0;
+        
+        if (ilkSeansJson != null)
         {
-            Debug.LogWarning("Yeniden başlatılacak JSON atanmadı.");
-            return;
+            diyalogData = JsonUtility.FromJson<DiyalogData>(ilkSeansJson.text);
+            adimlar = diyalogData.adimlar;
         }
-
-        diyalogData = JsonUtility.FromJson<DiyalogData>(diyalogJson.text);
-        adimlar = diyalogData.adimlar;
 
         if (diyalogPanel != null)
             diyalogPanel.SetActive(true);
 
+        DebugSeansAnalizDurumu();
         AdimiYukle("1");
     }
-
-    public void DiyalogBaslat(TextAsset yeniJson)
-{
-    if (yeniJson == null)
-    {
-        Debug.LogWarning($"{gameObject.name}: Başlatılacak JSON atanmadı.");
-        return;
-    }
-
-    Debug.Log($"{gameObject.name}: DiyalogBaşlat çağrıldı → {yeniJson.name}");
-
-    if (secenekGostermeCoroutine != null)
-        StopCoroutine(secenekGostermeCoroutine);
-
-    if (analizGostermeCoroutine != null)
-        StopCoroutine(analizGostermeCoroutine);
-
-    mevcutSeansIndex = 0;
-    yapilanSecimler.Clear();
-    secimPuanlari.Clear();
-
-    diyalogJson = yeniJson;
-    diyalogData = JsonUtility.FromJson<DiyalogData>(diyalogJson.text);
-    adimlar = diyalogData.adimlar;
-
-    if (diyalogPanel != null)
-        diyalogPanel.SetActive(true);
-
-    AdimiYukle("1");
-}
 }

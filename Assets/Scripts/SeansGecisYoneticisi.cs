@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class SeansGecisYoneticisi : MonoBehaviour
 {
+    [Header("Karakter Bilgisi")]
+    [Tooltip("Bu geçiş yöneticisinin hangi karaktere ait olduğunu belirler")]
+    public string karakterAdi = "mert"; // "mert" veya "ece"
+    
     [Header("UI Bileşenleri")]
     public GameObject gecisPaneli;
     public TMP_Text gecisMesaji;
@@ -13,18 +17,12 @@ public class SeansGecisYoneticisi : MonoBehaviour
     [Header("Diyalog Yöneticisi")]
     public DiyalogYoneticisi diyalogYoneticisi;
 
-    [Header("Yüklenecek Yeni Seanslar")]
-    public TextAsset[] sonrakiSeanslar;
+    [Header("Bu Karakterin Seansları (Seans 2-3-4-5)")]
+    [Tooltip("Bu karaktere özel seansları sırayla ekleyin")]
+    public TextAsset[] karakterSeansları;
+
+    // Her karakter kendi seans sayacını tutacak
     private int guncelSeansIndex = 0;
-
-    public static SeansGecisYoneticisi instance;
-
-    private bool seansYuklendi = false; // ✅ tekrar yüklemeyi engeller
-
-    private void Awake()
-    {
-        instance = this;
-    }
 
     private void Start()
     {
@@ -33,68 +31,76 @@ public class SeansGecisYoneticisi : MonoBehaviour
 
         if (devamButonu != null)
             devamButonu.gameObject.SetActive(false);
+
+        // Karakter adını kontrol et
+        if (string.IsNullOrEmpty(karakterAdi))
+        {
+            Debug.LogError("Karakter adı atanmamış!");
+        }
+
+        Debug.Log($"{karakterAdi} SeansGecisYoneticisi başlatıldı");
     }
 
-    public void JsonDosyalariniAyarla(TextAsset[] yeniJsonlar)
+    // Karakter-spesifik seans hazırlama
+    public void SeansiHazirlaKarakterSpesifik(string karakter, string mesaj = "Bir sonraki seansa geçiliyor...")
     {
-        sonrakiSeanslar = yeniJsonlar;
-        guncelSeansIndex = 0;
-        seansYuklendi = false;
-        Debug.Log($"SeansGecisYoneticisi: {yeniJsonlar.Length} JSON dosyası ayarlandı");
+        if (karakter != karakterAdi)
+        {
+            Debug.Log($"Bu geçiş yöneticisi {karakterAdi} için, gelen istek {karakter} için - İşlem yapılmıyor");
+            return;
+        }
+
+        if (gecisPaneli != null)
+        {
+            gecisPaneli.SetActive(true);
+            StartCoroutine(GecikmeliMesajVeDevam(mesaj));
+        }
     }
 
+    // Genel static metod - geriye uyumluluk için
     public static void SeansiHazirla(string mesaj = "Bir sonraki seansa geçiliyor...")
     {
-        if (instance != null)
-        {
-            instance.seansYuklendi = false; // ✅ yeni geçişte sıfırla
-            instance.gecisPaneli.SetActive(true);
-            instance.StartCoroutine(instance.GecikmeliMesajVeDevam(mesaj));
-        }
+        Debug.LogWarning("Static SeansiHazirla() kullanıldı - Karakter-spesifik metodları kullanın");
     }
 
     private IEnumerator GecikmeliMesajVeDevam(string mesaj)
     {
+        // Önlem: buton sıfırlansın
         if (devamButonu != null)
         {
             devamButonu.onClick.RemoveAllListeners();
             devamButonu.gameObject.SetActive(false);
         }
 
+        // İlk boş bekleme
         if (gecisMesaji != null)
             gecisMesaji.text = "";
 
         yield return new WaitForSeconds(2f);
 
+        // Mesaj göster
         if (gecisMesaji != null)
             gecisMesaji.text = mesaj;
 
+        // Mesaj görünsün → sonra buton gelsin
         yield return new WaitForSeconds(2.5f);
 
         if (devamButonu != null)
         {
             devamButonu.gameObject.SetActive(true);
-            devamButonu.onClick.AddListener(DevamEtInstance);
+            devamButonu.onClick.AddListener(DevamEt);
         }
     }
 
-    private void DevamEtInstance()
+    private void DevamEt()
     {
-        if (seansYuklendi) return; // ✅ önceden yüklendiyse tekrar yükleme
+        Debug.Log($"{karakterAdi} - DevamEt() çağrıldı. Güncel seans index: {guncelSeansIndex}");
 
-        seansYuklendi = true; // ✅ bir kez yüklendiğini işaretle
-
-        if (sonrakiSeanslar == null || sonrakiSeanslar.Length == 0)
+        if (guncelSeansIndex >= karakterSeansları.Length)
         {
-            Debug.LogWarning("Sonraki seanslar dizisi boş! CrosshairEtkilesim'den JSON'lar atanmamış olabilir.");
-            return;
-        }
-
-        if (guncelSeansIndex >= sonrakiSeanslar.Length)
-        {
-            Debug.Log("Tüm seanslar tamamlandı!");
+            Debug.Log($"{karakterAdi} - Tüm seanslar tamamlandı!");
             if (gecisMesaji != null)
-                gecisMesaji.text = "Terapinin tüm seansları tamamlandı. Teşekkür ederiz.";
+                gecisMesaji.text = $"{karakterAdi} karakterinin tüm seansları tamamlandı.";
 
             if (devamButonu != null)
                 devamButonu.gameObject.SetActive(false);
@@ -102,13 +108,26 @@ public class SeansGecisYoneticisi : MonoBehaviour
             return;
         }
 
-        TextAsset sonrakiJson = sonrakiSeanslar[guncelSeansIndex];
+        TextAsset sonrakiJson = karakterSeansları[guncelSeansIndex];
+        
+        if (sonrakiJson == null)
+        {
+            Debug.LogError($"{karakterAdi} - Seans {guncelSeansIndex + 2} JSON'u atanmamış!");
+            return;
+        }
 
-        Debug.Log($"Yükleniyor: {sonrakiJson.name} (Seans {guncelSeansIndex + 1}/{sonrakiSeanslar.Length})");
-
-        diyalogYoneticisi.SonrakiSeansiBaslat(sonrakiJson);
-
+        Debug.Log($"{karakterAdi} - Sonraki seans yükleniyor: {sonrakiJson.name}");
+        
         guncelSeansIndex++;
+
+        if (diyalogYoneticisi != null)
+        {
+            diyalogYoneticisi.SonrakiSeansiBaslat(sonrakiJson);
+        }
+        else
+        {
+            Debug.LogError($"{karakterAdi} - DiyalogYoneticisi referansı bulunamadı!");
+        }
 
         if (gecisPaneli != null)
             gecisPaneli.SetActive(false);
@@ -117,22 +136,39 @@ public class SeansGecisYoneticisi : MonoBehaviour
             devamButonu.gameObject.SetActive(false);
     }
 
-    [ContextMenu("Debug - Mevcut JSON'ları Listele")]
-    private void DebugMevcutJsonlar()
+    [ContextMenu("Seans Index'i Sıfırla")]
+    public void SeansIndexSifirla()
     {
-        Debug.Log("=== MEVCUT JSON DOSYALARI ===");
-        if (sonrakiSeanslar != null && sonrakiSeanslar.Length > 0)
+        guncelSeansIndex = 0;
+        Debug.Log($"{karakterAdi} - Seans geçiş index'i sıfırlandı");
+    }
+
+    // Geriye uyumluluk için eski metodlar
+    public void JsonDosyalariniAyarla(TextAsset[] jsonDosyalari)
+    {
+        if (jsonDosyalari != null && jsonDosyalari.Length > 0)
         {
-            for (int i = 0; i < sonrakiSeanslar.Length; i++)
-            {
-                string durum = (i < guncelSeansIndex) ? "TAMAMLANDI" :
-                              (i == guncelSeansIndex) ? "SONRAKİ" : "BEKLİYOR";
-                Debug.Log($"Seans {i + 1}: {sonrakiSeanslar[i].name} - {durum}");
-            }
+            karakterSeansları = jsonDosyalari;
+            Debug.Log($"{karakterAdi} - {jsonDosyalari.Length} JSON dosyası ayarlandı");
         }
         else
         {
-            Debug.Log("Hiç JSON dosyası atanmamış!");
+            Debug.LogWarning($"{karakterAdi} - Boş JSON dizisi gönderildi");
+        }
+    }
+
+    [ContextMenu("Mevcut Durumu Göster")]
+    public void MevcutDurumuGoster()
+    {
+        Debug.Log($"=== {karakterAdi.ToUpper()} SEANS GEÇİŞ DURUMU ===");
+        Debug.Log($"Güncel Seans Index: {guncelSeansIndex}");
+        Debug.Log($"Toplam Seans Sayısı: {karakterSeansları.Length}");
+        
+        for (int i = 0; i < karakterSeansları.Length; i++)
+        {
+            string durum = (i == guncelSeansIndex) ? " ← SONRAKİ" : "";
+            string jsonAdi = karakterSeansları[i] != null ? karakterSeansları[i].name : "NULL";
+            Debug.Log($"Seans {i + 2}: {jsonAdi}{durum}");
         }
     }
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028356, g: 0.2257137, b: 0.3069222, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028326, g: 0.22571333, b: 0.30692202, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -158,9 +158,7 @@ MonoBehaviour:
   analizMetni: {fileID: 876453889}
   yeniseansButonu: {fileID: 0}
   kapatButonu: {fileID: 428431658}
-  devamEtButonu: {fileID: 0}
   analizGecikmesi: 2
-  crosshairRef: {fileID: 1990396847}
 --- !u!4 &15884473
 Transform:
   m_ObjectHideFlags: 0
@@ -513,11 +511,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13c96eef58f434549a7a014745130ebf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  karakterAdi: ece
   gecisPaneli: {fileID: 1993992026}
   gecisMesaji: {fileID: 301615634}
   devamButonu: {fileID: 2034720328}
   diyalogYoneticisi: {fileID: 214440756}
-  sonrakiSeanslar: []
+  "karakterSeanslar\u0131":
+  - {fileID: 4900000, guid: 0660221b7a9af4fa9993deff58391a6d, type: 3}
+  - {fileID: 4900000, guid: 87cc80b24b0634d10a9985eab894b0ad, type: 3}
+  - {fileID: 4900000, guid: a1ddf422749d3484bb6fcaf1573f9a70, type: 3}
+  - {fileID: 4900000, guid: ce7155f810e334bbfbbb782348fb2260, type: 3}
 --- !u!114 &214440756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -530,14 +533,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d72713b191636409286cc50f1cd6d70c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seansAnalizGoster: 0000000000
+  karakterAdi: ece
+  seansAnalizGoster: 0000000001
   seceneklerGecikmesi: 5
   analizGecikmesi: 5
   npcText: {fileID: 1158091930}
   secimSistemi: {fileID: 2033656150}
   analizGosterici: {fileID: 15884472}
   gecikmeGostergesi: {fileID: 0}
-  diyalogJson: {fileID: 0}
+  ilkSeansJson: {fileID: 4900000, guid: ae04098e94477425aab758d15dbfbfaa, type: 3}
   diyalogPanel: {fileID: 1882965873}
 --- !u!114 &214440757
 MonoBehaviour:
@@ -1180,7 +1184,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1990396847}
         m_TargetAssemblyTypeName: CrosshairEtkilesim, Assembly-CSharp
-        m_MethodName: SeansiBitir
+        m_MethodName: CrosshairVeKontrolGeriGetir
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4111,16 +4115,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tumKarakterler:
-  - karakterAdi: ece
-    karakterPrefab: {fileID: 214440754}
-    girisCutscene: {fileID: 1317692937}
-    cikisCutscene: {fileID: 1461522325}
-    seansJsonlar:
-    - {fileID: 4900000, guid: ae04098e94477425aab758d15dbfbfaa, type: 3}
-    - {fileID: 4900000, guid: 0660221b7a9af4fa9993deff58391a6d, type: 3}
-    - {fileID: 4900000, guid: 87cc80b24b0634d10a9985eab894b0ad, type: 3}
-    - {fileID: 4900000, guid: a1ddf422749d3484bb6fcaf1573f9a70, type: 3}
-    - {fileID: 4900000, guid: ce7155f810e334bbfbbb782348fb2260, type: 3}
   - karakterAdi: mert
     karakterPrefab: {fileID: 1865659048}
     girisCutscene: {fileID: 1317692937}
@@ -4131,6 +4125,16 @@ MonoBehaviour:
     - {fileID: 4900000, guid: 4e4c63c5cac774f0496bc1db49b68797, type: 3}
     - {fileID: 4900000, guid: 4aeab5b471e714596af83e0924303845, type: 3}
     - {fileID: 4900000, guid: effc9d870a0a04d0797dc20b9be8735d, type: 3}
+  - karakterAdi: ece
+    karakterPrefab: {fileID: 214440754}
+    girisCutscene: {fileID: 1317692937}
+    cikisCutscene: {fileID: 1461522325}
+    seansJsonlar:
+    - {fileID: 4900000, guid: ae04098e94477425aab758d15dbfbfaa, type: 3}
+    - {fileID: 4900000, guid: 0660221b7a9af4fa9993deff58391a6d, type: 3}
+    - {fileID: 4900000, guid: 87cc80b24b0634d10a9985eab894b0ad, type: 3}
+    - {fileID: 4900000, guid: a1ddf422749d3484bb6fcaf1573f9a70, type: 3}
+    - {fileID: 4900000, guid: ce7155f810e334bbfbbb782348fb2260, type: 3}
 --- !u!4 &1434368950
 Transform:
   m_ObjectHideFlags: 0
@@ -4854,11 +4858,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13c96eef58f434549a7a014745130ebf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  karakterAdi: mert
   gecisPaneli: {fileID: 1993992026}
   gecisMesaji: {fileID: 301615634}
   devamButonu: {fileID: 2034720328}
   diyalogYoneticisi: {fileID: 1865659059}
-  sonrakiSeanslar: []
+  "karakterSeanslar\u0131":
+  - {fileID: 4900000, guid: ee4b847078c534237962e4789b608a12, type: 3}
+  - {fileID: 4900000, guid: 4e4c63c5cac774f0496bc1db49b68797, type: 3}
+  - {fileID: 4900000, guid: 4aeab5b471e714596af83e0924303845, type: 3}
+  - {fileID: 4900000, guid: effc9d870a0a04d0797dc20b9be8735d, type: 3}
 --- !u!114 &1865659059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4871,14 +4880,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d72713b191636409286cc50f1cd6d70c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seansAnalizGoster: 0000000000
+  karakterAdi: mert
+  seansAnalizGoster: 0000000001
   seceneklerGecikmesi: 5
   analizGecikmesi: 5
   npcText: {fileID: 1158091930}
   secimSistemi: {fileID: 2033656150}
   analizGosterici: {fileID: 15884472}
   gecikmeGostergesi: {fileID: 0}
-  diyalogJson: {fileID: 0}
+  ilkSeansJson: {fileID: 4900000, guid: 576204cf5df82444bb4da93d9b25a3d4, type: 3}
   diyalogPanel: {fileID: 1882965873}
 --- !u!114 &1865659060
 MonoBehaviour:
@@ -5176,9 +5186,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da0f4af3ee48844f2a677dbb3eca4d1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  seansEslesmeler:
+  - karakterAdi: mert
+    seansObjesi: {fileID: 1865659048}
+  - karakterAdi: ece
+    seansObjesi: {fileID: 214440754}
   diyalogPaneli: {fileID: 1882965873}
   crosshairObjesi: {fileID: 1699473839}
   profilGosterici: {fileID: 1194205281}
+  karakterYonetici: {fileID: 1434368949}
 --- !u!4 &1990396848
 Transform:
   m_ObjectHideFlags: 0

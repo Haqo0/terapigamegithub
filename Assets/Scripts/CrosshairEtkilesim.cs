@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class CrosshairEtkilesim : MonoBehaviour
 {
-    public static CrosshairEtkilesim instance;
+    [Header("Seans Sistemleri")]
+    [Tooltip("Karakterlerin seans sistemlerini karakterAdi ile eşleştirin")]
+    public SeansSistemiEslesmesi[] seansEslesmeler;
 
     [Header("UI Elemanları")]
     public GameObject diyalogPaneli;
@@ -11,18 +13,36 @@ public class CrosshairEtkilesim : MonoBehaviour
     private MonoBehaviour kameraKontrolScripti;
     private Camera kamera;
     private bool seansBasladi = false;
+    private GameObject tiklananObj;
 
     public ProfilGosterici profilGosterici;
+    public KarakterYonetici karakterYonetici;
 
-    private GameObject sonTiklananObj;
+    // Singleton pattern için static instance
+    public static CrosshairEtkilesim instance;
 
-    void Awake()
+    [System.Serializable]
+    public class SeansSistemiEslesmesi
     {
-        instance = this;
+        [Tooltip("Karakter adı (küçük harf): mert, ece")]
+        public string karakterAdi;
+
+        [Tooltip("Bu karakterin seans sistemi objesi")]
+        public GameObject seansObjesi;
     }
 
     void Start()
     {
+        // Singleton pattern
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Debug.LogWarning("Birden fazla CrosshairEtkilesim instance'ı var!");
+        }
+
         kamera = Camera.main;
 
         if (diyalogPaneli != null)
@@ -30,13 +50,17 @@ public class CrosshairEtkilesim : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        crosshairObjesi.SetActive(true);
+
+        if (crosshairObjesi != null)
+            crosshairObjesi.SetActive(true);
 
         kameraKontrolScripti = kamera.GetComponent<MouseCameraKontrol>();
         if (kameraKontrolScripti != null)
             kameraKontrolScripti.enabled = true;
         else
             Debug.LogWarning("Kamera kontrol scripti bulunamadı!");
+
+        Debug.Log("CrosshairEtkilesim başlatıldı");
     }
 
     void Update()
@@ -52,16 +76,38 @@ public class CrosshairEtkilesim : MonoBehaviour
             {
                 if (Input.GetMouseButtonDown(0))
                 {
-                    SeansObjesi seansObjesi = hit.collider.GetComponent<SeansObjesi>();
+                    string karakterAdi = KarakterAdiniCikart(hit.collider.gameObject.name);
 
-                    if (seansObjesi != null)
+                    if (string.IsNullOrEmpty(karakterAdi))
                     {
-                        SeansVerileri seansVerileri = seansObjesi.GetSeansVerileri();
-                        SeansBaslat(seansVerileri, hit.collider.gameObject);
+                        Debug.LogWarning($"Karakter adı çıkarılamadı: {hit.collider.gameObject.name}");
+                        return;
+                    }
+
+                    // KarakterYonetici'den karakteri başlat
+                    if (karakterYonetici != null)
+                    {
+                        karakterYonetici.KarakterSeansiBaslat(karakterAdi);
+                        seansBasladi = true;
+                        Cursor.lockState = CursorLockMode.None;
+                        Cursor.visible = true;
+                        crosshairObjesi.SetActive(false);
+
+                        if (kameraKontrolScripti != null)
+                            kameraKontrolScripti.enabled = false;
+
+                        Collider objCollider = tiklananObj.GetComponent<Collider>();
+                        if (objCollider != null)
+                        {
+                            objCollider.enabled = false;
+                            Debug.Log($"{tiklananObj.name} objesi tıklanamaz yapıldı");
+                        }
+                        tiklananObj = hit.collider.gameObject;
+                        seansBasladi = true;
                     }
                     else
                     {
-                        Debug.LogError($"'{hit.collider.gameObject.name}' objesinde SeansObjesi component'i bulunamadı!");
+                        Debug.LogError("KarakterYonetici referansı bulunamadı!");
                     }
                 }
             }
@@ -75,70 +121,7 @@ public class CrosshairEtkilesim : MonoBehaviour
         }
     }
 
-    private void SeansBaslat(SeansVerileri seansVerileri, GameObject tiklananObj)
-    {
-        if (seansVerileri.seansSistemi == null)
-        {
-            Debug.LogError($"'{tiklananObj.name}' objesi için seans sistemi atanmamış!");
-            return;
-        }
-
-        if (seansVerileri.jsonDosyalari == null || seansVerileri.jsonDosyalari.Length == 0)
-        {
-            Debug.LogError($"'{tiklananObj.name}' objesi için JSON dosyaları atanmamış!");
-            return;
-        }
-
-        // ✅ JSON dosyalarını geçiş yöneticisine aktar
-        SeansGecisYoneticisi.instance.JsonDosyalariniAyarla(seansVerileri.jsonDosyalari);
-
-        // ✅ Cutscene üzerinden başlatılacak
-        KarakterYonetici.instance.KarakterSeansiBaslat(seansVerileri.karakterAdi);
-
-        // UI ve kontrol kısıtlamaları
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        crosshairObjesi.SetActive(false);
-
-        if (kameraKontrolScripti != null)
-            kameraKontrolScripti.enabled = false;
-
-        Collider objCollider = tiklananObj.GetComponent<Collider>();
-        if (objCollider != null)
-        {
-            objCollider.enabled = false;
-            Debug.Log($"{tiklananObj.name} objesi tıklanamaz yapıldı");
-        }
-
-        sonTiklananObj = tiklananObj;
-        seansBasladi = true;
-
-        Debug.Log($"Seans başlatıldı (cutscene ile): {seansVerileri.karakterAdi} ({tiklananObj.name})");
-    }
-
-    public void SeansiBitir()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        crosshairObjesi.SetActive(true);
-        seansBasladi = false;
-
-        if (kameraKontrolScripti != null)
-            kameraKontrolScripti.enabled = true;
-
-        if (sonTiklananObj != null)
-        {
-            Collider objCollider = sonTiklananObj.GetComponent<Collider>();
-            if (objCollider != null)
-                objCollider.enabled = true;
-
-            Debug.Log($"{sonTiklananObj.name} objesi yeniden tıklanabilir hale getirildi.");
-            sonTiklananObj = null;
-        }
-
-        Debug.Log("Seans bitirildi - hiçbir karakter objesi kapatılmadı.");
-    }
-
+    // Geriye uyumluluk için eski metodlar
     public void CrosshairVeKontrolGeriGetir()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -147,42 +130,28 @@ public class CrosshairEtkilesim : MonoBehaviour
         if (crosshairObjesi != null)
             crosshairObjesi.SetActive(true);
 
+        seansBasladi = false;
+
         if (kameraKontrolScripti != null)
             kameraKontrolScripti.enabled = true;
 
-        seansBasladi = false;
+        if (diyalogPaneli != null)
+            diyalogPaneli.SetActive(false);
 
-        Debug.Log("Crosshair ve kamera kontrolü geri getirildi.");
+        Debug.Log("Crosshair ve kontrol geri getirildi");
     }
 
-    [ContextMenu("Debug - Tüm Seans Objelerini Listele")]
-    private void DebugTumSeansObjeleri()
+    private string KarakterAdiniCikart(string objeName)
     {
-        Debug.Log("=== TÜM SEANS OBJELERİ ===");
-        SeansObjesi[] seansObjeleri = FindObjectsOfType<SeansObjesi>();
+        string karakterAdi = objeName.ToLower();
 
-        if (seansObjeleri.Length == 0)
-        {
-            Debug.LogWarning("Hiç SeansObjesi component'i bulunamadı!");
-            return;
-        }
+        // Farklı isimlendirme formatlarını destekle
+        if (karakterAdi.Contains("mert"))
+            return "mert";
+        else if (karakterAdi.Contains("ece"))
+            return "ece";
 
-        for (int i = 0; i < seansObjeleri.Length; i++)
-        {
-            SeansObjesi obj = seansObjeleri[i];
-            Debug.Log($"{i + 1}. {obj.gameObject.name}");
-            Debug.Log($"   Karakter: {obj.karakterAdi}");
-            Debug.Log($"   Seans Sistemi: {(obj.seansSistemiObjesi != null ? obj.seansSistemiObjesi.name : "NULL")}");
-            Debug.Log($"   JSON Sayısı: {(obj.seansJsonDosyalari != null ? obj.seansJsonDosyalari.Length : 0)}");
-
-            if (obj.seansSistemiObjesi != null)
-            {
-                SeansGecisYoneticisi gecisYoneticisi = obj.seansSistemiObjesi.GetComponent<SeansGecisYoneticisi>();
-                if (gecisYoneticisi == null)
-                    gecisYoneticisi = obj.seansSistemiObjesi.GetComponentInChildren<SeansGecisYoneticisi>();
-
-                Debug.Log($"   SeansGecisYoneticisi: {(gecisYoneticisi != null ? "BULUNDU" : "BULUNAMADI")}");
-            }
-        }
+        Debug.LogWarning($"Bilinmeyen karakter objesi: {objeName}");
+        return null;
     }
 }
