@@ -19,6 +19,8 @@ public class SeansGecisYoneticisi : MonoBehaviour
 
     public static SeansGecisYoneticisi instance;
 
+    private bool seansYuklendi = false; // ✅ tekrar yüklemeyi engeller
+
     private void Awake()
     {
         instance = this;
@@ -36,7 +38,8 @@ public class SeansGecisYoneticisi : MonoBehaviour
     public void JsonDosyalariniAyarla(TextAsset[] yeniJsonlar)
     {
         sonrakiSeanslar = yeniJsonlar;
-        guncelSeansIndex = 0; 
+        guncelSeansIndex = 0;
+        seansYuklendi = false;
         Debug.Log($"SeansGecisYoneticisi: {yeniJsonlar.Length} JSON dosyası ayarlandı");
     }
 
@@ -44,6 +47,7 @@ public class SeansGecisYoneticisi : MonoBehaviour
     {
         if (instance != null)
         {
+            instance.seansYuklendi = false; // ✅ yeni geçişte sıfırla
             instance.gecisPaneli.SetActive(true);
             instance.StartCoroutine(instance.GecikmeliMesajVeDevam(mesaj));
         }
@@ -51,24 +55,20 @@ public class SeansGecisYoneticisi : MonoBehaviour
 
     private IEnumerator GecikmeliMesajVeDevam(string mesaj)
     {
-        // Önlem: buton sıfırlansın
         if (devamButonu != null)
         {
             devamButonu.onClick.RemoveAllListeners();
             devamButonu.gameObject.SetActive(false);
         }
 
-        // İlk boş bekleme
         if (gecisMesaji != null)
             gecisMesaji.text = "";
 
         yield return new WaitForSeconds(2f);
 
-        // Mesaj göster
         if (gecisMesaji != null)
             gecisMesaji.text = mesaj;
 
-        // Mesaj görünsün → sonra buton gelsin
         yield return new WaitForSeconds(2.5f);
 
         if (devamButonu != null)
@@ -80,7 +80,10 @@ public class SeansGecisYoneticisi : MonoBehaviour
 
     private void DevamEtInstance()
     {
-        // JSON dosyaları var mı?
+        if (seansYuklendi) return; // ✅ önceden yüklendiyse tekrar yükleme
+
+        seansYuklendi = true; // ✅ bir kez yüklendiğini işaretle
+
         if (sonrakiSeanslar == null || sonrakiSeanslar.Length == 0)
         {
             Debug.LogWarning("Sonraki seanslar dizisi boş! CrosshairEtkilesim'den JSON'lar atanmamış olabilir.");
@@ -100,11 +103,12 @@ public class SeansGecisYoneticisi : MonoBehaviour
         }
 
         TextAsset sonrakiJson = sonrakiSeanslar[guncelSeansIndex];
-        guncelSeansIndex++;
 
-        Debug.Log($"Yükleniyor: {sonrakiJson.name} (Seans {guncelSeansIndex}/{sonrakiSeanslar.Length})");
+        Debug.Log($"Yükleniyor: {sonrakiJson.name} (Seans {guncelSeansIndex + 1}/{sonrakiSeanslar.Length})");
 
         diyalogYoneticisi.SonrakiSeansiBaslat(sonrakiJson);
+
+        guncelSeansIndex++;
 
         if (gecisPaneli != null)
             gecisPaneli.SetActive(false);
@@ -121,7 +125,7 @@ public class SeansGecisYoneticisi : MonoBehaviour
         {
             for (int i = 0; i < sonrakiSeanslar.Length; i++)
             {
-                string durum = (i < guncelSeansIndex) ? "TAMAMLANDI" : 
+                string durum = (i < guncelSeansIndex) ? "TAMAMLANDI" :
                               (i == guncelSeansIndex) ? "SONRAKİ" : "BEKLİYOR";
                 Debug.Log($"Seans {i + 1}: {sonrakiSeanslar[i].name} - {durum}");
             }

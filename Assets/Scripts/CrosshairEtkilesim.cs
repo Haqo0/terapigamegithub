@@ -89,7 +89,9 @@ public class CrosshairEtkilesim : MonoBehaviour
             return;
         }
 
-        // ❌ Direkt olarak diyalog başlatmıyoruz
+        // ✅ JSON dosyalarını geçiş yöneticisine aktar
+        SeansGecisYoneticisi.instance.JsonDosyalariniAyarla(seansVerileri.jsonDosyalari);
+
         // ✅ Cutscene üzerinden başlatılacak
         KarakterYonetici.instance.KarakterSeansiBaslat(seansVerileri.karakterAdi);
 

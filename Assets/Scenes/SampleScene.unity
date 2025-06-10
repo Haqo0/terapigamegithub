@@ -553,7 +553,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   seansSistemiObjesi: {fileID: 214440754}
   seansJsonDosyalari:
-  - {fileID: 4900000, guid: ae04098e94477425aab758d15dbfbfaa, type: 3}
   - {fileID: 4900000, guid: 0660221b7a9af4fa9993deff58391a6d, type: 3}
   - {fileID: 4900000, guid: 87cc80b24b0634d10a9985eab894b0ad, type: 3}
   - {fileID: 4900000, guid: a1ddf422749d3484bb6fcaf1573f9a70, type: 3}
@@ -608,10 +607,7 @@ Transform:
   m_LocalPosition: {x: -1.5505451, y: 1.6098295, z: -124.99322}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1317692938}
-  - {fileID: 1461522326}
-  - {fileID: 992059890}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &301615631
@@ -1194,7 +1190,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1865659052}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: DiyalogYoneticisi, Assembly-CSharp
         m_MethodName: PanelleriKapat
         m_Mode: 1
@@ -2501,12 +2497,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 221689248}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 15bae49136db14ae5a380f1bf1b7996b,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.4999998
+      value: 2.5000002
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 15bae49136db14ae5a380f1bf1b7996b,
         type: 3}
@@ -2516,22 +2512,22 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 15bae49136db14ae5a380f1bf1b7996b,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.4999998
+      value: 2.5000002
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 15bae49136db14ae5a380f1bf1b7996b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.189455
+      value: -9.74
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 15bae49136db14ae5a380f1bf1b7996b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.2598295
+      value: 0.35000002
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 15bae49136db14ae5a380f1bf1b7996b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.0867844
+      value: -127.08
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 15bae49136db14ae5a380f1bf1b7996b,
         type: 3}
@@ -2907,12 +2903,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2138021502}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &992059890 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 15bae49136db14ae5a380f1bf1b7996b,
-    type: 3}
-  m_PrefabInstance: {fileID: 918995109}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1054438131
 GameObject:
   m_ObjectHideFlags: 0
@@ -3828,11 +3818,11 @@ Transform:
   m_GameObject: {fileID: 1317692936}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.186732, y: 0.8344761, z: -2.086876}
+  m_LocalPosition: {x: -9.737277, y: 2.4443057, z: -127.08009}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 221689248}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1338750332
 GameObject:
@@ -4131,6 +4121,16 @@ MonoBehaviour:
     - {fileID: 4900000, guid: 87cc80b24b0634d10a9985eab894b0ad, type: 3}
     - {fileID: 4900000, guid: a1ddf422749d3484bb6fcaf1573f9a70, type: 3}
     - {fileID: 4900000, guid: ce7155f810e334bbfbbb782348fb2260, type: 3}
+  - karakterAdi: mert
+    karakterPrefab: {fileID: 1865659048}
+    girisCutscene: {fileID: 1317692937}
+    cikisCutscene: {fileID: 1461522325}
+    seansJsonlar:
+    - {fileID: 4900000, guid: 576204cf5df82444bb4da93d9b25a3d4, type: 3}
+    - {fileID: 4900000, guid: ee4b847078c534237962e4789b608a12, type: 3}
+    - {fileID: 4900000, guid: 4e4c63c5cac774f0496bc1db49b68797, type: 3}
+    - {fileID: 4900000, guid: 4aeab5b471e714596af83e0924303845, type: 3}
+    - {fileID: 4900000, guid: effc9d870a0a04d0797dc20b9be8735d, type: 3}
 --- !u!4 &1434368950
 Transform:
   m_ObjectHideFlags: 0
@@ -4240,11 +4240,11 @@ Transform:
   m_GameObject: {fileID: 1461522324}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.186732, y: 0.8344761, z: -2.086876}
+  m_LocalPosition: {x: -9.737277, y: 2.4443057, z: -127.08009}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 221689248}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1502085865
 GameObject:
@@ -4627,19 +4627,19 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6f8b2d47c43cc4be3bbb434fb06f33d1,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1865659054}
+      addedObject: {fileID: 1865659061}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6f8b2d47c43cc4be3bbb434fb06f33d1,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1865659053}
+      addedObject: {fileID: 1865659060}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6f8b2d47c43cc4be3bbb434fb06f33d1,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1865659052}
+      addedObject: {fileID: 1865659059}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6f8b2d47c43cc4be3bbb434fb06f33d1,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1865659051}
+      addedObject: {fileID: 1865659058}
   m_SourcePrefab: {fileID: 100100000, guid: 6f8b2d47c43cc4be3bbb434fb06f33d1, type: 3}
 --- !u!1 &1699473839
 GameObject:
@@ -4842,7 +4842,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1655596752}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1865659051
+--- !u!114 &1865659058
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4857,9 +4857,9 @@ MonoBehaviour:
   gecisPaneli: {fileID: 1993992026}
   gecisMesaji: {fileID: 301615634}
   devamButonu: {fileID: 2034720328}
-  diyalogYoneticisi: {fileID: 1865659052}
+  diyalogYoneticisi: {fileID: 1865659059}
   sonrakiSeanslar: []
---- !u!114 &1865659052
+--- !u!114 &1865659059
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4871,7 +4871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d72713b191636409286cc50f1cd6d70c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seansAnalizGoster: 0000000001
+  seansAnalizGoster: 0000000000
   seceneklerGecikmesi: 5
   analizGecikmesi: 5
   npcText: {fileID: 1158091930}
@@ -4880,7 +4880,7 @@ MonoBehaviour:
   gecikmeGostergesi: {fileID: 0}
   diyalogJson: {fileID: 0}
   diyalogPanel: {fileID: 1882965873}
---- !u!114 &1865659053
+--- !u!114 &1865659060
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4894,13 +4894,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   seansSistemiObjesi: {fileID: 1865659048}
   seansJsonDosyalari:
-  - {fileID: 4900000, guid: 576204cf5df82444bb4da93d9b25a3d4, type: 3}
   - {fileID: 4900000, guid: ee4b847078c534237962e4789b608a12, type: 3}
   - {fileID: 4900000, guid: 4e4c63c5cac774f0496bc1db49b68797, type: 3}
   - {fileID: 4900000, guid: 4aeab5b471e714596af83e0924303845, type: 3}
   - {fileID: 4900000, guid: effc9d870a0a04d0797dc20b9be8735d, type: 3}
   karakterAdi: mert
---- !u!65 &1865659054
+--- !u!65 &1865659061
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5402,7 +5401,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 214440755}
         m_TargetAssemblyTypeName: SeansGecisYoneticisi, Assembly-CSharp
         m_MethodName: SeansiHazirla
         m_Mode: 5
@@ -5760,3 +5759,6 @@ SceneRoots:
   - {fileID: 1575746331}
   - {fileID: 1655596752}
   - {fileID: 139338887}
+  - {fileID: 1317692938}
+  - {fileID: 1461522326}
+  - {fileID: 918995109}
