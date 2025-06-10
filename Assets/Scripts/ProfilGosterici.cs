@@ -13,7 +13,7 @@ public class ProfilGosterici : MonoBehaviour
     [System.Serializable]
     public class KarakterProfil
     {
-        public string karakterAdi;          // Küçük harf: "mert", "ece" vb.
+        public string karakterAdi;                    // Küçük harf: "mert", "ece" vb.
         [Tooltip("Bu karakterin profil görselleri listesidir. Inspector'dan birden fazla ekleyebilirsiniz.")]
         public List<GameObject> profilGorselleri = new List<GameObject>(); // Birden fazla görsel
     }
@@ -21,7 +21,13 @@ public class ProfilGosterici : MonoBehaviour
     [Header("Karakter Profilleri")]
     public List<KarakterProfil> karakterProfilleri = new List<KarakterProfil>();
 
+    [Header("Görsel Geçiş Butonları")]
+    public Button oncekiButon;
+    public Button sonrakiButon;
+
     private string aktifKarakterAdi = "";
+    private KarakterProfil currentKarakterProfil = null;
+    private int currentImageIndex = 0;
 
     void Start()
     {
@@ -36,6 +42,12 @@ public class ProfilGosterici : MonoBehaviour
         foreach (var karakter in karakterProfilleri)
             foreach (var gorsel in karakter.profilGorselleri)
                 if (gorsel != null) gorsel.SetActive(false);
+
+        // Buton dinleyicilerini ekle (opsiyonel, Inspector'dan da atanabilir)
+        if (oncekiButon != null)
+            oncekiButon.onClick.AddListener(PrevImage);
+        if (sonrakiButon != null)
+            sonrakiButon.onClick.AddListener(NextImage);
     }
 
     // Paneli aç ve crosshair/kamera kontrolünü kapat
@@ -54,6 +66,12 @@ public class ProfilGosterici : MonoBehaviour
                 if (gorsel != null) gorsel.SetActive(false);
 
         aktifKarakterAdi = "";
+        currentKarakterProfil = null;
+        currentImageIndex = 0;
+
+        // Butonları başta pasif hale getir
+        if (oncekiButon != null) oncekiButon.interactable = false;
+        if (sonrakiButon != null) sonrakiButon.interactable = false;
     }
 
     // Paneli kapat ve crosshair/kamera kontrolünü geri getir
@@ -72,45 +90,73 @@ public class ProfilGosterici : MonoBehaviour
                 if (gorsel != null) gorsel.SetActive(false);
 
         aktifKarakterAdi = "";
+        currentKarakterProfil = null;
+        currentImageIndex = 0;
     }
 
     // Karakter butonlarına atanacak fonksiyon
     public void ButonaBasildi(string karakterAdi)
     {
-        foreach (var karakter in karakterProfilleri)
+        // Önce tüm görselleri kapat
+        foreach (var k in karakterProfilleri)
+            foreach (var gorsel in k.profilGorselleri)
+                if (gorsel != null) gorsel.SetActive(false);
+
+        // Yeni karakter profilini bul
+        currentKarakterProfil = karakterProfilleri.Find(k => k.karakterAdi == karakterAdi);
+        aktifKarakterAdi = karakterAdi;
+        currentImageIndex = 0;
+
+        if (currentKarakterProfil != null && currentKarakterProfil.profilGorselleri.Count > 0)
         {
-            if (karakter.karakterAdi == karakterAdi)
-            {
-                bool zatenAcik = false;
-                // Seçili karakterin görsellerinden en az biri açıksa zatenAcik true olur
-                foreach (var gorsel in karakter.profilGorselleri)
-                {
-                    if (gorsel != null && gorsel.activeSelf)
-                    {
-                        zatenAcik = true;
-                        break;
-                    }
-                }
+            // İlk görseli göster
+            if (currentKarakterProfil.profilGorselleri[currentImageIndex] != null)
+                currentKarakterProfil.profilGorselleri[currentImageIndex].SetActive(true);
 
-                // Tüm karakterlerin tüm görsellerini kapat
-                foreach (var k in karakterProfilleri)
-                    foreach (var gorsel in k.profilGorselleri)
-                        if (gorsel != null) gorsel.SetActive(false);
-
-                // Eğer zaten açıksa kapat, değilse tüm görselleri aç
-                if (!zatenAcik)
-                {
-                    foreach (var gorsel in karakter.profilGorselleri)
-                        if (gorsel != null) gorsel.SetActive(true);
-                    aktifKarakterAdi = karakterAdi;
-                }
-                else
-                {
-                    aktifKarakterAdi = "";
-                }
-
-                break;
-            }
+            // Eğer birden fazla görsel varsa butonları aktif et
+            bool birdenFazla = currentKarakterProfil.profilGorselleri.Count > 1;
+            if (oncekiButon != null) oncekiButon.interactable = birdenFazla;
+            if (sonrakiButon != null) sonrakiButon.interactable = birdenFazla;
         }
+    }
+
+    // Sonraki görsel
+    public void NextImage()
+    {
+        if (currentKarakterProfil == null) return;
+
+        int count = currentKarakterProfil.profilGorselleri.Count;
+        if (count <= 1) return;
+
+        // Mevcut görseli gizle
+        var gorsel = currentKarakterProfil.profilGorselleri[currentImageIndex];
+        if (gorsel != null) gorsel.SetActive(false);
+
+        // İndeksi artır
+        currentImageIndex = (currentImageIndex + 1) % count;
+
+        // Yeni görseli göster
+        var yeniGorsel = currentKarakterProfil.profilGorselleri[currentImageIndex];
+        if (yeniGorsel != null) yeniGorsel.SetActive(true);
+    }
+
+    // Önceki görsel
+    public void PrevImage()
+    {
+        if (currentKarakterProfil == null) return;
+
+        int count = currentKarakterProfil.profilGorselleri.Count;
+        if (count <= 1) return;
+
+        // Mevcut görseli gizle
+        var gorsel = currentKarakterProfil.profilGorselleri[currentImageIndex];
+        if (gorsel != null) gorsel.SetActive(false);
+
+        // İndeksi azalt (döngüsel)
+        currentImageIndex = (currentImageIndex - 1 + count) % count;
+
+        // Yeni görseli göster
+        var yeniGorsel = currentKarakterProfil.profilGorselleri[currentImageIndex];
+        if (yeniGorsel != null) yeniGorsel.SetActive(true);
     }
 }
