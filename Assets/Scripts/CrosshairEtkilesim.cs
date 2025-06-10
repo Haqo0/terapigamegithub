@@ -64,62 +64,67 @@ public class CrosshairEtkilesim : MonoBehaviour
     }
 
     void Update()
+{
+    if (seansBasladi) return;
+
+    Ray ray = kamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+    RaycastHit hit;
+
+    if (Physics.Raycast(ray, out hit, 100f))
     {
-        if (seansBasladi) return;
-
-        Ray ray = kamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit, 100f))
+        if (hit.collider.CompareTag("SeansObjesi"))
         {
-            if (hit.collider.CompareTag("SeansObjesi"))
+            if (Input.GetMouseButtonDown(0))
             {
-                if (Input.GetMouseButtonDown(0))
-                {
-                    string karakterAdi = KarakterAdiniCikart(hit.collider.gameObject.name);
+                string karakterAdi = KarakterAdiniCikart(hit.collider.gameObject.name);
 
-                    if (string.IsNullOrEmpty(karakterAdi))
+                if (string.IsNullOrEmpty(karakterAdi))
+                {
+                    Debug.LogWarning($"Karakter adı çıkarılamadı: {hit.collider.gameObject.name}");
+                    return;
+                }
+
+                if (karakterYonetici != null)
+                {
+                    // Önce objeyi ata
+                    tiklananObj = hit.collider.gameObject;
+
+                    // Collider'ı devre dışı bırak
+                    BoxCollider objCollider = tiklananObj.GetComponent<BoxCollider>();
+                    if (objCollider != null)
                     {
-                        Debug.LogWarning($"Karakter adı çıkarılamadı: {hit.collider.gameObject.name}");
-                        return;
+                        objCollider.enabled = false;
+                        Debug.Log($"{tiklananObj.name} objesi tıklanamaz yapıldı");
                     }
 
-                    // KarakterYonetici'den karakteri başlat
-                    if (karakterYonetici != null)
-                    {
-                        karakterYonetici.KarakterSeansiBaslat(karakterAdi);
-                        seansBasladi = true;
-                        Cursor.lockState = CursorLockMode.None;
-                        Cursor.visible = true;
+                    // Seansı başlat
+                    karakterYonetici.KarakterSeansiBaslat(karakterAdi);
+                    seansBasladi = true;
+
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
+
+                    if (crosshairObjesi != null)
                         crosshairObjesi.SetActive(false);
 
-                        if (kameraKontrolScripti != null)
-                            kameraKontrolScripti.enabled = false;
-
-                        Collider objCollider = tiklananObj.GetComponent<Collider>();
-                        if (objCollider != null)
-                        {
-                            objCollider.enabled = false;
-                            Debug.Log($"{tiklananObj.name} objesi tıklanamaz yapıldı");
-                        }
-                        tiklananObj = hit.collider.gameObject;
-                        seansBasladi = true;
-                    }
-                    else
-                    {
-                        Debug.LogError("KarakterYonetici referansı bulunamadı!");
-                    }
+                    if (kameraKontrolScripti != null)
+                        kameraKontrolScripti.enabled = false;
                 }
-            }
-            else if (hit.collider.CompareTag("ProfilObjesi"))
-            {
-                if (Input.GetMouseButtonDown(0))
+                else
                 {
-                    profilGosterici.ProfilPanelAc();
+                    Debug.LogError("KarakterYonetici referansı bulunamadı!");
                 }
             }
         }
+        else if (hit.collider.CompareTag("ProfilObjesi"))
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                profilGosterici.ProfilPanelAc();
+            }
+        }
     }
+}
 
     // Geriye uyumluluk için eski metodlar
     public void CrosshairVeKontrolGeriGetir()

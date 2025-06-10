@@ -22,6 +22,9 @@ public class AnalizGosterici : MonoBehaviour
     // ✅ Yeni: geçmiş analizleri saklamak için liste
     private List<string> analizKayitlari = new List<string>();
 
+    // ✅ Yeni: cutscene'in sadece bir kere oynatılmasını sağlamak için flag
+    private bool cutsceneZatenOynatildi = false;
+
     private void Awake()
     {
         instance = this;
@@ -155,7 +158,16 @@ public class AnalizGosterici : MonoBehaviour
         {
             if (DiyalogYoneticisi.instance.mevcutSeansIndex >= 4)
             {
-               KarakterYonetici.instance.SeansSonuCutsceneBaslat();  
+                if (!cutsceneZatenOynatildi)
+                {
+                    KarakterYonetici.instance.SeansSonuCutsceneBaslat();
+                    cutsceneZatenOynatildi = true;
+                    Debug.Log("Cutscene bir kez oynatıldı.");
+                }
+                else
+                {
+                    Debug.Log("Cutscene zaten oynatıldı, tekrar tetiklenmedi.");
+                }
             }
         }
     }
