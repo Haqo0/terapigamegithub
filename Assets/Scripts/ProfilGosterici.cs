@@ -1,90 +1,116 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System.IO;
+using System.Collections.Generic;
 
 public class ProfilGosterici : MonoBehaviour
 {
+    [Header("Panel ve Crosshair")]
     public GameObject profilPanel;
     public GameObject crosshairObjesi;
+
     private MonoBehaviour kameraKontrolScripti;
 
-    [Header("UI Alanları")]
-    public Text isimText;
-    public Text yasText;
-    public Text meslekText;
-    public Text ozetText;
+    [System.Serializable]
+    public class KarakterProfil
+    {
+        public string karakterAdi;          // Küçük harf: "mert", "ece" vb.
+        [Tooltip("Bu karakterin profil görselleri listesidir. Inspector'dan birden fazla ekleyebilirsiniz.")]
+        public List<GameObject> profilGorselleri = new List<GameObject>(); // Birden fazla görsel
+    }
 
-    [Header("JSON Dosya Adı")]
-    public string karakterDosyaAdi = "mert"; // örnek: "mert", "seda"
+    [Header("Karakter Profilleri")]
+    public List<KarakterProfil> karakterProfilleri = new List<KarakterProfil>();
+
+    private string aktifKarakterAdi = "";
 
     void Start()
     {
         // Kamera kontrol scriptini al
         kameraKontrolScripti = Camera.main.GetComponent<MouseCameraKontrol>();
 
-        // Başlangıçta panel kapalı
-        if (profilPanel != null)
-            profilPanel.SetActive(false);
+        // Başlangıçta panel ve crosshair ayarları
+        if (profilPanel != null) profilPanel.SetActive(false);
+        if (crosshairObjesi != null) crosshairObjesi.SetActive(true);
+
+        // Tüm profil görsellerini gizle
+        foreach (var karakter in karakterProfilleri)
+            foreach (var gorsel in karakter.profilGorselleri)
+                if (gorsel != null) gorsel.SetActive(false);
     }
 
+    // Paneli aç ve crosshair/kamera kontrolünü kapat
     public void ProfilPanelAc()
     {
-        if (profilPanel != null)
-            profilPanel.SetActive(true);
-
-        // if (crosshairObjesi != null)
-        //     crosshairObjesi.SetActive(false);
-
-        if (kameraKontrolScripti != null)
-            kameraKontrolScripti.enabled = false;
+        if (profilPanel != null) profilPanel.SetActive(true);
+        if (kameraKontrolScripti != null) kameraKontrolScripti.enabled = false;
+        if (crosshairObjesi != null) crosshairObjesi.SetActive(false);
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
-        KarakterBilgisiYukle();
+        // Tüm profil görsellerini gizle
+        foreach (var karakter in karakterProfilleri)
+            foreach (var gorsel in karakter.profilGorselleri)
+                if (gorsel != null) gorsel.SetActive(false);
+
+        aktifKarakterAdi = "";
     }
 
+    // Paneli kapat ve crosshair/kamera kontrolünü geri getir
     public void ProfilPanelKapat()
     {
-        if (profilPanel != null)
-            profilPanel.SetActive(false);
-
-        if (crosshairObjesi != null)
-            crosshairObjesi.SetActive(true);
-
-        if (kameraKontrolScripti != null)
-            kameraKontrolScripti.enabled = true;
+        if (profilPanel != null) profilPanel.SetActive(false);
+        if (kameraKontrolScripti != null) kameraKontrolScripti.enabled = true;
+        if (crosshairObjesi != null) crosshairObjesi.SetActive(true);
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        // Tüm profil görsellerini gizle
+        foreach (var karakter in karakterProfilleri)
+            foreach (var gorsel in karakter.profilGorselleri)
+                if (gorsel != null) gorsel.SetActive(false);
+
+        aktifKarakterAdi = "";
     }
 
-    void KarakterBilgisiYukle()
+    // Karakter butonlarına atanacak fonksiyon
+    public void ButonaBasildi(string karakterAdi)
     {
-        string dosyaYolu = Path.Combine(Application.streamingAssetsPath, karakterDosyaAdi + "_profil.json");
-
-        if (File.Exists(dosyaYolu))
+        foreach (var karakter in karakterProfilleri)
         {
-            string json = File.ReadAllText(dosyaYolu);
-            KarakterProfil veri = JsonUtility.FromJson<KarakterProfil>(json);
+            if (karakter.karakterAdi == karakterAdi)
+            {
+                bool zatenAcik = false;
+                // Seçili karakterin görsellerinden en az biri açıksa zatenAcik true olur
+                foreach (var gorsel in karakter.profilGorselleri)
+                {
+                    if (gorsel != null && gorsel.activeSelf)
+                    {
+                        zatenAcik = true;
+                        break;
+                    }
+                }
 
-            isimText.text = veri.isim;
-            yasText.text = "Yaş: " + veri.yas.ToString();
-            meslekText.text = "Meslek: " + veri.meslek;
-            ozetText.text = veri.ozet;
-        }
-        else
-        {
-            Debug.LogWarning("Profil dosyası bulunamadı: " + dosyaYolu);
+                // Tüm karakterlerin tüm görsellerini kapat
+                foreach (var k in karakterProfilleri)
+                    foreach (var gorsel in k.profilGorselleri)
+                        if (gorsel != null) gorsel.SetActive(false);
+
+                // Eğer zaten açıksa kapat, değilse tüm görselleri aç
+                if (!zatenAcik)
+                {
+                    foreach (var gorsel in karakter.profilGorselleri)
+                        if (gorsel != null) gorsel.SetActive(true);
+                    aktifKarakterAdi = karakterAdi;
+                }
+                else
+                {
+                    aktifKarakterAdi = "";
+                }
+
+                break;
+            }
         }
     }
-}
-
-[System.Serializable]
-public class KarakterProfil
-{
-    public string isim;
-    public int yas;
-    public string meslek;
-    public string ozet;
 }
