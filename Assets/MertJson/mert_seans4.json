@@ -3,207 +3,247 @@
   "adimlar": [
     {
       "id": "1",
-      "anlatim": "Mert:\n“Sanırım... artık rüyada olmadığımı anlayamıyorum.\nDün gece buradaydım.\nAynı koltuk, aynı tablo... ama siz tavandaydınız.”",
+      "anlatim": "Sanırım... artık rüyada olmadığımı anlayamıyorum.\nDün gece buradaydım.\nAynı koltuk, aynı tablo... ama siz tavandaydınız.",
       "secenekler": [
         {
           "metin": "Beni orada nasıl gördün?",
-          "sonrakiID": "A"
+          "sonrakiID": "A",
+          "etiket": "gozlem",
+          "puan": 1
         },
         {
           "metin": "Bu rüyayla gerçekliği ne zaman karıştırmaya başladın?",
-          "sonrakiID": "B"
+          "sonrakiID": "B",
+          "etiket": "analiz",
+          "puan": 1
         },
         {
           "metin": "Sana göre şu an rüyada mıyız?",
-          "sonrakiID": "C"
+          "sonrakiID": "C",
+          "etiket": "analiz",
+          "puan": 1
         },
         {
           "metin": "Sessiz kal",
-          "sonrakiID": "D"
+          "sonrakiID": "D",
+          "etiket": "sessizlik",
+          "puan": 1
         }
       ]
     },
     {
       "id": "A",
-      "anlatim": "Mert:\n“Siz... duvarda yürüyordunuz.\nAma yüzünüz bendim.\nKonuşmadınız ama... iç sesim gibiydiniz.”",
+      "anlatim": "Siz... duvarda yürüyordunuz.\nAma yüzünüz bendim.\nKonuşmadınız ama... iç sesim gibiydiniz.",
       "secenekler": [
         {
           "metin": "O an kontrol sende miydi?",
-          "sonrakiID": "A1"
+          "sonrakiID": "A1",
+          "etiket": "analiz",
+          "puan": 1
         },
         {
           "metin": "Benim yüzümde ne vardı?",
-          "sonrakiID": "A2"
+          "sonrakiID": "A2",
+          "etiket": "gozlem",
+          "puan": 1
         },
         {
           "metin": "O his gerçek seninle nasıl örtüşüyor?",
-          "sonrakiID": "A3"
+          "sonrakiID": "A3",
+          "etiket": "analiz",
+          "puan": 1
         },
         {
           "metin": "Ben senin zihninde neyi temsil ediyorum sence?",
-          "sonrakiID": "A4"
+          "sonrakiID": "A4",
+          "etiket": "analiz",
+          "puan": 1
         }
       ]
     },
     {
       "id": "A1",
-      "anlatim": "Mert:\n“Kontrol... sanki iki yerdeydim. Ama ikisini de yönetemiyordum.”",
+      "anlatim": "Kontrol... sanki iki yerdeydim. Ama ikisini de yönetemiyordum.",
       "secenekler": [],
       "seansSonu": true
     },
     {
       "id": "A2",
-      "anlatim": "Mert:\n“Yüzünüzde gözler vardı ama bakmıyordunuz.”",
+      "anlatim": "Yüzünüzde gözler vardı ama bakmıyordunuz.",
       "secenekler": [],
       "seansSonu": true
     },
     {
       "id": "A3",
-      "anlatim": "Mert:\n“Gerçekte sakinsiniz. Rüyada... yargılayıcıydınız.”",
+      "anlatim": "Gerçekte sakinsiniz. Rüyada... yargılayıcıydınız.",
       "secenekler": [],
       "seansSonu": true
     },
     {
       "id": "A4",
-      "anlatim": "Mert:\n“Belki vicdan. Belki bastırılmış otorite.”",
+      "anlatim": "Belki vicdan. Belki bastırılmış otorite.",
       "secenekler": [],
       "seansSonu": true
     },
     {
       "id": "B",
-      "anlatim": "Mert:\n“İlk defa değil bu. Ama bu kez daha uzun sürdü.\nÇalışırken bile... koltuğunuzun gıcırdama sesi geliyor.”",
+      "anlatim": "İlk defa değil bu. Ama bu kez daha uzun sürdü.\nÇalışırken bile... koltuğunuzun gıcırdama sesi geliyor.",
       "secenekler": [
         {
           "metin": "Bunun seni korkutmasının nedeni ne?",
-          "sonrakiID": "B1"
+          "sonrakiID": "B1",
+          "etiket": "ifade",
+          "puan": 1
         },
         {
           "metin": "Çalışırken o ses sana ne yaptırıyor?",
-          "sonrakiID": "B2"
+          "sonrakiID": "B2",
+          "etiket": "gozlem",
+          "puan": 1
         },
         {
           "metin": "Gerçeklikten uzaklaşmanın bir anlamı olabilir mi?",
-          "sonrakiID": "B3"
+          "sonrakiID": "B3",
+          "etiket": "analiz",
+          "puan": 1
         },
         {
           "metin": "Sana kimse inanmıyor mu?",
-          "sonrakiID": "B4"
+          "sonrakiID": "B4",
+          "etiket": "ifade",
+          "puan": 1
         }
       ]
     },
     {
       "id": "B1",
-      "anlatim": "Mert:\n“Gerçekliğe güvenemezsem... kime güveneceğim?”",
+      "anlatim": "Gerçekliğe güvenemezsem... kime güveneceğim?",
       "secenekler": [],
       "seansSonu": true
     },
     {
       "id": "B2",
-      "anlatim": "Mert:\n“Durup bekliyorum. Konuşacak mısınız diye.”",
+      "anlatim": "Durup bekliyorum. Konuşacak mısınız diye.",
       "secenekler": [],
       "seansSonu": true
     },
     {
       "id": "B3",
-      "anlatim": "Mert:\n“Belki bu kaçış değil, savunma.”",
+      "anlatim": "Belki bu kaçış değil, savunma.",
       "secenekler": [],
       "seansSonu": true
     },
     {
       "id": "B4",
-      "anlatim": "Mert:\n“Kimse bilmiyor. Söylemedim. Siz ilk kişisiniz.”",
+      "anlatim": "Kimse bilmiyor. Söylemedim. Siz ilk kişisiniz.",
       "secenekler": [],
       "seansSonu": true
     },
     {
       "id": "C",
-      "anlatim": "Mert:\n“Belki. Çünkü siz benim kelimelerimi tekrar ediyorsunuz.\nVe ben hiçbir şey söylememiştim.”",
+      "anlatim": "Belki. Çünkü siz benim kelimelerimi tekrar ediyorsunuz.\nVe ben hiçbir şey söylememiştim.",
       "secenekler": [
         {
           "metin": "Peki ben şu an sen miyim?",
-          "sonrakiID": "C1"
+          "sonrakiID": "C1",
+          "etiket": "analiz",
+          "puan": 1
         },
         {
           "metin": "Bu deneyim seni özgürleştiriyor mu yoksa korkutuyor mu?",
-          "sonrakiID": "C2"
+          "sonrakiID": "C2",
+          "etiket": "ifade",
+          "puan": 1
         },
         {
           "metin": "İçerideki sen dışarıdaki senden farklı mı konuşuyor?",
-          "sonrakiID": "C3"
+          "sonrakiID": "C3",
+          "etiket": "analiz",
+          "puan": 1
         },
         {
           "metin": "Bu seansı sen mi çağırdın?",
-          "sonrakiID": "C4"
+          "sonrakiID": "C4",
+          "etiket": "analiz",
+          "puan": 1
         }
       ]
     },
     {
       "id": "C1",
-      "anlatim": "Mert:\n“Eğer siz benseydiniz… neden size güveniyorum?”",
+      "anlatim": "Eğer siz benseydiniz… neden size güveniyorum?",
       "secenekler": [],
       "seansSonu": true
     },
     {
       "id": "C2",
-      "anlatim": "Mert:\n“İkisi birden. Kafes gibi. Ama açık kapılı.”",
+      "anlatim": "İkisi birden. Kafes gibi. Ama açık kapılı.",
       "secenekler": [],
       "seansSonu": true
     },
     {
       "id": "C3",
-      "anlatim": "Mert:\n“İçerideki ben daha net konuşuyor. Daha dürüst.”",
+      "anlatim": "İçerideki ben daha net konuşuyor. Daha dürüst.",
       "secenekler": [],
       "seansSonu": true
     },
     {
       "id": "C4",
-      "anlatim": "Mert:\n“Rüya başladığında... siz çoktan koltuktaydınız.”",
+      "anlatim": "Rüya başladığında... siz çoktan koltuktaydınız.",
       "secenekler": [],
       "seansSonu": true
     },
     {
       "id": "D",
-      "anlatim": "Mert:\n“Siz sustuğunuzda... anlatıcı konuşuyor.\nKulağıma fısıldıyor:\n‘Sen onun zihnindesin.’\n... Siz öyle misiniz?”",
+      "anlatim": "Siz sustuğunuzda... anlatıcı konuşuyor.\nKulağıma fısıldıyor:\n‘Sen onun zihnindesin.’\n... Siz öyle misiniz?",
       "secenekler": [
         {
           "metin": "Bu soruyu cevaplarsam seni yönlendiririm.",
-          "sonrakiID": "D1"
+          "sonrakiID": "D1",
+          "etiket": "analiz",
+          "puan": 1
         },
         {
           "metin": "Anlatıcı ne zaman başladı?",
-          "sonrakiID": "D2"
+          "sonrakiID": "D2",
+          "etiket": "gozlem",
+          "puan": 1
         },
         {
           "metin": "Benimle değil... kendinle konuştuğunu düşündün mü?",
-          "sonrakiID": "D3"
+          "sonrakiID": "D3",
+          "etiket": "analiz",
+          "puan": 1
         },
         {
           "metin": "Sessizliğe devam et (anlatıcı konuşur)",
-          "sonrakiID": "D4"
+          "sonrakiID": "D4",
+          "etiket": "sessizlik",
+          "puan": 1
         }
       ]
     },
     {
       "id": "D1",
-      "anlatim": "Mert:\n“Zaten yönlendiriliyordum. Belki hep öyleydim.”",
+      "anlatim": "Zaten yönlendiriliyordum. Belki hep öyleydim.",
       "secenekler": [],
       "seansSonu": true
     },
     {
       "id": "D2",
-      "anlatim": "Mert:\n“İlk seansın sonunda. Ama sadece siz sustuğunuzda.”",
+      "anlatim": "İlk seansın sonunda. Ama sadece siz sustuğunuzda.",
       "secenekler": [],
       "seansSonu": true
     },
     {
       "id": "D3",
-      "anlatim": "Mert:\n“Belki siz sadece... bir yansımasınız.”",
+      "anlatim": "Belki siz sadece... bir yansımasınız.",
       "secenekler": [],
       "seansSonu": true
     },
     {
       "id": "D4",
-      "anlatim": "Anlatıcı:\n“Terapist susunca... zihin konuşur.”",
+      "anlatim": "Anlatıcı: “Terapist susunca... zihin konuşur.”",
       "secenekler": [],
       "seansSonu": true
     }
@@ -211,6 +251,33 @@
   "sonlar": {
     "gerceklige_donus": "Bu sefer... buradayım. Gerçekten.\nSiz varsınız. Ben varım. O yeter.",
     "zihin_kirilmasi": "Siz sadece rüyamdınız.\nŞimdi uyandım. Ve kimse yok.",
-    "inkarci_geri_cekilme": "Fazla derine indik. Burada duralım.\nHer şey sadece sembol."
-  }
+    "inkarci_cekilme": "Fazla derine indik. Burada duralım.\nHer şey sadece sembol.",
+    "meta": "O kapının ardında şimdi sen varsın.\nMert seni izliyor.\nİyi misin, terapist?"
+  },
+  "analizSonuclari": [
+    {
+      "metin": "Gerçeklik algısı zayıflamış olabilir. Danışan kimlik sınırlarını sorguluyor.",
+      "gerekenEtiketler": [
+        "analiz",
+        "sessizlik"
+      ],
+      "minPuan": 4
+    },
+    {
+      "metin": "Terapistin zihinsel temsilinin sorgulanması, içsel ikilemleri tetikliyor.",
+      "gerekenEtiketler": [
+        "gozlem",
+        "analiz"
+      ],
+      "minPuan": 3
+    },
+    {
+      "metin": "Danışan ilk kez anlatıcı figürünü tanımlıyor. Bu iç sesle yüzleşme olabilir.",
+      "gerekenEtiketler": [
+        "ifade",
+        "analiz"
+      ],
+      "minPuan": 3
+    }
+  ]
 }

@@ -1,0 +1,235 @@
+{
+  "adimlar": [
+    {
+      "id": "1",
+      "anlatim": "Alev:\n“Bir şey oldu.\nBugün biri ‘Seni özledim’ dedi.\nVe ilk kez ne diyeceğimi bilemedim.\nÇünkü… performans yoktu.\nSadece ben vardım.”",
+      "secenekler": [
+        {
+          "metin": "Sadece sen olmanın nasıl bir his olduğunu tarif edebilir misin?",
+          "sonrakiID": "1A",
+          "etiket": "kimlik",
+          "puan": 1
+        },
+        {
+          "metin": "Performans olmadan gelen bir cümle seni neden bu kadar etkiledi?",
+          "sonrakiID": "1B",
+          "etiket": "duygu",
+          "puan": 1
+        },
+        {
+          "metin": "Sen kimsin… eğer başarı değilsen?",
+          "sonrakiID": "1C",
+          "etiket": "özdeger",
+          "puan": 1
+        },
+        {
+          "metin": "...",
+          "sonrakiID": "1D",
+          "etiket": "sessizlik",
+          "puan": 1
+        }
+      ]
+    },
+    {
+      "id": "1A",
+      "anlatim": "Alev:\n“Rahat değil.\nAma gerçek.\nBiraz çıplak.\nBiraz savunmasız.\nAma… ilk defa sıcak.”",
+      "secenekler": [
+        {
+          "metin": "Savunmasız olmak bu kez seni korkutmadı mı?",
+          "sonrakiID": "2A"
+        },
+        {
+          "metin": "Bu ‘sıcaklık’ hissi sana tanıdık mı?",
+          "sonrakiID": "2B"
+        },
+        {
+          "metin": "Bu his geçici mi sence, yoksa kalıcı olabilir mi?",
+          "sonrakiID": "2C"
+        },
+        {
+          "metin": "Kendine bu hâlini sevdirebilir misin?",
+          "sonrakiID": "2D"
+        }
+      ]
+    },
+    {
+      "id": "2A",
+      "anlatim": "Alev:\n“Korkuttu. Ama kaçmadım. Çünkü burada biri vardı.”",
+      "seansSonu": true
+    },
+    {
+      "id": "2B",
+      "anlatim": "Alev:\n“Çocukluğumda vardı. Ama sonra sustu.”",
+      "seansSonu": true
+    },
+    {
+      "id": "2C",
+      "anlatim": "Alev:\n“Umarım kalır. Ama kaybolsa da yolunu biliyorum artık.”",
+      "seansSonu": true
+    },
+    {
+      "id": "2D",
+      "anlatim": "Alev:\n“Zor. Ama denemeye değer. Çünkü ben de biriyim artık.”",
+      "seansSonu": true
+    },
+    {
+      "id": "1B",
+      "anlatim": "Alev:\n“Çünkü ben sahnede sevilmeye alışkınım.\nIşıklar varken.\nAlkışlar varken.\nAma biri…\nkaranlıkta ‘özledim’ dedi.\nVe o zaman… ben de oldum.”",
+      "secenekler": [
+        {
+          "metin": "Işıksız sevgi sana nasıl geliyor?",
+          "sonrakiID": "2E"
+        },
+        {
+          "metin": "Karanlıkta sevilmek seni ne yapar?",
+          "sonrakiID": "2F"
+        },
+        {
+          "metin": "Sahne dışında da var olabileceğini hep biliyor muydun?",
+          "sonrakiID": "2G"
+        },
+        {
+          "metin": "Bunu duyduğunda kalmak mı, kaçmak mı istedin?",
+          "sonrakiID": "2H"
+        }
+      ]
+    },
+    {
+      "id": "2E",
+      "anlatim": "Alev:\n“Gerçek. Ama alışılmamış.”",
+      "seansSonu": true
+    },
+    {
+      "id": "2F",
+      "anlatim": "Alev:\n“Kırılgan ama güçlü. Tuhaf değil mi?”",
+      "seansSonu": true
+    },
+    {
+      "id": "2G",
+      "anlatim": "Alev:\n“Bilmiyordum. Sadece varsaydım: sahne yoksa ben de yokum.”",
+      "seansSonu": true
+    },
+    {
+      "id": "2H",
+      "anlatim": "Alev:\n“İkisini de istedim. Ama bu kez kalmayı seçtim.”",
+      "seansSonu": true
+    },
+    {
+      "id": "1C",
+      "anlatim": "Alev:\n“İyi soru.\nBugüne kadar buna hazırlıklı değildim.\nAma şimdi... belki şöyle diyebilirim:\nBen, sadece bir ‘başarı hikâyesi’ değilim.\nBen bazen yetersiz… ama yine de değerli biriyim.”",
+      "secenekler": [
+        {
+          "metin": "Bu cümleyi kendine yüksek sesle söyleyebildin mi hiç?",
+          "sonrakiID": "2I"
+        },
+        {
+          "metin": "Bu cümleyi duyan içindeki çocuk ne hissederdi?",
+          "sonrakiID": "2J"
+        },
+        {
+          "metin": "Kendini böyle tanımlamak sana ne yaptı?",
+          "sonrakiID": "2K"
+        },
+        {
+          "metin": "Sadece var olmak... sence yeterli mi artık?",
+          "sonrakiID": "2L"
+        }
+      ]
+    },
+    {
+      "id": "2I",
+      "anlatim": "Alev:\n“İlk kez söyledim. Ve garip bir şey oldu… içim yumuşadı.”",
+      "seansSonu": true
+    },
+    {
+      "id": "2J",
+      "anlatim": "Alev:\n“Sarılırdı. Belki gözleri dolardı. Belki ilk kez susmazdı.”",
+      "seansSonu": true
+    },
+    {
+      "id": "2K",
+      "anlatim": "Alev:\n“Rahatlattı. Sanki üzerimden bir unvan indi.”",
+      "seansSonu": true
+    },
+    {
+      "id": "2L",
+      "anlatim": "Alev:\n“Yavaş yavaş. Ama evet. Yeterli olabilir.”",
+      "seansSonu": true
+    },
+    {
+      "id": "1D",
+      "anlatim": "Alev:\n“Bu sessizlik… artık sahne arkası gibi değil.\nBu defa prova değil.\nBu… gerçek.\nVe ben, bu gerçekliğe… hazır gibiyim.”",
+      "secenekler": [
+        {
+          "metin": "Hazır hissettiğinde ne değişti?",
+          "sonrakiID": "2M"
+        },
+        {
+          "metin": "Gerçeklik senin için ne ifade ediyor artık?",
+          "sonrakiID": "2N"
+        },
+        {
+          "metin": "Bu yeni Alev kim sence?",
+          "sonrakiID": "2O"
+        },
+        {
+          "metin": "...",
+          "sonrakiID": "2P"
+        }
+      ]
+    },
+    {
+      "id": "2M",
+      "anlatim": "Alev:\n“Tırnaklarımı geçirmeyi bıraktım. Yani artık tutunmuyorum.”",
+      "seansSonu": true
+    },
+    {
+      "id": "2N",
+      "anlatim": "Alev:\n“Can acıtıcı değil… ama sarıcı.”",
+      "seansSonu": true
+    },
+    {
+      "id": "2O",
+      "anlatim": "Alev:\n“Henüz adını bilmiyorum. Ama burada, kalbimin içinde.”",
+      "seansSonu": true
+    },
+    {
+      "id": "2P",
+      "anlatim": "Anlatıcı:\n“Alev sustu.\nAma artık bu sessizlik… içsel bir barış.\nTerapist… bu barışta yerin hazır mı?”",
+      "seansSonu": true
+    }
+  ],
+  "analizSonuclari": [
+    {
+      "metin": "İlk kez… sadece biri olarak çıktım bu odadan.\nVe bu sefer… eksik hissetmedim.",
+      "gerekenEtiketler": [
+        "kimlik",
+        "özdeger"
+      ],
+      "minPuan": 2
+    },
+    {
+      "metin": "Kendimi biraz daha tanıdım.\nAma dış dünya buna hazır mı, bilmiyorum.\nYine de… bu bana kaldı.",
+      "gerekenEtiketler": [
+        "duygu",
+        "sessizlik"
+      ],
+      "minPuan": 2
+    },
+    {
+      "metin": "Seans ilginçti.\nFazla kişisel geldi.\nBelki biraz zaman isterim.",
+      "gerekenEtiketler": [],
+      "minPuan": 0
+    },
+    {
+      "metin": "Alev maskesini çıkardı.\nVe altında… hiç kimse değil,\ntam da olması gereken biri vardı.\nTerapist… sen onu alkışsız da görebildin mi?",
+      "gerekenEtiketler": [
+        "kimlik",
+        "özdeger",
+        "duygu",
+        "sessizlik"
+      ],
+      "minPuan": 4
+    }
+  ]
+}

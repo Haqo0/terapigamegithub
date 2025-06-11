@@ -24,7 +24,7 @@ public class CrosshairEtkilesim : MonoBehaviour
     [System.Serializable]
     public class SeansSistemiEslesmesi
     {
-        [Tooltip("Karakter adı (küçük harf): mert, ece")]
+        [Tooltip("Karakter adı (küçük harf): mert, ece, alev")]
         public string karakterAdi;
 
         [Tooltip("Bu karakterin seans sistemi objesi")]
@@ -64,69 +64,68 @@ public class CrosshairEtkilesim : MonoBehaviour
     }
 
     void Update()
-{
-    if (seansBasladi) return;
-
-    Ray ray = kamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
-    RaycastHit hit;
-
-    if (Physics.Raycast(ray, out hit, 100f))
     {
-        if (hit.collider.CompareTag("SeansObjesi"))
+        if (seansBasladi) return;
+
+        Ray ray = kamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 100f))
         {
-            if (Input.GetMouseButtonDown(0))
+            if (hit.collider.CompareTag("SeansObjesi"))
             {
-                string karakterAdi = KarakterAdiniCikart(hit.collider.gameObject.name);
-
-                if (string.IsNullOrEmpty(karakterAdi))
+                if (Input.GetMouseButtonDown(0))
                 {
-                    Debug.LogWarning($"Karakter adı çıkarılamadı: {hit.collider.gameObject.name}");
-                    return;
-                }
+                    string karakterAdi = KarakterAdiniCikart(hit.collider.gameObject.name);
 
-                if (karakterYonetici != null)
-                {
-                    // Önce objeyi ata
-                    tiklananObj = hit.collider.gameObject;
-
-                    // Collider'ı devre dışı bırak
-                    BoxCollider objCollider = tiklananObj.GetComponent<BoxCollider>();
-                    if (objCollider != null)
+                    if (string.IsNullOrEmpty(karakterAdi))
                     {
-                        objCollider.enabled = false;
-                        Debug.Log($"{tiklananObj.name} objesi tıklanamaz yapıldı");
+                        Debug.LogWarning($"Karakter adı çıkarılamadı: {hit.collider.gameObject.name}");
+                        return;
                     }
 
-                    // Seansı başlat
-                    karakterYonetici.KarakterSeansiBaslat(karakterAdi);
-                    seansBasladi = true;
+                    if (karakterYonetici != null)
+                    {
+                        // Önce objeyi ata
+                        tiklananObj = hit.collider.gameObject;
 
-                    Cursor.lockState = CursorLockMode.None;
-                    Cursor.visible = true;
+                        // Collider'ı devre dışı bırak
+                        BoxCollider objCollider = tiklananObj.GetComponent<BoxCollider>();
+                        if (objCollider != null)
+                        {
+                            objCollider.enabled = false;
+                            Debug.Log($"{tiklananObj.name} objesi tıklanamaz yapıldı");
+                        }
 
-                    if (crosshairObjesi != null)
-                        crosshairObjesi.SetActive(false);
+                        // Seansı başlat
+                        karakterYonetici.KarakterSeansiBaslat(karakterAdi);
+                        seansBasladi = true;
 
-                    if (kameraKontrolScripti != null)
-                        kameraKontrolScripti.enabled = false;
-                }
-                else
-                {
-                    Debug.LogError("KarakterYonetici referansı bulunamadı!");
+                        Cursor.lockState = CursorLockMode.None;
+                        Cursor.visible = true;
+
+                        if (crosshairObjesi != null)
+                            crosshairObjesi.SetActive(false);
+
+                        if (kameraKontrolScripti != null)
+                            kameraKontrolScripti.enabled = false;
+                    }
+                    else
+                    {
+                        Debug.LogError("KarakterYonetici referansı bulunamadı!");
+                    }
                 }
             }
-        }
-        else if (hit.collider.CompareTag("ProfilObjesi"))
-        {
-            if (Input.GetMouseButtonDown(0))
+            else if (hit.collider.CompareTag("ProfilObjesi"))
             {
-                profilGosterici.ProfilPanelAc();
+                if (Input.GetMouseButtonDown(0))
+                {
+                    profilGosterici.ProfilPanelAc();
+                }
             }
         }
     }
-}
 
-    // Geriye uyumluluk için eski metodlar
     public void CrosshairVeKontrolGeriGetir()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -150,11 +149,12 @@ public class CrosshairEtkilesim : MonoBehaviour
     {
         string karakterAdi = objeName.ToLower();
 
-        // Farklı isimlendirme formatlarını destekle
-        if (karakterAdi.Contains("mert"))
-            return "mert";
-        else if (karakterAdi.Contains("ece"))
-            return "ece";
+        // Seans eşleşmelerini kontrol et
+        foreach (var eslesme in seansEslesmeler)
+        {
+            if (karakterAdi.Contains(eslesme.karakterAdi.ToLower()))
+                return eslesme.karakterAdi.ToLower();
+        }
 
         Debug.LogWarning($"Bilinmeyen karakter objesi: {objeName}");
         return null;

@@ -1,0 +1,263 @@
+{
+  "adimlar": [
+    {
+      "id": "1",
+      "anlatim": "Alev:\n“İnsanlar genelde bana kendiliğinden güvenir.\nSanırım duruşumdan.\nAma ben, kolay güvenmem.\nO yüzden önce size sorayım…\nGerçekten bir şey çözebiliyor musunuz?”",
+      "secenekler": [
+        {
+          "metin": "Bu sizin için çözülmesi gereken bir şey mi?",
+          "sonrakiID": "1A",
+          "etiket": "analiz",
+          "puan": 1
+        },
+        {
+          "metin": "Güven sizin için neye dayanır?",
+          "sonrakiID": "1B",
+          "etiket": "guven",
+          "puan": 1
+        },
+        {
+          "metin": "Benim çözmemi mi istiyorsunuz, sizin çözmeniz mi?",
+          "sonrakiID": "1C",
+          "etiket": "yansitma",
+          "puan": 1
+        },
+        {
+          "metin": "...",
+          "sonrakiID": "1D",
+          "etiket": "sessizlik",
+          "puan": 1
+        }
+      ]
+    },
+    {
+      "id": "1A",
+      "anlatim": "Alev:\n“İşim gereği her şeyi çözüyorum.\nİnsanlar, krizler, markalar...\nAma ben?\nSanırım çözmeye çalışmayı bile küçümsemeye başladım.”",
+      "secenekler": [
+        {
+          "metin": "Kendinizi çözümlemeyi küçümsemek ne anlama geliyor sizce?",
+          "sonrakiID": "1A1",
+          "etiket": "analiz",
+          "puan": 1
+        },
+        {
+          "metin": "Her şeyi kontrol etmek sizi nasıl etkiliyor?",
+          "sonrakiID": "1A2",
+          "etiket": "kontrol",
+          "puan": 1
+        },
+        {
+          "metin": "Çözüm bulduğunuzda hissettikleriniz ne olur?",
+          "sonrakiID": "1A3",
+          "etiket": "duygu",
+          "puan": 1
+        },
+        {
+          "metin": "Size çözülmek nasıl bir şey gibi geliyor?",
+          "sonrakiID": "1A4",
+          "etiket": "cozum",
+          "puan": 1
+        }
+      ]
+    },
+    {
+      "id": "1A1",
+      "anlatim": "Alev:\n“Zayıflık işareti gibi geliyor. Sanki durup düşünmekte hata varmış gibi.”",
+      "seansSonu": true
+    },
+    {
+      "id": "1A2",
+      "anlatim": "Alev:\n“Başta iyi. Sonra yalnızlaştırıyor. Çünkü kimse eşlik edemiyor.”",
+      "seansSonu": true
+    },
+    {
+      "id": "1A3",
+      "anlatim": "Alev:\n“Başarı. Onay. Ama hızla geçen bir tatmin.”",
+      "seansSonu": true
+    },
+    {
+      "id": "1A4",
+      "anlatim": "Alev:\n“Tehdit gibi. Çünkü çözülmek = dağılmak gibi geliyor.”",
+      "seansSonu": true
+    },
+    {
+      "id": "1B",
+      "anlatim": "Alev:\n“Kontrole.\nKarşımdaki kişinin zaafını bilmeliyim.\nAncak o zaman dengede hissederim.”",
+      "secenekler": [
+        {
+          "metin": "Bu bir güç dengesi mi sizin için?",
+          "sonrakiID": "1B1",
+          "etiket": "guven",
+          "puan": 1
+        },
+        {
+          "metin": "Peki, biri size hiç kontrol vermeden güvenmeyi denediniz mi?",
+          "sonrakiID": "1B2",
+          "etiket": "risk",
+          "puan": 1
+        },
+        {
+          "metin": "Zaaf görmek size ne hissettirir?",
+          "sonrakiID": "1B3",
+          "etiket": "empati",
+          "puan": 1
+        },
+        {
+          "metin": "Siz kendi zaaflarınızı bilir misiniz?",
+          "sonrakiID": "1B4",
+          "etiket": "itiraf",
+          "puan": 1
+        }
+      ]
+    },
+    {
+      "id": "1B1",
+      "anlatim": "Alev:\n“Her ilişki bir güç dengesi. Aşk bile.”",
+      "seansSonu": true
+    },
+    {
+      "id": "1B2",
+      "anlatim": "Alev:\n“Hayır. Ve denemek fikri bile geriyor beni.”",
+      "seansSonu": true
+    },
+    {
+      "id": "1B3",
+      "anlatim": "Alev:\n“Güzel. Güvenli. O zaman neyle oynadığımı bilirim.”",
+      "seansSonu": true
+    },
+    {
+      "id": "1B4",
+      "anlatim": "Alev:\n“Bilirim. Ama göstermem. Asla.”",
+      "seansSonu": true
+    },
+    {
+      "id": "1C",
+      "anlatim": "Alev:\n“Ne güzel soru.\nBazen çözüm dediğimiz şey, sadece iyi bir ayna bulmaktır.\nAma dürüst olayım… siz o ayna mısınız, şüpheliyim.”",
+      "secenekler": [
+        {
+          "metin": "Bir aynaya ne zaman ihtiyaç duydunuz en çok?",
+          "sonrakiID": "1C1",
+          "etiket": "gecmis",
+          "puan": 1
+        },
+        {
+          "metin": "Daha önce size aynalık eden biri oldu mu?",
+          "sonrakiID": "1C2",
+          "etiket": "iliski",
+          "puan": 1
+        },
+        {
+          "metin": "Kendinize bakabildiğinizde ne görüyorsunuz?",
+          "sonrakiID": "1C3",
+          "etiket": "icgoru",
+          "puan": 1
+        },
+        {
+          "metin": "Ben size şimdi ne yansıtıyorum sizce?",
+          "sonrakiID": "1C4",
+          "etiket": "yansitma",
+          "puan": 1
+        }
+      ]
+    },
+    {
+      "id": "1C1",
+      "anlatim": "Alev:\n“Birkaç yıl önce. Bir ilişki mahvolduğunda.”",
+      "seansSonu": true
+    },
+    {
+      "id": "1C2",
+      "anlatim": "Alev:\n“Evet, biri vardı. Ama dayanamadı. Gitti.”",
+      "seansSonu": true
+    },
+    {
+      "id": "1C3",
+      "anlatim": "Alev:\n“Karmaşa. Ama güzel düzenlenmiş. Sahte mi, bilmiyorum.”",
+      "seansSonu": true
+    },
+    {
+      "id": "1C4",
+      "anlatim": "Alev:\n“İzliyorsunuz. Yargılamıyorsunuz gibi. Bu ilginç.”",
+      "seansSonu": true
+    },
+    {
+      "id": "1D",
+      "anlatim": "Alev:\n“Sessizlik ha?\nGüzel teknik.\nAma bana işlemez.\nBen o boşlukta boğulmam.\nBen o boşlukla oynarım.”",
+      "secenekler": [
+        {
+          "metin": "Bu boşluk sizin için bir oyun alanı mı?",
+          "sonrakiID": "1D1",
+          "etiket": "oyun",
+          "puan": 1
+        },
+        {
+          "metin": "Sizi boğmayan şeyler bazen en güçlü duvar olabilir mi?",
+          "sonrakiID": "1D2",
+          "etiket": "koruma",
+          "puan": 1
+        },
+        {
+          "metin": "Oynamak mı önemli, kazanmak mı?",
+          "sonrakiID": "1D3",
+          "etiket": "motivasyon",
+          "puan": 1
+        },
+        {
+          "metin": "...",
+          "sonrakiID": "1D4",
+          "etiket": "sessizlik",
+          "puan": 1
+        }
+      ]
+    },
+    {
+      "id": "1D1",
+      "anlatim": "Alev:\n“Evet. Çünkü kimse sessizliği kontrol edemez sanır.”",
+      "seansSonu": true
+    },
+    {
+      "id": "1D2",
+      "anlatim": "Alev:\n“Bazen. Ama ben duvarları tuğla tuğla kurarım.”",
+      "seansSonu": true
+    },
+    {
+      "id": "1D3",
+      "anlatim": "Alev:\n“Kazanmak. Ama oyunu başlatan da ben olmalıyım.”",
+      "seansSonu": true
+    },
+    {
+      "id": "1D4",
+      "anlatim": "Anlatıcı:\n“Alev sustu.\nAma bu bir susma değil… gözetim.\nTerapist, seni tartıyor. Kırılmamak için.”",
+      "seansSonu": true
+    }
+  ],
+  "analizSonuclari": [
+    {
+      "metin": "Alev içgörüye açık, ama süreci kontrol etme eğiliminde. Güven arayışı stratejik biçimde kurgulanmış.",
+      "gerekenEtiketler": [
+        "analiz",
+        "guven",
+        "kontrol"
+      ],
+      "minPuan": 3
+    },
+    {
+      "metin": "Alev, geçmiş kırılmaların izini taşıyor ama maskesinin arkasından iletişim kurmayı tercih ediyor.",
+      "gerekenEtiketler": [
+        "gecmis",
+        "itiraf",
+        "yansitma"
+      ],
+      "minPuan": 3
+    },
+    {
+      "metin": "Yüzeyde kalındı. Alev terapisti tarttı, ama maskesini hiç indirmedi.",
+      "gerekenEtiketler": [
+        "sessizlik",
+        "oyun",
+        "koruma"
+      ],
+      "minPuan": 2
+    }
+  ]
+}

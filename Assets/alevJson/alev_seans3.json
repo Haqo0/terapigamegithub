@@ -1,0 +1,249 @@
+{
+  "adimlar": [
+    {
+      "id": "1",
+      "anlatim": "Alev:\n“Bir iş sunumu… iptal oldu.\nBir arkadaş… mesajıma dönmedi.\nBu kadar basit şeylerle mi sarsılır bir insan?\nBilmiyorum.\nAma sanırım ben… sarsıldım.”",
+      "secenekler": [
+        {
+          "metin": "Sence bu sarsıntıların arkasında ne yatıyor?",
+          "sonrakiID": "1A",
+          "etiket": "kirilganlik",
+          "puan": 1
+        },
+        {
+          "metin": "Senin için ‘görülmemek’ ne anlama gelir?",
+          "sonrakiID": "1B",
+          "etiket": "gorusuzluk",
+          "puan": 1
+        },
+        {
+          "metin": "Bu yaşadığın seni geçmişteki bir hisse götürdü mü?",
+          "sonrakiID": "1C",
+          "etiket": "gecmis",
+          "puan": 1
+        },
+        {
+          "metin": "...",
+          "sonrakiID": "1D",
+          "etiket": "sessizlik",
+          "puan": 1
+        }
+      ]
+    },
+    {
+      "id": "1A",
+      "anlatim": "Alev:\n“Kırılganlık.\nKi bu kelimeyi pek kullanmam.\nAma bugün...\nHani o kırık cam gibi hissedersin de… kimse bakmaz.\nO işte.”",
+      "secenekler": [
+        {
+          "metin": "Bu cam kırığını ilk ne zaman hissettin?",
+          "sonrakiID": "1A1"
+        },
+        {
+          "metin": "Kırılgan olmakla zayıf olmak arasındaki fark sence ne?",
+          "sonrakiID": "1A2"
+        },
+        {
+          "metin": "Görünmek isterken görülmemek nasıl etkiliyor seni?",
+          "sonrakiID": "1A3"
+        },
+        {
+          "metin": "Kendini bu kırılganlıkla kabullenebilir misin?",
+          "sonrakiID": "1A4"
+        }
+      ]
+    },
+    {
+      "id": "1B",
+      "anlatim": "Alev:\n“Yok sayılmak.\nYetersizlik.\nAma aynı zamanda... görünür olmak için her şeyi yapmak.”",
+      "secenekler": [
+        {
+          "metin": "Yeterli hissetmek senin için neyle ölçülür?",
+          "sonrakiID": "1B1"
+        },
+        {
+          "metin": "Biri seni gerçekten gördüğünde ne hissedersin?",
+          "sonrakiID": "1B2"
+        },
+        {
+          "metin": "Görünür olmak için verdiğin savaş seni yordu mu?",
+          "sonrakiID": "1B3"
+        },
+        {
+          "metin": "Hiç kendine görünür oldun mu?",
+          "sonrakiID": "1B4"
+        }
+      ]
+    },
+    {
+      "id": "1C",
+      "anlatim": "Alev:\n“Evet.\n12 yaşında bir gece. Anneme bir yarışma sonucu birincilik belgesi göstermiştim.\nCevabı: ‘Akşam yemeğini ısıttın mı?’ olmuştu.\nİşte o gece içimde bir şey... sessizleşti.”",
+      "secenekler": [
+        {
+          "metin": "O sessizlik bugüne kadar sürdü mü?",
+          "sonrakiID": "1C1"
+        },
+        {
+          "metin": "O geceden sonra ne değişti sende?",
+          "sonrakiID": "1C2"
+        },
+        {
+          "metin": "O Alev şimdi burada olsaydı, ona ne söylerdin?",
+          "sonrakiID": "1C3"
+        },
+        {
+          "metin": "O tepki seni nasıl etkiledi?",
+          "sonrakiID": "1C4"
+        }
+      ]
+    },
+    {
+      "id": "1D",
+      "anlatim": "Alev:\n“Sessizlik bu defa... bıçak gibi.\nDışarıdan değil, içeriden kesiyor.\nVe ben...\nBu acıyı tanıyorum.\nAma şimdi ilk defa...\nKaçmıyorum.”",
+      "secenekler": [
+        {
+          "metin": "Kaçmadan kalmak nasıl hissettiriyor?",
+          "sonrakiID": "1D1"
+        },
+        {
+          "metin": "İçeriden gelen bu keskinlik sana ne anlatıyor?",
+          "sonrakiID": "1D2"
+        },
+        {
+          "metin": "Bu acı bir şeyin başlangıcı olabilir mi?",
+          "sonrakiID": "1D3"
+        },
+        {
+          "metin": "...",
+          "sonrakiID": "1D4"
+        }
+      ]
+    },
+    {
+      "id": "1A1",
+      "anlatim": "Alev:\n“Lise sonda. Seçmeli sahneye alınmamıştım. Sonra içimden bir ses sustu.”",
+      "secenekler": [],
+      "seansSonu": true
+    },
+    {
+      "id": "1A2",
+      "anlatim": "Alev:\n“Kırılganlık... daha sessiz bir çöküş. Ama çok daha gerçek.”",
+      "secenekler": [],
+      "seansSonu": true
+    },
+    {
+      "id": "1A3",
+      "anlatim": "Alev:\n“Gurur yapıyorum. Ama içeride biri ‘Ben de buradayım’ diyor.”",
+      "secenekler": [],
+      "seansSonu": true
+    },
+    {
+      "id": "1A4",
+      "anlatim": "Alev:\n“Zor. Ama bugün... ilk kez yargılamadan baktım ona.”",
+      "secenekler": [],
+      "seansSonu": true
+    },
+    {
+      "id": "1B1",
+      "anlatim": "Alev:\n“Performans. Sonuç. Geri bildirim.”",
+      "secenekler": [],
+      "seansSonu": true
+    },
+    {
+      "id": "1B2",
+      "anlatim": "Alev:\n“Karmaşık. Hem sevinç hem savunma refleksi.”",
+      "secenekler": [],
+      "seansSonu": true   
+    },
+    {
+      "id": "1B3",
+      "anlatim": "Alev:\n“Çok. Ama bu savaşı durdurunca... kaybederim sanıyordum.”",
+      "secenekler": [],
+      "seansSonu": true
+    },
+    {
+      "id": "1B4",
+      "anlatim": "Alev:\n“Hayır. Aynaya bile performans için bakıyordum.”",
+      "secenekler": [],
+      "seansSonu": true
+    },
+    {
+      "id": "1C1",
+      "anlatim": "Alev:\n“Evet. Başarı sesimin yerine geçti.”",
+      "secenekler": [],
+      "seansSonu": true
+    },
+    {
+      "id": "1C2",
+      "anlatim": "Alev:\n“Onay beklemeyi bıraktım. Kazanmayı öğrendim.”",
+      "secenekler": [],
+      "seansSonu": true
+    },
+    {
+      "id": "1C3",
+      "anlatim": "Alev:\n“Sen yemeği değil, kalpleri ısıttın derdim.”",
+      "secenekler": [],
+      "seansSonu": true
+    },
+    {
+      "id": "1C4",
+      "anlatim": "Alev:\n“Kırıldım. Ama göstermedim. İçimde başka bir Alev büyümeye başladı o gün.”",
+      "secenekler": [],
+      "seansSonu": true
+    },
+    {
+      "id": "1D1",
+      "anlatim": "Alev:\n“Yorgun. Ama doğru bir yorgunluk.”",
+      "secenekler": [],
+      "seansSonu": true
+    },
+    {
+      "id": "1D2",
+      "anlatim": "Alev:\n“‘Kendine bak’ diyor sanki. ‘Başkalarının aynası yetmez’.”",
+      "secenekler": [],
+      "seansSonu": true
+    },
+    {
+      "id": "1D3",
+      "anlatim": "Alev:\n“Evet. Belki de kabuk çatlıyor. İçimde biri kıpırdıyor.”",
+      "secenekler": [],
+      "seansSonu": true
+    },
+    {
+      "id": "1D4",
+      "anlatim": "Anlatıcı:\n“Alev susmadı bu defa.\nSadece acıyı bastırmadı.\nTerapist… o kırık yerden ışık sızabilir mi?”",
+      "secenekler": [],
+      "seansSonu": true
+    }
+  ],
+  "analizSonuclari": [
+    {
+      "metin": "Bugün bir şey kırıldı içimde.\nAma ilk kez bu kırılma... beni yok etmedi.",
+      "gerekenEtiketler": [
+        "kirilganlik",
+        "gorusuzluk",
+        "gecmis"
+      ],
+      "minPuan": 3
+    },
+    {
+      "metin": "Bu fazla geldi.\nBelki biraz daha güçlü olmalıyım.\nHafta sonu başka bir ödülüm var zaten.",
+      "gerekenEtiketler": [
+        "kirilganlik",
+        "gorusuzluk"
+      ],
+      "minPuan": 2
+    },
+    {
+      "metin": "Çocukluk falan... bana göre değil aslında.\nAma seans iyiydi.",
+      "gerekenEtiketler": [],
+      "minPuan": 0
+    },
+    {
+      "metin": "Alev’in maskesi çatladı.\nGeriye kalan… iç sesiyle yüzleşen bir kadın.\nTerapist… o kırılganlıkla kalabildin mi?",
+      "gerekenEtiketler": [
+        "sessizlik"
+      ],
+      "minPuan": 1
+    }
+  ]
+}

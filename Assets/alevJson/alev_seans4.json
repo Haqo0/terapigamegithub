@@ -1,0 +1,259 @@
+{
+  "adimlar": [
+    {
+      "id": "1",
+      "anlatim": "Alev:\n“Bedenim kontrolden çıktı.\nEllerim titredi.\nBoğazım düğümlendi.\nSanki her şeyi bir anda unuttum.\nO kadar güçlüydüm ki...\nAma o an... kimse yoktu.”",
+      "secenekler": [
+        {
+          "metin": "Bu his sana neyi hatırlattı?",
+          "sonrakiID": "1A",
+          "etiket": "hatirlatma",
+          "puan": 1
+        },
+        {
+          "metin": "O an biri sana ne deseydi iyi gelirdi?",
+          "sonrakiID": "1B",
+          "etiket": "destek",
+          "puan": 1
+        },
+        {
+          "metin": "Sence bu yaşadığın, sadece bir panik anı mıydı?",
+          "sonrakiID": "1C",
+          "etiket": "panik",
+          "puan": 1
+        },
+        {
+          "metin": "...",
+          "sonrakiID": "1D",
+          "etiket": "sessizlik",
+          "puan": 1
+        }
+      ]
+    },
+    {
+      "id": "1A",
+      "anlatim": "Alev:\n“Küçükken kaybolmuştum.\nKalabalıkta.\nKimseye seslenememiştim.\nBugün de... sesim yok gibiydi.\nAma o zaman kimse fark etmemişti.”",
+      "secenekler": [
+        {
+          "metin": "O an içinden ne geçmişti?",
+          "sonrakiID": "1A1",
+          "etiket": "duygu",
+          "puan": 1
+        },
+        {
+          "metin": "Bugünkü hisle o çocukluk anı arasında bir bağ var mı?",
+          "sonrakiID": "1A2",
+          "etiket": "bag",
+          "puan": 1
+        },
+        {
+          "metin": "Sesin olmadığı anlarda kendini nasıl toparlarsın?",
+          "sonrakiID": "1A3",
+          "etiket": "toparlanma",
+          "puan": 1
+        },
+        {
+          "metin": "Bugün biri fark etmiş olsaydı, ne değişirdi?",
+          "sonrakiID": "1A4",
+          "etiket": "destek_yoklugu",
+          "puan": 1
+        }
+      ]
+    },
+    {
+      "id": "1A1",
+      "anlatim": "Alev:\n‘Ben buradayım!’ demek istemiştim ama... ses yoktu.",
+      "seansSonu": true
+    },
+    {
+      "id": "1A2",
+      "anlatim": "Alev:\nAynı çaresizlik. Aynı yalnızlık.",
+      "seansSonu": true
+    },
+    {
+      "id": "1A3",
+      "anlatim": "Alev:\nNormalde göz teması kurmam. Bugün sadece camdan dışarı baktım.",
+      "seansSonu": true
+    },
+    {
+      "id": "1A4",
+      "anlatim": "Alev:\nBelki... ilk defa biri yardım ederdi. Ama kimse etmedi.",
+      "seansSonu": true
+    },
+    {
+      "id": "1B",
+      "anlatim": "Alev:\n‘Geçiyor... buradayım.’\nBelki bu iki kelime.\nAma kimse demedi.\nHerkes benden çözüm bekliyordu.",
+      "secenekler": [
+        {
+          "metin": "Sana destek vermek neden zor gibi geliyor insanlara?",
+          "sonrakiID": "1B1",
+          "etiket": "destek",
+          "puan": 1
+        },
+        {
+          "metin": "Bu iki kelimeyi sen kendine söyleyebildin mi?",
+          "sonrakiID": "1B2",
+          "etiket": "oz_farkindalik",
+          "puan": 1
+        },
+        {
+          "metin": "Sen hiç böyle bir cümleyi başkasına söyledin mi?",
+          "sonrakiID": "1B3",
+          "etiket": "empati",
+          "puan": 1
+        },
+        {
+          "metin": "Bugün o kelimeleri duysaydın ne hissederdin?",
+          "sonrakiID": "1B4",
+          "etiket": "duygu_tepki",
+          "puan": 1
+        }
+      ]
+    },
+    {
+      "id": "1B1",
+      "anlatim": "Alev:\nÇünkü ben hep ‘çözen’ taraf oldum.",
+      "seansSonu": true
+    },
+    {
+      "id": "1B2",
+      "anlatim": "Alev:\nHayır. Akıl edemedim. O an sadece kaçmak istedim.",
+      "seansSonu": true
+    },
+    {
+      "id": "1B3",
+      "anlatim": "Alev:\nEvet. Ama sadece profesyonel bağlamda. Samimi değil.",
+      "seansSonu": true
+    },
+    {
+      "id": "1B4",
+      "anlatim": "Alev:\nYumuşardım. Belki ilk kez ağlardım.",
+      "seansSonu": true
+    },
+    {
+      "id": "1C",
+      "anlatim": "Alev:\nHayır.\nBu bir çağrıydı.\nİçimden gelen bir çöküş sinyali.\nAma aynı zamanda bir çığlık.",
+      "secenekler": [
+        {
+          "metin": "Bu çığlık kime gidiyor sence?",
+          "sonrakiID": "1C1",
+          "etiket": "yankilar",
+          "puan": 1
+        },
+        {
+          "metin": "Sence içindeki ne çökmek üzereydi?",
+          "sonrakiID": "1C2",
+          "etiket": "cokus",
+          "puan": 1
+        },
+        {
+          "metin": "Bu çöküş, seni korkuttu mu yoksa rahatlattı mı?",
+          "sonrakiID": "1C3",
+          "etiket": "korku_rahatlama",
+          "puan": 1
+        },
+        {
+          "metin": "Bu çağrıyı daha önce duymuş muydun?",
+          "sonrakiID": "1C4",
+          "etiket": "ilk_sefer",
+          "puan": 1
+        }
+      ]
+    },
+    {
+      "id": "1C1",
+      "anlatim": "Alev:\nBilmiyorum. Belki size. Belki o küçük Alev’e.",
+      "seansSonu": true
+    },
+    {
+      "id": "1C2",
+      "anlatim": "Alev:\nDik duruşum. Belki tüm kariyer kimliğim.",
+      "seansSonu": true
+    },
+    {
+      "id": "1C3",
+      "anlatim": "Alev:\nBaşta korkuttu. Sonra... hafiflik geldi.",
+      "seansSonu": true
+    },
+    {
+      "id": "1C4",
+      "anlatim": "Alev:\nHayır. Bu kadar güçlü olmamıştı hiç.",
+      "seansSonu": true
+    },
+    {
+      "id": "1D",
+      "anlatim": "Alev:\nBu sefer sessizliğiniz beni korkutmuyor.\nÇünkü içimde bir ses konuşuyor zaten.\nVe siz onu susturmuyorsunuz.",
+      "secenekler": [
+        {
+          "metin": "O ses sana ne anlatıyor şu an?",
+          "sonrakiID": "1D1",
+          "etiket": "ic_ses",
+          "puan": 1
+        },
+        {
+          "metin": "Bu iç sesi daha önce dinlemeye cesaretin oldu mu?",
+          "sonrakiID": "1D2",
+          "etiket": "farkindalik",
+          "puan": 1
+        },
+        {
+          "metin": "Sence o ses seni nereye götürüyor?",
+          "sonrakiID": "1D3",
+          "etiket": "gelecek",
+          "puan": 1
+        },
+        {
+          "metin": "...",
+          "sonrakiID": "1D4",
+          "etiket": "sessizlik_devam",
+          "puan": 1
+        }
+      ]
+    },
+    {
+      "id": "1D1",
+      "anlatim": "Alev:\n‘Saklanma artık.’ diyor. ‘Zaten görülüyorsun.’",
+      "seansSonu": true
+    },
+    {
+      "id": "1D2",
+      "anlatim": "Alev:\nHayır. Hep bastırdım. Hep iş üstüne ses bindirdim.",
+      "seansSonu": true
+    },
+    {
+      "id": "1D3",
+      "anlatim": "Alev:\nBir boşluğa... ama belki orada kendim varım.",
+      "seansSonu": true
+    },
+    {
+      "id": "1D4",
+      "anlatim": "Anlatıcı:\nAlev iç sesini duymaya başladı.\nVe bu defa... susmadı.\nTerapist, sessizliğin içindeki sesi sen de duyabiliyor musun?",
+      "seansSonu": true
+    }
+  ],
+  "analizSonuclari": [
+    {
+      "metin": "Bugün panik olmadı. Bugün... sadece yumuşadım. Ve bu hiç korkunç değildi.",
+      "gerekenEtiketler": [
+        "farkindalik",
+        "ic_ses",
+        "destek"
+      ],
+      "minPuan": 3
+    },
+    {
+      "metin": "Tamam. Bu fazlaydı. Güçlü olmam gerekiyor. Haftaya daha net gelirim.",
+      "gerekenEtiketler": [
+        "kontrol",
+        "toparlanma",
+        "cokus"
+      ],
+      "minPuan": 2
+    },
+    {
+      "metin": "Farklı bir seanstı. Belki yorgunluktandır her şey.",
+      "gerekenEtiketler": [],
+      "minPuan": 0
+    }
+  ]
+}

@@ -1,280 +1,269 @@
 {
+  "seans": "Seans 3",
+  "karakter": "Ece",
+  "tema": "Çocukluk anılarında gizli duygular – kelimesiz hisler – sessizlikten doğan farkındalık",
+  "ortam": "Ofis aynı sessizlikte. Bu kez cam açık ve hafif rüzgar sesi geliyor. Ece oturur oturmaz bir taş çıkartıp masaya koyuyor. “Bu taşı 8 yaşımdayken almışım. Nereden, hatırlamıyorum. Ama atamıyorum.”",
+  "giris": "Bazı nesneler geçmişi tutuyor gibi. Ama sadece görüntü var. Ne hissettiğimi bilmiyorum. O taş... önemli. Ama neden?",
   "adimlar": [
     {
-      "id": "giris",
-      "anlatim": "Ece: “Bazı nesneler geçmişi tutuyor gibi. Ama sadece görüntü var. Ne hissettiğimi bilmiyorum. O taş... önemli. Ama neden?”",
+      "id": "1",
+      "anlatim": "Bazı nesneler geçmişi tutuyor gibi. Ama sadece görüntü var. Ne hissettiğimi bilmiyorum. O taş... önemli. Ama neden?",
       "secenekler": [
         {
           "metin": "O taşı ilk hatırladığın anı anlatır mısın?",
-          "sonrakiID": "A1",
-          "etiket": "gecmis_odakli",
+          "sonrakiID": "1A",
+          "etiket": "hatira",
           "puan": 1
         },
         {
           "metin": "Sence taşın sende neyi temsil ediyor olabilir?",
-          "sonrakiID": "B1",
-          "etiket": "sembolik_anlam",
+          "sonrakiID": "1B",
+          "etiket": "temsil",
           "puan": 1
         },
         {
           "metin": "O günkü sen ne hissediyordu sence?",
-          "sonrakiID": "C1",
-          "etiket": "ic_cocuk",
+          "sonrakiID": "1C",
+          "etiket": "empati",
           "puan": 1
         },
         {
-          "metin": "(Sessiz kal)",
-          "sonrakiID": "D1",
+          "metin": "...",
+          "sonrakiID": "1D",
           "etiket": "sessizlik",
           "puan": 1
         }
       ],
-      "seansSonu": false
+      "seansSonu": true
     },
-    
-    
     {
-      "id": "A1",
-      "anlatim": "Ece: “Yere düşmüştüm. Ama canım yanmamıştı. Sonra yerde bu taşı gördüm. Elime alıp eve götürdüm. O günden sonra hep bir çekmecede durdu.”",
+      "id": "1A",
+      "anlatim": "Yere düşmüştüm. Ama canım yanmamıştı. Sonra yerde bu taşı gördüm. Elime alıp eve götürdüm. O günden sonra hep bir çekmecede durdu.",
       "secenekler": [
         {
           "metin": "Düşmek sana ne çağrıştırıyor?",
-          "sonrakiID": "A1_1",
-          "etiket": "dusme_anlam",
+          "sonrakiID": "1A1",
+          "etiket": "dusme",
           "puan": 1
         },
         {
           "metin": "O taşı almak bir karar mıydı, tepki mi?",
-          "sonrakiID": "A1_2",
-          "etiket": "tepki_refleks",
+          "sonrakiID": "1A2",
+          "etiket": "karar",
           "puan": 1
         },
         {
           "metin": "Çekmecede tutman ne anlama geliyor olabilir?",
-          "sonrakiID": "A1_3",
-          "etiket": "saklama_anlami",
+          "sonrakiID": "1A3",
+          "etiket": "tutma",
           "puan": 1
         },
         {
           "metin": "O taşı saklamasaydın ne eksik olurdu?",
-          "sonrakiID": "A1_4",
-          "etiket": "eksiklik_duygusu",
+          "sonrakiID": "1A4",
+          "etiket": "eksik",
           "puan": 1
         }
-      ],
+      ]
+    },
+    {
+      "id": "1A1",
+      "anlatim": "Düşünce sessizlik olurdu evde. Kimse ilgilenmezdi.",
       "seansSonu": false
     },
     {
-      "id": "A1_1",
-      "anlatim": "Ece: “Düşünce sessizlik olurdu evde. Kimse ilgilenmezdi.”",
-      "secenekler": [],
+      "id": "1A2",
+      "anlatim": "Tepki gibi. Ama bilinçsiz bir koruma belki.",
       "seansSonu": false
     },
     {
-      "id": "A1_2",
-      "anlatim": "Ece: “Tepki gibi. Ama bilinçsiz bir koruma belki.”",
-      "secenekler": [],
+      "id": "1A3",
+      "anlatim": "Hatırlamak değil, unutmamak. Ama duygusuz.",
       "seansSonu": false
     },
     {
-      "id": "A1_3",
-      "anlatim": "Ece: “Hatırlamak değil, unutmamak. Ama duygusuz.”",
-      "secenekler": [],
+      "id": "1A4",
+      "anlatim": "Şu an elimde bir şey olmazdı. Taş belki sabitlik.",
       "seansSonu": false
     },
     {
-      "id": "A1_4",
-      "anlatim": "Ece: “Şu an elimde bir şey olmazdı. Taş belki sabitlik.”",
-      "secenekler": [],
-      "seansSonu": false
-    },
-
-    
-    {
-      "id": "B1",
-      "anlatim": "Ece: “Sabitlik. Sertlik. Değişmeyen bir şey. Belki o yüzden sevdim.”",
+      "id": "1B",
+      "anlatim": "Sabitlik. Sertlik. Değişmeyen bir şey. Belki o yüzden sevdim.",
       "secenekler": [
         {
           "metin": "Senin hayatında neler değişkendi?",
-          "sonrakiID": "B1_1",
-          "etiket": "degiskenlik",
+          "sonrakiID": "1B1",
+          "etiket": "degisken",
           "puan": 1
         },
         {
           "metin": "Taşın sertliğiyle senin duyguların arasında bir ilişki olabilir mi?",
-          "sonrakiID": "B1_2",
-          "etiket": "sertlik_benzetme",
+          "sonrakiID": "1B2",
+          "etiket": "sertlik",
           "puan": 1
         },
         {
           "metin": "O taşı biri alsa, ne hissedersin?",
-          "sonrakiID": "B1_3",
-          "etiket": "kayip_kaygi",
+          "sonrakiID": "1B3",
+          "etiket": "kayip",
           "puan": 1
         },
         {
           "metin": "Taş hiç kırıldı mı, düştü mü?",
-          "sonrakiID": "B1_4",
-          "etiket": "kirilma_savunma",
+          "sonrakiID": "1B4",
+          "etiket": "kirilma",
           "puan": 1
         }
-      ],
+      ]
+    },
+    {
+      "id": "1B1",
+      "anlatim": "Babamın sesi. Bazen çok yumuşak, bazen çok yüksek.",
       "seansSonu": false
     },
     {
-      "id": "B1_1",
-      "anlatim": "Ece: “Babamın sesi. Bazen çok yumuşak, bazen çok yüksek.”",
-      "secenekler": [],
+      "id": "1B2",
+      "anlatim": "Belki. Çünkü içimdeki şeyler de katı. Akmıyorlar.",
       "seansSonu": false
     },
     {
-      "id": "B1_2",
-      "anlatim": "Ece: “Belki. Çünkü içimdeki şeyler de katı. Akmıyorlar.”",
-      "secenekler": [],
+      "id": "1B3",
+      "anlatim": "Rahatsızlık. Kaygı. Ama öfke değil.",
       "seansSonu": false
     },
     {
-      "id": "B1_3",
-      "anlatim": "Ece: “Rahatsızlık. Kaygı. Ama öfke değil.”",
-      "secenekler": [],
+      "id": "1B4",
+      "anlatim": "Hayır. Hiç kırılmadı. Ben dikkat ettim.",
       "seansSonu": false
     },
     {
-      "id": "B1_4",
-      "anlatim": "Ece: “Hayır. Hiç kırılmadı. Ben dikkat ettim.”",
-      "secenekler": [],
-      "seansSonu": false
-    },
-
-    
-    {
-      "id": "C1",
-      "anlatim": "Ece: “Bu soru zor. Tahmin etmeye çalışayım… Kafamda görüntü net. Ama içimde kelime yok.”",
+      "id": "1C",
+      "anlatim": "Bu soru zor. Tahmin etmeye çalışayım… Kafamda görüntü net. Ama içimde kelime yok.",
       "secenekler": [
         {
           "metin": "Görüntüde başka ne var?",
-          "sonrakiID": "C1_1",
-          "etiket": "goruntu_detay",
+          "sonrakiID": "1C1",
+          "etiket": "goruntu",
           "puan": 1
         },
         {
           "metin": "Ses var mı o sahnede?",
-          "sonrakiID": "C1_2",
-          "etiket": "ses_bilincli",
+          "sonrakiID": "1C2",
+          "etiket": "ses",
           "puan": 1
         },
         {
           "metin": "Bedeninde bir duyum hatırlıyor musun?",
-          "sonrakiID": "C1_3",
-          "etiket": "bedensel_hatira",
+          "sonrakiID": "1C3",
+          "etiket": "beden",
           "puan": 1
         },
         {
           "metin": "O kız çocuğuna bir isim versen ne olurdu?",
-          "sonrakiID": "C1_4",
-          "etiket": "ic_cocuk_ismi",
+          "sonrakiID": "1C4",
+          "etiket": "isim",
           "puan": 1
         }
-      ],
+      ]
+    },
+    {
+      "id": "1C1",
+      "anlatim": "Beton. Bir karınca. Güneşin açısı eğikti.",
       "seansSonu": false
     },
     {
-      "id": "C1_1",
-      "anlatim": "Ece: “Beton. Bir karınca. Güneşin açısı eğikti.”",
-      "secenekler": [],
+      "id": "1C2",
+      "anlatim": "Sessizlik. Ama içimde bir uğultu.",
       "seansSonu": false
     },
     {
-      "id": "C1_2",
-      "anlatim": "Ece: “Sessizlik. Ama içimde bir uğultu.”",
-      "secenekler": [],
+      "id": "1C3",
+      "anlatim": "Avuç içimde taşın soğukluğu.",
       "seansSonu": false
     },
     {
-      "id": "C1_3",
-      "anlatim": "Ece: “Avuç içimde taşın soğukluğu.”",
-      "secenekler": [],
+      "id": "1C4",
+      "anlatim": "Belki... ‘Dingin’. Çünkü çok konuşmazdı.",
       "seansSonu": false
     },
     {
-      "id": "C1_4",
-      "anlatim": "Ece: “Belki... ‘Dingin’. Çünkü çok konuşmazdı.”",
-      "secenekler": [],
-      "seansSonu": false
-    },
-
-    
-    {
-      "id": "D1",
-      "anlatim": "Ece: “Siz sustuğunuzda… içimde bir ses başladı. O çocuk sesini çıkarmıyor ama bakıyor. Bakarken... bende bir titreme oluyor. Göz göze gelmek gibi ama kendimle.”",
+      "id": "1D",
+      "anlatim": "Siz sustuğunuzda… içimde bir ses başladı. O çocuk sesini çıkarmıyor ama bakıyor. Bakarken... bende bir titreme oluyor. Göz göze gelmek gibi ama kendimle.",
       "secenekler": [
         {
           "metin": "O çocuk sana ne diyor olabilir?",
-          "sonrakiID": "D1_1",
-          "etiket": "ic_ses_mesaji",
+          "sonrakiID": "1D1",
+          "etiket": "cocuk",
           "puan": 1
         },
         {
           "metin": "Titreme seni korkutuyor mu?",
-          "sonrakiID": "D1_2",
-          "etiket": "bedensel_tepki",
+          "sonrakiID": "1D2",
+          "etiket": "titreme",
           "puan": 1
         },
         {
           "metin": "İçindeki bakışla ilk defa mı karşılaştın?",
-          "sonrakiID": "D1_3",
-          "etiket": "ilk_karsilasma",
+          "sonrakiID": "1D3",
+          "etiket": "bakis",
           "puan": 1
         },
         {
-          "metin": "(Sessiz kalmaya devam et)",
-          "sonrakiID": "D1_4",
-          "etiket": "devam_sessizlik",
+          "metin": "...",
+          "sonrakiID": "1D4",
+          "etiket": "sessizlik",
           "puan": 1
         }
-      ],
+      ]
+    },
+    {
+      "id": "1D1",
+      "anlatim": "Belki ‘Nihayet’ diyordur. Belki ‘geç bile kaldın.’",
       "seansSonu": false
     },
     {
-      "id": "D1_1",
-      "anlatim": "Ece: “Belki ‘Nihayet’ diyordur. Belki ‘geç bile kaldın.’”",
-      "secenekler": [],
+      "id": "1D2",
+      "anlatim": "Korkutmadı. Ama eski bir şey gibi.",
       "seansSonu": false
     },
     {
-      "id": "D1_2",
-      "anlatim": "Ece: “Korkutmadı. Ama eski bir şey gibi.”",
-      "secenekler": [],
+      "id": "1D3",
+      "anlatim": "Evet. Daha önce hiç bu kadar net değildi.",
       "seansSonu": false
     },
     {
-      "id": "D1_3",
-      "anlatim": "Ece: “Evet. Daha önce hiç bu kadar net değildi.”",
-      "secenekler": [],
-      "seansSonu": false
-    },
-    {
-      "id": "D1_4",
-      "anlatim": "Anlatıcı: “Ece sustu. Ama çocuk bakıyordu. Terapist, bazen bakmak… kelimeden daha güçlüdür.”",
-      "secenekler": [],
-      "seansSonu": false
+      "id": "1D4",
+      "anlatim": "Anlatıcı: Ece sustu. Ama çocuk bakıyordu. Terapist, bazen bakmak… kelimeden daha güçlüdür.",
+      "seansSonu": true
     }
   ],
   "analizSonuclari": [
     {
-      "metin": "Ece kelimeler bulmakta zorlandı ama iç çocukla temas kurmaya başladı.",
-      "gerekenEtiketler": ["ic_cocuk", "ic_ses_mesaji", "devam_sessizlik"],
-      "minPuan": 2
+      "metin": "Ece çocukluk anısına dair görüntüyü net hatırlıyor ancak duygusal bağlantı kurmakta zorlanıyor. Terapist olarak bu boşluğu doldurmaya çalışmak yerine, görüntüyle kalmak güvenli bir yol olabilir.",
+      "gerekenEtiketler": [
+        "hatira",
+        "temsil",
+        "goruntu"
+      ],
+      "minPuan": 3
     },
     {
-      "metin": "Ece, taşı bir metafor olarak kullanarak sabitlik ihtiyacını açığa çıkardı.",
-      "gerekenEtiketler": ["sembolik_anlam", "sertlik_benzetme"],
-      "minPuan": 2
+      "metin": "Ece’nin taşla kurduğu ilişki, sabitlik ve duygusal koruma ihtiyacına işaret ediyor. Terapist, bu nesne üzerinden Ece’nin duygusal dayanma yollarını keşfedebilir.",
+      "gerekenEtiketler": [
+        "sertlik",
+        "tutma",
+        "cocuk"
+      ],
+      "minPuan": 3
     },
     {
-      "metin": "Yüzeyde kalan ama anlamlı gözlemler yapıldı. Derin temas kurulamadı.",
-      "gerekenEtiketler": [],
-      "minPuan": 0
+      "metin": "Ece’nin sessizlikle teması artmış durumda. Terapist bu alanı sözsüz de olsa kabul ederek, derinleşen iç görüye eşlik edebilir.",
+      "gerekenEtiketler": [
+        "sessizlik",
+        "bakis",
+        "empati"
+      ],
+      "minPuan": 3
     }
   ]
 }

@@ -3,217 +3,281 @@
   "adimlar": [
     {
       "id": "1",
-      "anlatim": "Mert:\n“Kapı açıldı. Rüyada.\nİçeri girdim ve… oradaydım. Ama ben küçük halimdim.\nİçerideki ben bana bakmadı.\nAma ben onu izledim.”",
+      "anlatim": "Kapı açıldı. Rüyada.\nİçeri girdim ve… oradaydım. Ama ben küçük halimdim.\nİçerideki ben bana bakmadı.\nAma ben onu izledim.",
       "secenekler": [
         {
           "metin": "O anı daha önce hatırlıyor muydun?",
-          "sonrakiID": "A"
+          "sonrakiID": "A",
+          "etiket": "gozlem",
+          "puan": 1
         },
         {
           "metin": "Oradaki küçük Mert sana ne hissettirdi?",
-          "sonrakiID": "B"
+          "sonrakiID": "B",
+          "etiket": "ifade",
+          "puan": 1
         },
         {
           "metin": "Kapının ardında neler vardı?",
-          "sonrakiID": "C"
+          "sonrakiID": "C",
+          "etiket": "gozlem",
+          "puan": 1
         },
         {
           "metin": "Sessiz kal",
-          "sonrakiID": "D"
+          "sonrakiID": "D",
+          "etiket": "sessizlik",
+          "puan": 1
         }
       ]
     },
     {
       "id": "A",
-      "anlatim": "Mert:\n“Hayır. Ama tanıdıktı.\nOdayı... ışığı... annemin nefes alışını bile hatırlıyorum.\nAma kendimi hiç orada görmemiştim.”",
+      "anlatim": "Hayır. Ama tanıdıktı.\nOdayı... ışığı... annemin nefes alışını bile hatırlıyorum.\nAma kendimi hiç orada görmemiştim.",
       "secenekler": [
         {
           "metin": "O anı neden şimdi hatırladığını düşünüyorsun?",
-          "sonrakiID": "A1"
+          "sonrakiID": "A1",
+          "etiket": "analiz",
+          "puan": 1
         },
         {
           "metin": "O gün sana biri bir şey söylemiş miydi?",
-          "sonrakiID": "A2"
+          "sonrakiID": "A2",
+          "etiket": "gozlem",
+          "puan": 1
         },
         {
           "metin": "Küçük Mert’in oradaki amacı neydi sence?",
-          "sonrakiID": "A3"
+          "sonrakiID": "A3",
+          "etiket": "analiz",
+          "puan": 1
         },
         {
           "metin": "Bu hatırlama sana ne yaptı?",
-          "sonrakiID": "A4"
+          "sonrakiID": "A4",
+          "etiket": "ifade",
+          "puan": 1
         }
       ]
     },
     {
       "id": "A1",
-      "anlatim": "Mert:\n“Belki artık içeri girmeye cesaret ettim.”",
+      "anlatim": "Belki artık içeri girmeye cesaret ettim.",
       "secenekler": [],
       "seansSonu": true
     },
     {
       "id": "A2",
-      "anlatim": "Mert:\n“Annem ‘birazdan döneceğim’ demişti. Ama dönmedi.”",
+      "anlatim": "Annem ‘birazdan döneceğim’ demişti. Ama dönmedi.",
       "secenekler": [],
       "seansSonu": true
     },
     {
       "id": "A3",
-      "anlatim": "Mert:\n“Belki sadece görünmek istiyordu.”",
+      "anlatim": "Belki sadece görünmek istiyordu.",
       "secenekler": [],
       "seansSonu": true
     },
     {
       "id": "A4",
-      "anlatim": "Mert:\n“Yıkıcıydı. Ama aynı zamanda… iyileştirici.”",
+      "anlatim": "Yıkıcıydı. Ama aynı zamanda… iyileştirici.",
       "secenekler": [],
       "seansSonu": true
     },
-
     {
       "id": "B",
-      "anlatim": "Mert:\n“Kırık bir oyuncak gibi.\nGözüme bakmıyordu. Ama gözüm hep onda kaldı.”",
+      "anlatim": "Kırık bir oyuncak gibi.\nGözüme bakmıyordu. Ama gözüm hep onda kaldı.",
       "secenekler": [
         {
           "metin": "Ona ne söylemek isterdin?",
-          "sonrakiID": "B1"
+          "sonrakiID": "B1",
+          "etiket": "ifade",
+          "puan": 1
         },
         {
           "metin": "Sana ne söylemesini isterdin?",
-          "sonrakiID": "B2"
+          "sonrakiID": "B2",
+          "etiket": "ifade",
+          "puan": 1
         },
         {
           "metin": "Onu korumak istedin mi?",
-          "sonrakiID": "B3"
+          "sonrakiID": "B3",
+          "etiket": "gozlem",
+          "puan": 1
         },
         {
           "metin": "Onunla empati kurabildin mi?",
-          "sonrakiID": "B4"
+          "sonrakiID": "B4",
+          "etiket": "analiz",
+          "puan": 1
         }
       ]
     },
     {
       "id": "B1",
-      "anlatim": "Mert:\n“‘Buradayım’ demek isterdim.”",
+      "anlatim": "‘Buradayım’ demek isterdim.",
       "secenekler": [],
       "seansSonu": true
     },
     {
       "id": "B2",
-      "anlatim": "Mert:\n“Senin yüzünden olmadı, desin isterdim.”",
+      "anlatim": "Senin yüzünden olmadı, desin isterdim.",
       "secenekler": [],
       "seansSonu": true
     },
     {
       "id": "B3",
-      "anlatim": "Mert:\n“Çok istedim. Ama sanki zaman donmuştu.”",
+      "anlatim": "Çok istedim. Ama sanki zaman donmuştu.",
       "secenekler": [],
       "seansSonu": true
     },
     {
       "id": "B4",
-      "anlatim": "Mert:\n“Evet. Çünkü o bendim. Ama aynı zamanda hiç ben değildim.”",
+      "anlatim": "Evet. Çünkü o bendim. Ama aynı zamanda hiç ben değildim.",
       "secenekler": [],
       "seansSonu": true
     },
-
     {
       "id": "C",
-      "anlatim": "Mert:\n“Yatak. Serum. Ve bir pencere.\nAma dışarıda sadece beyaz bir boşluk vardı.\nGerçeklik gibi ama değil.”",
+      "anlatim": "Yatak. Serum. Ve bir pencere.\nAma dışarıda sadece beyaz bir boşluk vardı.\nGerçeklik gibi ama değil.",
       "secenekler": [
         {
           "metin": "O boşluk sana neyi hatırlatıyor?",
-          "sonrakiID": "C1"
+          "sonrakiID": "C1",
+          "etiket": "ifade",
+          "puan": 1
         },
         {
           "metin": "Pencereyi açmak istedin mi?",
-          "sonrakiID": "C2"
+          "sonrakiID": "C2",
+          "etiket": "ifade",
+          "puan": 1
         },
         {
           "metin": "Orası gerçekten bir anı mıydı yoksa metafor mu?",
-          "sonrakiID": "C3"
+          "sonrakiID": "C3",
+          "etiket": "analiz",
+          "puan": 1
         },
         {
           "metin": "O odaya tekrar gitmek ister misin?",
-          "sonrakiID": "C4"
+          "sonrakiID": "C4",
+          "etiket": "ifade",
+          "puan": 1
         }
       ]
     },
     {
       "id": "C1",
-      "anlatim": "Mert:\n“Kayıp. Anlam veremediğim bir eksiklik.”",
+      "anlatim": "Kayıp. Anlam veremediğim bir eksiklik.",
       "secenekler": [],
       "seansSonu": true
     },
     {
       "id": "C2",
-      "anlatim": "Mert:\n“Evet. Ama pencere yok gibiydi. Sadece bir silüet.”",
+      "anlatim": "Evet. Ama pencere yok gibiydi. Sadece bir silüet.",
       "secenekler": [],
       "seansSonu": true
     },
     {
       "id": "C3",
-      "anlatim": "Mert:\n“İkisinin karışımı. Gerçek kadar acı, rüya kadar sisli.”",
+      "anlatim": "İkisinin karışımı. Gerçek kadar acı, rüya kadar sisli.",
       "secenekler": [],
       "seansSonu": true
     },
     {
       "id": "C4",
-      "anlatim": "Mert:\n“Hazırım. Artık kaçmak istemiyorum.”",
+      "anlatim": "Hazırım. Artık kaçmak istemiyorum.",
       "secenekler": [],
       "seansSonu": true
     },
-
     {
       "id": "D",
-      "anlatim": "Mert:\n“Yine konuşmadınız.\nBu defa... küçük halim konuştu.\nAma duyulmaz şekilde: ‘Ben iyiyim.’\nSahi... sizce o çocuk iyi miydi?”",
+      "anlatim": "Yine konuşmadınız.\nBu defa... küçük halim konuştu.\nAma duyulmaz şekilde: ‘Ben iyiyim.’\nSahi... sizce o çocuk iyi miydi?",
       "secenekler": [
         {
           "metin": "O çocuğu dinledin mi?",
-          "sonrakiID": "D1"
+          "sonrakiID": "D1",
+          "etiket": "ifade",
+          "puan": 1
         },
         {
           "metin": "Onun gerçekten iyi olup olmadığını sence kim bilebilir?",
-          "sonrakiID": "D2"
+          "sonrakiID": "D2",
+          "etiket": "analiz",
+          "puan": 1
         },
         {
           "metin": "İyilik bazen görünüşte olur. İçeride ne vardı?",
-          "sonrakiID": "D3"
+          "sonrakiID": "D3",
+          "etiket": "analiz",
+          "puan": 1
         },
         {
           "metin": "Yine sessiz kal",
-          "sonrakiID": "D4"
+          "sonrakiID": "D4",
+          "etiket": "sessizlik",
+          "puan": 1
         }
       ]
     },
     {
       "id": "D1",
-      "anlatim": "Mert:\n“Her kelimesini içimle duydum.”",
+      "anlatim": "Her kelimesini içimle duydum.",
       "secenekler": [],
       "seansSonu": true
     },
     {
       "id": "D2",
-      "anlatim": "Mert:\n“Belki kimse bilemez. Ama ben hissediyorum artık.”",
+      "anlatim": "Belki kimse bilemez. Ama ben hissediyorum artık.",
       "secenekler": [],
       "seansSonu": true
     },
     {
       "id": "D3",
-      "anlatim": "Mert:\n“İçinde öfke, hüzün, ama bir parça umut vardı.”",
+      "anlatim": "İçinde öfke, hüzün, ama bir parça umut vardı.",
       "secenekler": [],
       "seansSonu": true
     },
     {
       "id": "D4",
-      "anlatim": "Mert:\n“Bu sessizlik, onunla aynı dili konuşmak gibi.”",
+      "anlatim": "Bu sessizlik, onunla aynı dili konuşmak gibi.",
       "secenekler": [],
       "seansSonu": true
     }
   ],
   "sonlar": {
-    "katarsis": "Onu gördüm. Kendimi gördüm. Ve artık onunla yalnız değilim.",
-    "tetiklenme": "Onu susturdum. Yine. Hep yaptığım şeyi yine yaptım.",
-    "bastirma": "Belki sadece uyurken olur bu. Gerçekte… anlamı yoktur."
-  }
+    "katarsis": "Onu gördüm. Kendimi gördüm.\nVe artık onunla yalnız değilim.",
+    "tetiklenme": "Onu susturdum. Yine.\nHep yaptığım şeyi yine yaptım.",
+    "yuzeyde_kalma": "Belki sadece uyurken olur bu. Gerçekte… anlamı yoktur.",
+    "meta": "Sen onu hatırladın.\nPeki... seni kim hatırlayacak, terapist?"
+  },
+  "analizSonuclari": [
+    {
+      "metin": "Danışan bastırdığı bir anıyı hatırlayarak içsel bir yüzleşme yaşadı.",
+      "gerekenEtiketler": [
+        "gozlem",
+        "analiz"
+      ],
+      "minPuan": 4
+    },
+    {
+      "metin": "İçsel çocukla empati gelişiyor. Sessizlik bile artık bir bağ kurma aracı.",
+      "gerekenEtiketler": [
+        "ifade",
+        "sessizlik"
+      ],
+      "minPuan": 3
+    },
+    {
+      "metin": "Seans, geçmiş ve şimdi arasında köprü kurmaya yardımcı olmuş olabilir.",
+      "gerekenEtiketler": [
+        "analiz",
+        "ifade"
+      ],
+      "minPuan": 3
+    }
+  ]
 }

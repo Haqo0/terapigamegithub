@@ -1,0 +1,265 @@
+{
+  "adimlar": [
+    {
+      "id": "1",
+      "anlatim": "Alev:\n“Bu sabah büyük bir lansmandaydım.\nSahne, ışıklar, alkışlar.\nÖdül de geldi.\nVe sonra...\nEve dönünce ağladım.\nAma neden bilmiyorum.”",
+      "secenekler": [
+        {
+          "metin": "Zaferin ardından gelen o ağlamada ne vardı sence?",
+          "sonrakiID": "1A",
+          "etiket": "duygu",
+          "puan": 1
+        },
+        {
+          "metin": "O ödül senin için ne ifade ediyordu?",
+          "sonrakiID": "1B",
+          "etiket": "onay",
+          "puan": 1
+        },
+        {
+          "metin": "Başarılı olmak senin için ne zaman zorunluluk oldu?",
+          "sonrakiID": "1C",
+          "etiket": "gecmis",
+          "puan": 1
+        },
+        {
+          "metin": "...",
+          "sonrakiID": "1D",
+          "etiket": "sessizlik",
+          "puan": 1
+        }
+      ]
+    },
+    {
+      "id": "1A",
+      "anlatim": "Alev:\n“Boşluk.\nHerkes gitti.\nIşıklar kapandı.\nO an... kimse yoktu.\nSadece ben ve sessizlik.”",
+      "secenekler": [
+        {
+          "metin": "Sessizlik sana ne söylüyordu?",
+          "sonrakiID": "1A1",
+          "etiket": "yorum",
+          "puan": 1
+        },
+        {
+          "metin": "O an kendinle baş başa kalmak seni etkiledi mi?",
+          "sonrakiID": "1A2",
+          "etiket": "yansıma",
+          "puan": 1
+        },
+        {
+          "metin": "Boşluk, senin için yeni bir şey mi?",
+          "sonrakiID": "1A3",
+          "etiket": "analiz",
+          "puan": 1
+        },
+        {
+          "metin": "Ağlamak seni rahatsız etti mi?",
+          "sonrakiID": "1A4",
+          "etiket": "his",
+          "puan": 1
+        }
+      ]
+    },
+    {
+      "id": "1A1",
+      "anlatim": "Alev:\n“‘Bu kadar mıydı?’ dedi galiba.”",
+      "seansSonu": true
+    },
+    {
+      "id": "1A2",
+      "anlatim": "Alev:\n“Evet. Kendi sesim bana yabancı geldi.”",
+      "seansSonu": true
+    },
+    {
+      "id": "1A3",
+      "anlatim": "Alev:\n“Hayır. Ama bu kadar net olması… nadir.”",
+      "seansSonu": true
+    },
+    {
+      "id": "1A4",
+      "anlatim": "Alev:\n“Evet. Çünkü o an zaferim zayıflık gibi hissettirdi.”",
+      "seansSonu": true
+    },
+    {
+      "id": "1B",
+      "anlatim": "Alev:\n“Görünmek.\nOnay.\nAma...\nAldığımda içimden tek geçen cümle:\n‘Şimdi ne yapacağım?’ oldu.”",
+      "secenekler": [
+        {
+          "metin": "Onay senin için neden bu kadar önemli?",
+          "sonrakiID": "1B1",
+          "etiket": "onay",
+          "puan": 1
+        },
+        {
+          "metin": "O ödül gerçekten seni tanımlıyor mu?",
+          "sonrakiID": "1B2",
+          "etiket": "kimlik",
+          "puan": 1
+        },
+        {
+          "metin": "Peki ya hiç ödül almasaydın?",
+          "sonrakiID": "1B3",
+          "etiket": "varsayim",
+          "puan": 1
+        },
+        {
+          "metin": "Sence bu bir final miydi, yoksa başka bir basamak mı?",
+          "sonrakiID": "1B4",
+          "etiket": "degerlendirme",
+          "puan": 1
+        }
+      ]
+    },
+    {
+      "id": "1B1",
+      "anlatim": "Alev:\n“Çünkü onsuz fark edilmiyorum gibi hissediyorum.”",
+      "seansSonu": true
+    },
+    {
+      "id": "1B2",
+      "anlatim": "Alev:\n“Hayır. Sadece sistemin verdiği bir nişan.”",
+      "seansSonu": true
+    },
+    {
+      "id": "1B3",
+      "anlatim": "Alev:\n“Eksik hissetmezdim. Ama görüldüğümü sanmazdım.”",
+      "seansSonu": true
+    },
+    {
+      "id": "1B4",
+      "anlatim": "Alev:\n“İçimde basamak gibi. Ama dışarıya finalmiş gibi söyledim.”",
+      "seansSonu": true
+    },
+    {
+      "id": "1C",
+      "anlatim": "Alev:\n“Babam beni alkışlamadı.\nAnnem, başarıyı ‘güvende olmak’ diye öğretti.\nBen de kazandım.\nÇok kazandım.\nAma hiç kucaklanmadım.”",
+      "secenekler": [
+        {
+          "metin": "Kucaklanmakla kazanmak arasında bir bağ kuruyor musun?",
+          "sonrakiID": "1C1",
+          "etiket": "analiz",
+          "puan": 1
+        },
+        {
+          "metin": "Başarı, sevgi yerine mi geçti?",
+          "sonrakiID": "1C2",
+          "etiket": "duygu",
+          "puan": 1
+        },
+        {
+          "metin": "Baban seni alkışlasaydı ne olurdu?",
+          "sonrakiID": "1C3",
+          "etiket": "varsayim",
+          "puan": 1
+        },
+        {
+          "metin": "Şu an kucaklansaydın, ne değişirdi?",
+          "sonrakiID": "1C4",
+          "etiket": "gelecek",
+          "puan": 1
+        }
+      ]
+    },
+    {
+      "id": "1C1",
+      "anlatim": "Alev:\n“İkisi aynı anda hiç olmadı. O yüzden bilmiyorum.”",
+      "seansSonu": true
+    },
+    {
+      "id": "1C2",
+      "anlatim": "Alev:\n“Evet. Başarı... benim sevgi dilim oldu belki.”",
+      "seansSonu": true
+    },
+    {
+      "id": "1C3",
+      "anlatim": "Alev:\n“Belki ben de bu kadar savaşçı olmazdım.”",
+      "seansSonu": true
+    },
+    {
+      "id": "1C4",
+      "anlatim": "Alev:\n“Korkarım. Sarsılırım. Ama belki… çözülürdüm.”",
+      "seansSonu": true
+    },
+    {
+      "id": "1D",
+      "anlatim": "Alev:\n“Yine sustunuz.\nSessizlik bana çalışmadığım bir boşluk gibi geliyor.\nAma bu sefer...\nİçinde bir his var.\nZayıflık değil de... durmak gibi.”",
+      "secenekler": [
+        {
+          "metin": "Durmak senin için ne anlama geliyor?",
+          "sonrakiID": "1D1",
+          "etiket": "durum",
+          "puan": 1
+        },
+        {
+          "metin": "Bu his sana daha önce geldi mi?",
+          "sonrakiID": "1D2",
+          "etiket": "hatira",
+          "puan": 1
+        },
+        {
+          "metin": "Zayıf olmadığını nasıl anlıyorsun?",
+          "sonrakiID": "1D3",
+          "etiket": "yorum",
+          "puan": 1
+        },
+        {
+          "metin": "...",
+          "sonrakiID": "1D4",
+          "etiket": "sessizlik",
+          "puan": 1
+        }
+      ]
+    },
+    {
+      "id": "1D1",
+      "anlatim": "Alev:\n“Tehlikeli. Çünkü geri kalmakla eşleşmiş.”",
+      "seansSonu": true
+    },
+    {
+      "id": "1D2",
+      "anlatim": "Alev:\n“Evet ama hemen bir işle bastırdım.”",
+      "seansSonu": true
+    },
+    {
+      "id": "1D3",
+      "anlatim": "Alev:\n“Çünkü bu defa kaçmak istemedim.”",
+      "seansSonu": true
+    },
+    {
+      "id": "1D4",
+      "anlatim": "Anlatıcı:\n“Alev durdu.\nAma bu duruş bir yenilgi değil… belki ilk kez bir mola.\nTerapist, bu molayı birlikte tutabiliyor musun?”",
+      "seansSonu": true
+    }
+  ],
+  "analizSonuclari": [
+    {
+      "metin": "Bugün ilk defa... başarının ardından sessizlikle kalabildim.\nBelki bu da bir zaferdir.",
+      "gerekenEtiketler": [
+        "duygu",
+        "onay",
+        "analiz"
+      ],
+      "minPuan": 3
+    },
+    {
+      "metin": "Ne saçma.\nÖdül aldım ve burada kendimi sorguluyorum.\nBelki de siz fazla dokunuyorsunuz.",
+      "gerekenEtiketler": [
+        "varsayim",
+        "yorum"
+      ],
+      "minPuan": 2
+    },
+    {
+      "metin": "Seans güzeldi.\nHaftaya başka bir hikâyeyle gelirim.",
+      "gerekenEtiketler": [
+        "sessizlik"
+      ],
+      "minPuan": 1
+    },
+    {
+      "metin": "Anlatıcı:\n“Alev kazandı.\nAma kazandığı şeyin ne olduğunu ilk defa düşündü.\nTerapist…\nBaşarının ağırlığını taşıyabiliyor musun?”",
+      "gerekenEtiketler": [],
+      "minPuan": 0
+    }
+  ]
+}
