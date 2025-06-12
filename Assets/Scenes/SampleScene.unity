@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028326, g: 0.22571333, b: 0.30692202, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028356, g: 0.2257137, b: 0.3069222, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6013,16 +6013,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tumKarakterler:
-  - karakterAdi: mert
-    karakterPrefab: {fileID: 1865659048}
-    girisCutscene: {fileID: 1317692937}
-    cikisCutscene: {fileID: 1461522325}
-    seansJsonlar:
-    - {fileID: 4900000, guid: 576204cf5df82444bb4da93d9b25a3d4, type: 3}
-    - {fileID: 4900000, guid: ee4b847078c534237962e4789b608a12, type: 3}
-    - {fileID: 4900000, guid: 4e4c63c5cac774f0496bc1db49b68797, type: 3}
-    - {fileID: 4900000, guid: 4aeab5b471e714596af83e0924303845, type: 3}
-    - {fileID: 4900000, guid: effc9d870a0a04d0797dc20b9be8735d, type: 3}
   - karakterAdi: ece
     karakterPrefab: {fileID: 214440754}
     girisCutscene: {fileID: 1317692937}
@@ -6043,6 +6033,16 @@ MonoBehaviour:
     - {fileID: 4900000, guid: 1390f9f7535bd482d93614a5cb2d97fa, type: 3}
     - {fileID: 4900000, guid: 3ff7b67ccc1444dd0b0679d44c507722, type: 3}
     - {fileID: 4900000, guid: 6dea4509c1a8f486f8ed925e5be7dae0, type: 3}
+  - karakterAdi: mert
+    karakterPrefab: {fileID: 1865659048}
+    girisCutscene: {fileID: 1317692937}
+    cikisCutscene: {fileID: 1461522325}
+    seansJsonlar:
+    - {fileID: 4900000, guid: 576204cf5df82444bb4da93d9b25a3d4, type: 3}
+    - {fileID: 4900000, guid: ee4b847078c534237962e4789b608a12, type: 3}
+    - {fileID: 4900000, guid: 4e4c63c5cac774f0496bc1db49b68797, type: 3}
+    - {fileID: 4900000, guid: 4aeab5b471e714596af83e0924303845, type: 3}
+    - {fileID: 4900000, guid: effc9d870a0a04d0797dc20b9be8735d, type: 3}
 --- !u!4 &1434368950
 Transform:
   m_ObjectHideFlags: 0
@@ -7702,6 +7702,8 @@ MonoBehaviour:
     seansObjesi: {fileID: 214440754}
   - karakterAdi: mert
     seansObjesi: {fileID: 1865659048}
+  - karakterAdi: alev
+    seansObjesi: {fileID: 1994266339}
   diyalogPaneli: {fileID: 1882965873}
   crosshairObjesi: {fileID: 1699473839}
   kameraGecisYoneticisi: {fileID: 792113727}
