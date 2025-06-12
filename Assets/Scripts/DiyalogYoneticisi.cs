@@ -378,9 +378,6 @@ public class DiyalogYoneticisi : MonoBehaviour
 
         if (diyalogPanel != null)
             diyalogPanel.SetActive(false);
-
-        if (analizGosterici != null)
-            analizGosterici.PaneliKapat();
     }
 
     public void PanelleriKapatVeDevamEt()
@@ -389,9 +386,6 @@ public class DiyalogYoneticisi : MonoBehaviour
 
         if (diyalogPanel != null)
             diyalogPanel.SetActive(false);
-
-        if (analizGosterici != null)
-            analizGosterici.PaneliKapat();
 
         SeansiGecir();
     }

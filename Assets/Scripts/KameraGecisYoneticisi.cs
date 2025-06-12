@@ -98,7 +98,7 @@ public class KameraGecisYoneticisi : MonoBehaviour
         gecisYapiliyor = false;
     }
 
-    private IEnumerator SeansCikisAnimasyonu()
+    public IEnumerator SeansCikisAnimasyonu()
     {
         gecisYapiliyor = true;
 

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028356, g: 0.2257137, b: 0.3069222, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028326, g: 0.22571333, b: 0.30692202, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -822,8 +822,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   karakterAdi: ece
   seansAnalizGoster: 0000000001
-  seceneklerGecikmesi: 5
-  analizGecikmesi: 5
+  seceneklerGecikmesi: 1
+  analizGecikmesi: 1
   npcText: {fileID: 1158091930}
   secimSistemi: {fileID: 2033656150}
   analizGosterici: {fileID: 15884472}
@@ -1648,7 +1648,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 15884472}
         m_TargetAssemblyTypeName: AnalizGosterici, Assembly-CSharp
-        m_MethodName: PaneliKapat
+        m_MethodName: AnalizPaneliniKapat
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -32,6 +32,8 @@ public class AnalizSonucu
     public string baslik;
     public string aciklama;
     public string detay;
+    public string etiket;
+    public string puan;
     public string ozet;
 
     public List<string> gerekenEtiketler;

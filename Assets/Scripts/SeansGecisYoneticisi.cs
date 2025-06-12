@@ -8,7 +8,7 @@ public class SeansGecisYoneticisi : MonoBehaviour
     [Header("Karakter Bilgisi")]
     [Tooltip("Bu geçiş yöneticisinin hangi karaktere ait olduğunu belirler")]
     public string karakterAdi = "mert"; // "mert" veya "ece"
-    
+
     [Header("UI Bileşenleri")]
     public GameObject gecisPaneli;
     public TMP_Text gecisMesaji;
@@ -55,12 +55,20 @@ public class SeansGecisYoneticisi : MonoBehaviour
             gecisPaneli.SetActive(true);
             StartCoroutine(GecikmeliMesajVeDevam(mesaj));
         }
+
+        if (guncelSeansIndex >= 4)
+        {
+            gecisPaneli.SetActive(false);
+            CrosshairEtkilesim.instance.CrosshairVeKontrolGeriGetir();
+        }
+    
     }
+
 
     // Genel static metod - geriye uyumluluk için
     public static void SeansiHazirla(string mesaj = "Bir sonraki seansa geçiliyor...")
     {
-        Debug.LogWarning("Static SeansiHazirla() kullanıldı - Karakter-spesifik metodları kullanın");
+        Debug.Log("Static SeansiHazirla() kullanıldı - Karakter-spesifik metodları kullanın");
     }
 
     private IEnumerator GecikmeliMesajVeDevam(string mesaj)
@@ -115,7 +123,7 @@ public class SeansGecisYoneticisi : MonoBehaviour
         }
 
         TextAsset sonrakiJson = karakterSeansları[guncelSeansIndex];
-        
+
         if (sonrakiJson == null)
         {
             Debug.LogError($"{karakterAdi} - Seans {guncelSeansIndex + 2} JSON'u atanmamış!");
@@ -123,7 +131,7 @@ public class SeansGecisYoneticisi : MonoBehaviour
         }
 
         Debug.Log($"{karakterAdi} - Sonraki seans yükleniyor: {sonrakiJson.name}");
-        
+
         guncelSeansIndex++;
 
         if (diyalogYoneticisi != null)
@@ -169,7 +177,7 @@ public class SeansGecisYoneticisi : MonoBehaviour
         Debug.Log($"=== {karakterAdi.ToUpper()} SEANS GEÇİŞ DURUMU ===");
         Debug.Log($"Güncel Seans Index: {guncelSeansIndex}");
         Debug.Log($"Toplam Seans Sayısı: {karakterSeansları.Length}");
-        
+
         for (int i = 0; i < karakterSeansları.Length; i++)
         {
             string durum = (i == guncelSeansIndex) ? " ← SONRAKİ" : "";
