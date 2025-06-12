@@ -42,9 +42,16 @@ public class AnalizGosterici : MonoBehaviour
         {
             analizMetni.text = $"<b>{analiz.baslik}</b>\n\n{analiz.ozet}\n\n{analiz.detay}";
         }
-
-        if (kapatButonu != null) kapatButonu.SetActive(true);
-        if (yeniseansButonu != null) yeniseansButonu.SetActive(true);
+        if (DiyalogYoneticisi.instance != null && DiyalogYoneticisi.instance.mevcutSeansIndex >= 4)
+        {
+            if (kapatButonu != null) kapatButonu.SetActive(true);
+            if (yeniseansButonu != null) yeniseansButonu.SetActive(false);
+        }
+        else
+        {
+            if (kapatButonu != null) kapatButonu.SetActive(true);
+            if (yeniseansButonu != null) yeniseansButonu.SetActive(true);
+        }
 
         if (paneller.Count > 0)
         {
@@ -57,13 +64,6 @@ public class AnalizGosterici : MonoBehaviour
         // Cursor ayarları
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        if (DiyalogYoneticisi.instance != null)
-        {
-            if (DiyalogYoneticisi.instance.mevcutSeansIndex >= 4)
-            {
-                yeniseansButonu.SetActive(false);
-            }
-        }
     }
 
     // DevamEt butonu - Normal analiz akışını sürdürür
@@ -132,7 +132,7 @@ public class AnalizGosterici : MonoBehaviour
         }
 
         if (kapatButonu != null) kapatButonu.SetActive(true);
-        if (yeniseansButonu != null) yeniseansButonu.SetActive(false); // yeni seans butonu gerekmez
+        if (yeniseansButonu != null) yeniseansButonu.SetActive(false);
     }
 
     public void PaneliKapat()
@@ -142,6 +142,31 @@ public class AnalizGosterici : MonoBehaviour
             panel.SetActive(false);
         }
 
+        if (DiyalogYoneticisi.instance != null)
+        {
+            if (DiyalogYoneticisi.instance.mevcutSeansIndex >= 4)
+            {
+                if (KarakterYonetici.instance != null)
+                {
+                    KarakterYonetici.instance.SeansSonuCutsceneBaslat();
+                    Debug.Log("Seans sonu cutscene başlatıldı.");
+                    KarakterVerisi aktifKarakter = KarakterYonetici.instance.GetAktifKarakter();
+                    if (aktifKarakter != null)
+                    {
+                        DiyalogYoneticisi diyalogYoneticisi = aktifKarakter.karakterPrefab.GetComponentInChildren<DiyalogYoneticisi>();
+                        if (diyalogYoneticisi != null)
+                        {
+                            Debug.Log("Normal akış sürdürülüyor - Seans geçiş paneli gösterilecek");
+                            diyalogYoneticisi.SeansiGecir();
+                        }
+                        else
+                        {
+                            Debug.LogError("DiyalogYoneticisi bulunamadı!");
+                        }
+                    }
+                }
+            }
+        }
         // CrosshairEtkilesim varsa cursor ayarlarını ona bırak
         if (CrosshairEtkilesim.instance != null)
         {
@@ -154,22 +179,6 @@ public class AnalizGosterici : MonoBehaviour
             Cursor.visible = false;
         }
 
-        if (DiyalogYoneticisi.instance != null)
-        {
-            if (DiyalogYoneticisi.instance.mevcutSeansIndex >= 4)
-            {
-                if (!cutsceneZatenOynatildi)
-                {
-                    KarakterYonetici.instance.SeansSonuCutsceneBaslat();
-                    cutsceneZatenOynatildi = true;
-                    Debug.Log("Cutscene bir kez oynatıldı.");
-                }
-                else
-                {
-                    Debug.Log("Cutscene zaten oynatıldı, tekrar tetiklenmedi.");
-                }
-            }
-        }
     }
 
     public void YeniSeansaBasla()

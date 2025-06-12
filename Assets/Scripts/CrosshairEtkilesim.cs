@@ -10,6 +10,10 @@ public class CrosshairEtkilesim : MonoBehaviour
     public GameObject diyalogPaneli;
     public GameObject crosshairObjesi;
 
+    // 👈 SADECE BU SATIR EKLENDİ
+    [Header("Kamera Geçişi")]
+    public KameraGecisYoneticisi kameraGecisYoneticisi;
+
     private MonoBehaviour kameraKontrolScripti;
     private Camera kamera;
     private bool seansBasladi = false;
@@ -84,6 +88,15 @@ public class CrosshairEtkilesim : MonoBehaviour
                         return;
                     }
 
+                    // 👈 SADECE BU BLOK EKLENDİ (kamera geçişi)
+                    if (kameraGecisYoneticisi != null)
+                    {
+                        kameraGecisYoneticisi.SeansaGirisGecisi();
+                        StartCoroutine(SeansBaslatGecikmeli(karakterAdi, hit.collider.gameObject));
+                        return;
+                    }
+
+                    // ESKİ KOD AYNEN KALIDI
                     if (karakterYonetici != null)
                     {
                         // Önce objeyi ata
@@ -126,8 +139,86 @@ public class CrosshairEtkilesim : MonoBehaviour
         }
     }
 
+    // 👈 SADECE BU METOD EKLENDİ
+    private System.Collections.IEnumerator SeansBaslatGecikmeli(string karakterAdi, GameObject tiklananObje)
+    {
+        // Kamera geçişi bitene kadar bekle
+        while (kameraGecisYoneticisi.GecisYapiliyorMu())
+        {
+            yield return null;
+        }
+
+        // ESKİ KODUN AYNISI ÇALIŞSIN
+        if (karakterYonetici != null)
+        {
+            // Önce objeyi ata
+            tiklananObj = tiklananObje;
+
+            // Collider'ı devre dışı bırak
+            BoxCollider objCollider = tiklananObj.GetComponent<BoxCollider>();
+            if (objCollider != null)
+            {
+                objCollider.enabled = false;
+                Debug.Log($"{tiklananObj.name} objesi tıklanamaz yapıldı");
+            }
+
+            // Seansı başlat
+            karakterYonetici.KarakterSeansiBaslat(karakterAdi);
+            seansBasladi = true;
+
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
+            if (crosshairObjesi != null)
+                crosshairObjesi.SetActive(false);
+
+            if (kameraKontrolScripti != null)
+                kameraKontrolScripti.enabled = false;
+        }
+        else
+        {
+            Debug.LogError("KarakterYonetici referansı bulunamadı!");
+        }
+    }
+
     public void CrosshairVeKontrolGeriGetir()
     {
+        // 👈 SADECE BU BLOK EKLENDİ (çıkış geçişi)
+        if (kameraGecisYoneticisi != null)
+        {
+            kameraGecisYoneticisi.SeansCikisGecisi();
+            StartCoroutine(CrosshairGeriGetirGecikmeli());
+            return;
+        }
+
+        // ESKİ KOD AYNEN KALIDI
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        if (crosshairObjesi != null)
+            crosshairObjesi.SetActive(true);
+
+        seansBasladi = false;
+
+        if (kameraKontrolScripti != null)
+            kameraKontrolScripti.enabled = true;
+
+        if (diyalogPaneli != null)
+            diyalogPaneli.SetActive(false);
+
+        Debug.Log("Crosshair ve kontrol geri getirildi");
+    }
+
+    // 👈 SADECE BU METOD EKLENDİ
+    private System.Collections.IEnumerator CrosshairGeriGetirGecikmeli()
+    {
+        // Kamera geçişi bitene kadar bekle
+        while (kameraGecisYoneticisi.GecisYapiliyorMu())
+        {
+            yield return null;
+        }
+
+        // ESKİ KODUN AYNISI ÇALIŞSIN
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
