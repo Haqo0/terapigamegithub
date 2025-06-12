@@ -28,8 +28,7 @@
           "etiket": "sessizlik",
           "puan": 1
         }
-      ],
-      "seansSonu": true
+      ]
     },
     {
       "id": "1A",
@@ -64,22 +63,22 @@
     {
       "id": "1A1",
       "anlatim": "Evet. Ağlamayı bilmiyorum. Yani… nasıl olur, bilmiyorum.",
-      "seansSonu": false
+      "seansSonu": true
     },
     {
       "id": "1A2",
       "anlatim": "Bir kez... sınıfta. Öğretmen bana bağırınca.",
-      "seansSonu": false
+      "seansSonu": true
     },
     {
       "id": "1A3",
       "anlatim": "Gözlemliyorum ama anlamlandıramıyorum.",
-      "seansSonu": false
+      "seansSonu": true
     },
     {
       "id": "1A4",
       "anlatim": "Geçti. Ama yerine boşluk geldi.",
-      "seansSonu": false
+      "seansSonu": true
     },
     {
       "id": "1B",
@@ -114,22 +113,22 @@
     {
       "id": "1B1",
       "anlatim": "Evet. Zihnim kontrol etmeye çalıştı ama bedenim titredi.",
-      "seansSonu": false
+      "seansSonu": true
     },
     {
       "id": "1B2",
       "anlatim": "Hayır. Bilinmeyen bir sokaktı.",
-      "seansSonu": false
+      "seansSonu": true
     },
     {
       "id": "1B3",
       "anlatim": "Küçükken taşınmıştık. Yeni mahalleye uyum zor olmuştu.",
-      "seansSonu": false
+      "seansSonu": true
     },
     {
       "id": "1B4",
       "anlatim": "Yer değil. Yön. Doğrultu. Otorite gibiydi sanki.",
-      "seansSonu": false
+      "seansSonu": true
     },
     {
       "id": "1C",
@@ -164,22 +163,22 @@
     {
       "id": "1C1",
       "anlatim": "Çünkü tetikleyici olaylar zincirleme.",
-      "seansSonu": false
+      "seansSonu": true
     },
     {
       "id": "1C2",
       "anlatim": "Zorunda değilim belki… ama başka türlüsü yoktu.",
-      "seansSonu": false
+      "seansSonu": true
     },
     {
       "id": "1C3",
       "anlatim": "Bir süreliğine ‘ben kimim’ hissi bile silikleşti.",
-      "seansSonu": false
+      "seansSonu": true
     },
     {
       "id": "1C4",
       "anlatim": "Yavaşça. Ama simetri aynı olmuyor.",
-      "seansSonu": false
+      "seansSonu": true
     },
     {
       "id": "1D",
@@ -214,22 +213,22 @@
     {
       "id": "1D1",
       "anlatim": "Biraz. Çünkü kontrolsüz.",
-      "seansSonu": false
+      "seansSonu": true
     },
     {
       "id": "1D2",
       "anlatim": "İlkokulda. Kalabalık sınıfta… biri ağlayınca ben de panik olmuştum.",
-      "seansSonu": false
+      "seansSonu": true
     },
     {
       "id": "1D3",
       "anlatim": "Akmak... güzel bir kelime. Ama henüz denemedim.",
-      "seansSonu": false
+      "seansSonu": true
     },
     {
       "id": "1D4",
       "anlatim": "Anlatıcı:\n“Ece sustu.\nAma bu kez sistem değil… duvar çatladı.\nTerapist, çatlağı fark ettin mi?”",
-      "seansSonu": false
+      "seansSonu": true
     }
   ],
   "analizSonuclari": [

@@ -6,19 +6,27 @@
       "secenekler": [
         {
           "metin": "Bu ‘yumuşak’ kelimesi sende neyi çağrıştırdı?",
-          "sonrakiID": "1A"
+          "sonrakiID": "1A",
+          "etiket": "yumusaklik",
+          "puan": 1
         },
         {
           "metin": "İlk defa kendine mi içten gülümsedin?",
-          "sonrakiID": "1B"
+          "sonrakiID": "1B",
+          "etiket": "sessizlik",
+          "puan": 1
         },
         {
           "metin": "O kelimeyi duyunca ne oldu?",
-          "sonrakiID": "1C"
+          "sonrakiID": "1C",
+          "etiket": "hissetme",
+          "puan": 1
         },
         {
           "metin": "...",
-          "sonrakiID": "1D"
+          "sonrakiID": "1D",
+          "etiket": "özşefkat",
+          "puan": 1
         }
       ]
     },
@@ -28,41 +36,49 @@
       "secenekler": [
         {
           "metin": "Bu his seni ürküttü mü?",
-          "sonrakiID": "1A1"
+          "sonrakiID": "1A1",
+          "etiket": "yakınlık",
+          "puan": 1
         },
         {
           "metin": "Kime karşı böyle hissettin sence?",
-          "sonrakiID": "1A2"
+          "sonrakiID": "1A2",
+          "etiket": "gözlem",
+          "puan": 1
         },
         {
           "metin": "Bu duyguyu taşıyabilir misin?",
-          "sonrakiID": "1A3"
+          "sonrakiID": "1A3",
+          "etiket": "içses",
+          "puan": 1
         },
         {
           "metin": "Yumuşak olan sadece içindeki his miydi?",
-          "sonrakiID": "1A4"
+          "sonrakiID": "1A4",
+          "etiket": "rahatlama",
+          "puan": 1
         }
       ]
     },
     {
       "id": "1A1",
       "anlatim": "Ece:\n“Biraz. Çünkü alışkın değilim. Ama kaçmak istemedim.”",
-      "seansSonu": false
+      "seansSonu": true
     },
     {
       "id": "1A2",
       "anlatim": "Ece:\n“Kendime. Ve buraya.”",
-      "seansSonu": false
+      "seansSonu": true
     },
     {
       "id": "1A3",
       "anlatim": "Ece:\n“Taşımaya başladım. Küçük bir parça gibi.”",
-      "seansSonu": false
+      "seansSonu": true
     },
     {
       "id": "1A4",
       "anlatim": "Ece:\n“Sizinkiler de yumuşaktı bugün. Sesiniz bile.”",
-      "seansSonu": false
+      "seansSonu": true
     },
     {
       "id": "1B",
@@ -70,41 +86,49 @@
       "secenekler": [
         {
           "metin": "O bakışla göz göze gelmek nasıldı?",
-          "sonrakiID": "1B1"
+          "sonrakiID": "1B1",
+          "etiket": "yumusaklik",
+          "puan": 1
         },
         {
           "metin": "O halini tarif edebilir misin?",
-          "sonrakiID": "1B2"
+          "sonrakiID": "1B2",
+          "etiket": "sessizlik",
+          "puan": 1
         },
         {
           "metin": "Kendine böyle yaklaşmak zor muydu?",
-          "sonrakiID": "1B3"
+          "sonrakiID": "1B3",
+          "etiket": "hissetme",
+          "puan": 1
         },
         {
           "metin": "O ‘şey’ sence sen miydin?",
-          "sonrakiID": "1B4"
+          "sonrakiID": "1B4",
+          "etiket": "özşefkat",
+          "puan": 1
         }
       ]
     },
     {
       "id": "1B1",
       "anlatim": "Ece:\n“İlginçti. Aynı değil. Ama daha gerçek.”",
-      "seansSonu": false
+      "seansSonu": true
     },
     {
       "id": "1B2",
       "anlatim": "Ece:\n“Gölgeli. Ama netleşen.”",
-      "seansSonu": false
+      "seansSonu": true
     },
     {
       "id": "1B3",
       "anlatim": "Ece:\n“Zordu. Ama bu sefer geri çekilmedim.”",
-      "seansSonu": false
+      "seansSonu": true
     },
     {
       "id": "1B4",
       "anlatim": "Ece:\n“Evet. Ama alışkın olduğum halim değil.”",
-      "seansSonu": false
+      "seansSonu": true
     },
     {
       "id": "1C",
@@ -112,41 +136,49 @@
       "secenekler": [
         {
           "metin": "Gözünün dolması sana ne hissettirdi?",
-          "sonrakiID": "1C1"
+          "sonrakiID": "1C1",
+          "etiket": "yakınlık",
+          "puan": 1
         },
         {
           "metin": "Bu gevşemeyi daha önce hissetmiş miydin?",
-          "sonrakiID": "1C2"
+          "sonrakiID": "1C2",
+          "etiket": "gözlem",
+          "puan": 1
         },
         {
           "metin": "Ağlamanın senin için tanımı nedir?",
-          "sonrakiID": "1C3"
+          "sonrakiID": "1C3",
+          "etiket": "içses",
+          "puan": 1
         },
         {
           "metin": "O kelimeyi biri sana söyleseydi ne değişirdi?",
-          "sonrakiID": "1C4"
+          "sonrakiID": "1C4",
+          "etiket": "rahatlama",
+          "puan": 1
         }
       ]
     },
     {
       "id": "1C1",
       "anlatim": "Ece:\n“Beklenmedik. Ama tehdit edici değildi.”",
-      "seansSonu": false
+      "seansSonu": true
     },
     {
       "id": "1C2",
       "anlatim": "Ece:\n“Hayır. İlk kez bu kadar hafif hissettim.”",
-      "seansSonu": false
+      "seansSonu": true
     },
     {
       "id": "1C3",
       "anlatim": "Ece:\n“Kelimeler akmadan yaşanabilir belki. Sessizlikle.”",
-      "seansSonu": false
+      "seansSonu": true
     },
     {
       "id": "1C4",
       "anlatim": "Ece:\n“Daha erken bulabilirdim bunu. Belki daha önce konuşabilirdim.”",
-      "seansSonu": false
+      "seansSonu": true
     },
     {
       "id": "1D",
@@ -154,36 +186,44 @@
       "secenekler": [
         {
           "metin": "Bu sessizlikle ilk defa barıştın mı?",
-          "sonrakiID": "1D1"
+          "sonrakiID": "1D1",
+          "etiket": "yumusaklik",
+          "puan": 1
         },
         {
           "metin": "İçindeki o şey sana neler söylüyor?",
-          "sonrakiID": "1D2"
+          "sonrakiID": "1D2",
+          "etiket": "sessizlik",
+          "puan": 1
         },
         {
           "metin": "Senin dilin belki sessizliktir, sence?",
-          "sonrakiID": "1D3"
+          "sonrakiID": "1D3",
+          "etiket": "hissetme",
+          "puan": 1
         },
         {
           "metin": "...",
-          "sonrakiID": "1D4"
+          "sonrakiID": "1D4",
+          "etiket": "özşefkat",
+          "puan": 1
         }
       ]
     },
     {
       "id": "1D1",
       "anlatim": "Ece:\n“Evet. Direnmiyorum artık.”",
-      "seansSonu": false
+      "seansSonu": true
     },
     {
       "id": "1D2",
       "anlatim": "Ece:\n“‘Dur. Olduğun yerde güzel bir şey var.’ diyor.”",
-      "seansSonu": false
+      "seansSonu": true
     },
     {
       "id": "1D3",
       "anlatim": "Ece:\n“Olabilir. Ama bazen içinden sözcükler de geçiyor.”",
-      "seansSonu": false
+      "seansSonu": true
     },
     {
       "id": "1D4",
